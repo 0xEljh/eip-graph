@@ -3,7 +3,6 @@ import { data } from "./dummy-data";
 import "./App.css";
 
 import React, { useState, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
 
 import InfoContext, { Info } from "./hooks/InfoContext";
 import SideBar from "./components/SideBar";
@@ -14,6 +13,9 @@ type NodeObj = NodeObject & {
   x: number;
   y: number;
   category: string;
+  status: string;
+  author: string | string[];
+  url: string;
   bckgDimensions?: [number, number];
   color: string;
 };
@@ -28,7 +30,13 @@ function App() {
 
   const handleClick = (node: NodeObject) => {
     const nodeObj = node as NodeObj;
-    setDetails([{ title: nodeObj.name, content: nodeObj.category }]);
+    setDetails([
+      { title: nodeObj.name, content: nodeObj.status },
+      {
+        title: "Discussion Page",
+        content: <a href={nodeObj.url}>{nodeObj.url}</a>,
+      },
+    ]);
 
     // if (figRef.current) {
     //   const distance = 40;

@@ -26,7 +26,7 @@ export const MenuItem = ({
 }: {
   i: number;
   title: string;
-  content: string;
+  content: string | JSX.Element;
 }) => {
   const style = { border: `2px solid ${colors[i]}` };
   return (
@@ -37,9 +37,11 @@ export const MenuItem = ({
     >
       {/* <div className="icon-placeholder" style={style} />
       <div className="text-placeholder" style={style} /> */}
-      <h2>{title}</h2>
-      <br />
-      <p>{content}</p>
+      <div className="text-placeholder">
+        <h2>{title}</h2>
+        <br />
+        <p>{content}</p>
+      </div>
     </motion.li>
   );
 };
