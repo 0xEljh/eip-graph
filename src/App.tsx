@@ -54,54 +54,55 @@ function App() {
       <header>
         <h1>Graph Visualization of Ethereum Improvement Protocols</h1>
       </header>
-      <body>
-        <InfoContext.Provider value={details}>
-          <SideBar />
-        </InfoContext.Provider>
-        <ForceGraph
-          graphData={data}
-          onNodeClick={handleClick}
-          nodeAutoColorBy="category"
-          // nodeCanvasObject={(node, ctx, globalScale) => {
-          //   const nodeObj = node as NodeObj;
-          //   const label = nodeObj.id as string;
-          //   const fontSize = 16 / globalScale;
-          //   ctx.font = `${fontSize}px Sans-Serif`;
-          //   const textWidth = ctx.measureText(label).width;
-          //   const bckgDimensions: [number, number] = [
-          //     textWidth + fontSize * 0.4,
-          //     fontSize * 1.4,
-          //   ]; // some padding
 
-          //   if (node.x && node.y) {
-          //     ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-          //     ctx.fillRect(
-          //       node.x - bckgDimensions[0] / 2,
-          //       node.y - bckgDimensions[1] / 2,
-          //       ...bckgDimensions
-          //     );
+      <InfoContext.Provider value={details}>
+        <SideBar />
+      </InfoContext.Provider>
+      <ForceGraph
+        graphData={data}
+        onNodeClick={handleClick}
+        nodeAutoColorBy="category"
+        linkDirectionalParticles={1}
+        linkDirectionalParticleSpeed={(d) => Math.random() * 0.003}
+        // nodeCanvasObject={(node, ctx, globalScale) => {
+        //   const nodeObj = node as NodeObj;
+        //   const label = nodeObj.id as string;
+        //   const fontSize = 16 / globalScale;
+        //   ctx.font = `${fontSize}px Sans-Serif`;
+        //   const textWidth = ctx.measureText(label).width;
+        //   const bckgDimensions: [number, number] = [
+        //     textWidth + fontSize * 0.4,
+        //     fontSize * 1.4,
+        //   ]; // some padding
 
-          //     ctx.textAlign = "center";
-          //     ctx.textBaseline = "middle";
-          //     ctx.fillStyle = nodeObj.color;
-          //     ctx.fillText(label, node.x, node.y);
+        //   if (node.x && node.y) {
+        //     ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+        //     ctx.fillRect(
+        //       node.x - bckgDimensions[0] / 2,
+        //       node.y - bckgDimensions[1] / 2,
+        //       ...bckgDimensions
+        //     );
 
-          //     nodeObj.bckgDimensions = bckgDimensions; // to re-use in nodePointerAreaPaint
-          //   }
-          // }}
-          // nodePointerAreaPaint={(n, color, ctx) => {
-          //   const node = n as NodeObj;
-          //   ctx.fillStyle = color;
-          //   const bckgDimensions = node.bckgDimensions;
-          //   bckgDimensions &&
-          //     ctx.fillRect(
-          //       node.x - bckgDimensions[0] / 2,
-          //       node.y - bckgDimensions[1] / 2,
-          //       ...bckgDimensions
-          //     );
-          // }}
-        />
-      </body>
+        //     ctx.textAlign = "center";
+        //     ctx.textBaseline = "middle";
+        //     ctx.fillStyle = nodeObj.color;
+        //     ctx.fillText(label, node.x, node.y);
+
+        //     nodeObj.bckgDimensions = bckgDimensions; // to re-use in nodePointerAreaPaint
+        //   }
+        // }}
+        // nodePointerAreaPaint={(n, color, ctx) => {
+        //   const node = n as NodeObj;
+        //   ctx.fillStyle = color;
+        //   const bckgDimensions = node.bckgDimensions;
+        //   bckgDimensions &&
+        //     ctx.fillRect(
+        //       node.x - bckgDimensions[0] / 2,
+        //       node.y - bckgDimensions[1] / 2,
+        //       ...bckgDimensions
+        //     );
+        // }}
+      />
     </div>
   );
 }
