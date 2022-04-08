@@ -53,21 +53,21 @@ for number in get_eip_numbers():
     eips[number] = page_data
 
     # extract summary and abstract paragraphs:
-    summary = soup.find("h3", id="summary")
+    summary = soup.find(["h3", "h2"], id=lambda x: "summary" in x if x else False)
     if summary is not None:
         summary_text = []
         for sibling in summary.find_next_siblings():
-            if sibling.name == "h3":
+            if sibling.name in ["h2", "h3"]:
                 break
             if sibling.name == "p":
                 summary_text.append(" ".join(sibling.text.strip().split("\n")))
         page_data["summary"] = summary_text
 
-    abstract = soup.find("h3", id="abstract")
+    abstract = soup.find(["h3", "h2"], id=lambda x: "abstract" in x if x else False)
     if abstract is not None:
         abstract_text = []
         for sibling in abstract.find_next_siblings():
-            if sibling.name == "h3":
+            if sibling.name in ["h2", "h3"]:
                 break
             if sibling.name == "p":
                 abstract_text.append(" ".join(sibling.text.strip().split("\n")))
@@ -114,4 +114,3 @@ for key, value in eips.items():
 
 with open("data/eip_data.json", "w") as f:
     json.dump({"nodes": nodes, "links": links}, f)
-
