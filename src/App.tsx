@@ -1,8 +1,11 @@
-import ForceGraph, { NodeObject } from "react-force-graph-2d";
-import { data } from "./dummy-data";
+import ForceGraph, {
+  NodeObject,
+  ForceGraphMethods,
+} from "react-force-graph-2d";
+import { data } from "./data";
 import "./App.css";
 
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef } from "react";
 
 import InfoContext, { Info } from "./hooks/InfoContext";
 import SideBar from "./components/SideBar";
@@ -16,9 +19,53 @@ type NodeObj = NodeObject & {
   status: string;
   author: string | string[];
   url: string;
+  summary?: string[];
+  abstract?: string[];
+  discussions?: string;
   bckgDimensions?: [number, number];
   color: string;
 };
+
+function collectNodeDetails(node: NodeObj) {
+  const details: Info[] = [];
+  details.push({
+    title: node.name,
+    content: node.summary ? (
+      <>
+        {node.summary.map((text) => (
+          <p>{text}</p>
+        ))}
+      </>
+    ) : (
+      ""
+    ),
+  });
+  if (node.abstract) {
+    details.push({
+      title: "Abstract",
+      content: (
+        <>
+          {node.abstract.map((text) => (
+            <p>{text}</p>
+          ))}
+        </>
+      ),
+    });
+  }
+  details.push({
+    title: "Relevant Links",
+    content: (
+      <>
+        <a href={node.url}>Ethereum EIP Page</a>
+        <br />
+        {node.discussions ? (
+          <a href={node.discussions}>Github Discussions Page</a>
+        ) : null}
+      </>
+    ),
+  });
+  return details;
+}
 
 function App() {
   // preprocess the data into the form that force graph expects
@@ -26,27 +73,22 @@ function App() {
 
   const [details, setDetails] = useState<Info[]>([]);
 
-  // const figRef = useRef < React.MutableRefObject<ForceGraphMethods>();
+  const figRef = useRef<ForceGraphMethods>();
 
   const handleClick = (node: NodeObject) => {
     const nodeObj = node as NodeObj;
-    setDetails([
-      { title: nodeObj.name, content: nodeObj.status },
-      {
-        title: "Discussion Page",
-        content: <a href={nodeObj.url}>{nodeObj.url}</a>,
-      },
-    ]);
+    setDetails(collectNodeDetails(nodeObj));
 
-    // if (figRef.current) {
-    //   const distance = 40;
-    //   const distRatio = 1 + distance / Math.hypot(nodeObj.x, nodeObj.y);
-    //   figRef.current.cameraPosition(
-    //     { x: nodeObj.x * distRatio, y: nodeObj.y * distRatio },
-    //     node,
-    //     3000
-    //   );
-    // }
+    // center the node on screen.
+    if (figRef.current) {
+      const distance = 40;
+      const distRatio = 1 + distance / Math.hypot(nodeObj.x, nodeObj.y);
+      figRef.current.centerAt(
+        nodeObj.x * distRatio,
+        nodeObj.y * distRatio,
+        3000
+      );
+    }
   };
 
   return (
@@ -59,6 +101,7 @@ function App() {
         <SideBar />
       </InfoContext.Provider>
       <ForceGraph
+        ref={figRef}
         graphData={data}
         onNodeClick={handleClick}
         nodeAutoColorBy="category"
