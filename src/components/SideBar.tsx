@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 
-import { useDimensions } from "../hooks/useDimensions";
+import { useDimensions } from "../services/useDimensions";
 import MenuToggle from "./MenuToggle";
 import Menu from "./Menu";
 

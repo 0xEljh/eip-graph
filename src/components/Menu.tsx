@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import InfoContext from "../hooks/InfoContext";
+import InfoContext from "../services/InfoContext";
 import { motion } from "framer-motion";
 import { MenuItem } from "./MenuItem";
 
