@@ -28,6 +28,9 @@ nav {
   bottom: 0;
   width: 500px;
   color: black;
+  z-index: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .background {
@@ -37,6 +40,7 @@ nav {
   bottom: 0;
   width: 500px;
   background: #fff;
+  height: 100%;
 }
 
 button {
@@ -65,7 +69,7 @@ ul {
   padding: 25px;
   position: absolute;
   top: 100px;
-  /* width: 230px; */
+  background-color: #fff;
 }
 
 li {
@@ -86,9 +90,8 @@ li {
 
 .text-placeholder {
   border-radius: 5px;
-  /* width: 200px;
-  height: 20px; */
   flex: 1;
+  
 }
 
 .refresh {

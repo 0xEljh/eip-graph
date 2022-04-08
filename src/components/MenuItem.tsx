@@ -28,16 +28,18 @@ export const MenuItem = ({
   title: string;
   content: string | JSX.Element;
 }) => {
-  const style = { border: `2px solid ${colors[i]}` };
+  const style = {
+    "border-radius": "10px",
+    border: `2px solid ${colors[i]}`,
+    padding: "10px",
+  };
   return (
     <motion.li
       variants={variants}
-      whileHover={{ scale: 1.1 }}
+      whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      {/* <div className="icon-placeholder" style={style} />
-      <div className="text-placeholder" style={style} /> */}
-      <div className="text-placeholder">
+      <div className="text-placeholder" style={style}>
         <h2>{title}</h2>
         <br />
         <p>{content}</p>

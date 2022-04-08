@@ -38,7 +38,7 @@ const SideBar = () => {
       ref={containerRef}
     >
       <motion.div className="background" variants={sidebar} />
-      <Menu />
+      {isOpen && <Menu />}
       <MenuToggle toggle={() => toggleOpen()} />
     </motion.nav>
   );
