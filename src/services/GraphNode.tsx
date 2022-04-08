@@ -17,6 +17,8 @@ export type NodeObj = NodeObject & {
   color: string;
 };
 
+export type NodePredicate = (node: NodeObj) => boolean;
+
 export function collectNodeDetails(node: NodeObj) {
   const details: Info[] = [];
   details.push({
