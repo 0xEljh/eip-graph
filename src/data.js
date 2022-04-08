@@ -34,6 +34,10 @@ export const data = {
       author: "Christian Reitwiessner",
       url: "https://eips.ethereum.org/EIPS/eip-5",
       category: "Core",
+      abstract: [
+        "This EIP makes it possible to call functions that return strings and other dynamically-sized arrays. Currently, when another contract / function is called from inside the Ethereum Virtual Machine, the size of the output has to be specified in advance. It is of course possible to give a larger size, but gas also has to be paid for memory that is not written to, which makes returning dynamically-sized data both costly and inflexible to the extent that it is actually unusable.",
+        "The solution proposed in this EIP is to charge gas only for memory that is actually written to at the time the CALL returns.",
+      ],
       value: 5,
     },
     {
@@ -43,6 +47,9 @@ export const data = {
       author: "Hudson Jameson",
       url: "https://eips.ethereum.org/EIPS/eip-6",
       category: "Interface",
+      abstract: [
+        "The solution proposed in this EIP is to change the name of the SUICIDE opcode in Ethereum programming languages with SELFDESTRUCT.",
+      ],
       value: 5,
     },
     {
@@ -61,6 +68,9 @@ export const data = {
       author: "Felix Lange",
       url: "https://eips.ethereum.org/EIPS/eip-8",
       category: "Networking",
+      abstract: [
+        "This EIP introduces new forward-compatibility requirements for implementations of the devp2p Wire Protocol, the RLPx Discovery Protocol and the RLPx TCP Transport Protocol. Clients which implement EIP-8 behave according to Postel\u2019s Law:",
+      ],
       value: 5,
     },
     {
@@ -713,6 +723,16 @@ export const data = {
       value: 5,
     },
     {
+      id: "2098",
+      name: "EIP-2098: Compact Signature Representation",
+      status: "Final",
+      author: ["Richard Moore", "Nick Johnson"],
+      url: "https://eips.ethereum.org/EIPS/eip-2098",
+      category: "ERC",
+      discussions: "https://github.com/ethereum/EIPs/issues/2440",
+      value: 5,
+    },
+    {
       id: "2124",
       name: "EIP-2124: Fork identifier for chain compatibility checks",
       status: "Final",
@@ -1041,13 +1061,14 @@ export const data = {
       value: 5,
     },
     {
-      id: "2098",
-      name: "EIP-2098: Compact Signature Representation",
-      status: "Last CallLast Call Deadline2022-02-13",
-      author: ["Richard Moore", "Nick Johnson"],
-      url: "https://eips.ethereum.org/EIPS/eip-2098",
+      id: "1967",
+      name: "EIP-1967: Standard Proxy Storage Slots",
+      status: "Last CallLast Call Deadline2022-04-24",
+      author: ["Santiago Palladino", "Francisco Giordano"],
+      url: "https://eips.ethereum.org/EIPS/eip-1967",
       category: "ERC",
-      discussions: "https://github.com/ethereum/EIPs/issues/2440",
+      discussions:
+        "https://ethereum-magicians.org/t/eip-1967-standard-proxy-storage-slots/3185",
       value: 5,
     },
     {
@@ -1164,6 +1185,16 @@ export const data = {
       value: 5,
     },
     {
+      id: "1459",
+      name: "EIP-1459: Node Discovery via DNS",
+      status: "Review",
+      author: ["Felix Lange", "P\u00e9ter Szil\u00e1gyi"],
+      url: "https://eips.ethereum.org/EIPS/eip-1459",
+      category: "Networking",
+      discussions: "https://github.com/ethereum/devp2p/issues/50",
+      value: 5,
+    },
+    {
       id: "1581",
       name: "EIP-1581: Non-wallet usage of keys derived from BIP-32 trees",
       status: "Review",
@@ -1172,17 +1203,6 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/non-wallet-usage-of-keys-derived-from-bip-32-trees/1817",
-      value: 5,
-    },
-    {
-      id: "1967",
-      name: "EIP-1967: Standard Proxy Storage Slots",
-      status: "Review",
-      author: ["Santiago Palladino", "Francisco Giordano"],
-      url: "https://eips.ethereum.org/EIPS/eip-1967",
-      category: "ERC",
-      discussions:
-        "https://ethereum-magicians.org/t/eip-1967-standard-proxy-storage-slots/3185",
       value: 5,
     },
     {
@@ -1699,6 +1719,17 @@ export const data = {
       value: 5,
     },
     {
+      id: "4430",
+      name: "EIP-4430: Described Transactions",
+      status: "Draft",
+      author: ["Richard Moore", "Nick Johnson"],
+      url: "https://eips.ethereum.org/EIPS/eip-4430",
+      category: "ERC",
+      discussions:
+        "https://ethereum-magicians.org/t/discussion-eip-4430-described-transactions/8762",
+      value: 5,
+    },
+    {
       id: "4444",
       name: "EIP-4444: Bound Historical Data in Execution Clients",
       status: "Draft",
@@ -1893,6 +1924,28 @@ export const data = {
       value: 5,
     },
     {
+      id: "4799",
+      name: "EIP-4799: Non-Fungible Token Ownership Designation Standard",
+      status: "Draft",
+      author: ["David Buckman", "Isaac Buckman"],
+      url: "https://eips.ethereum.org/EIPS/eip-4799",
+      category: "ERC",
+      discussions:
+        "https://ethereum-magicians.org/t/erc-4799-non-fungible-token-wrapping-standard/8396",
+      value: 5,
+    },
+    {
+      id: "4834",
+      name: "EIP-4834: Hierarchical Domain Standard",
+      status: "Draft",
+      author: "Pandapip1",
+      url: "https://eips.ethereum.org/EIPS/eip-4834",
+      category: "ERC",
+      discussions:
+        "https://ethereum-magicians.org/t/erc-4834-hierarchical-domains-standard/8388",
+      value: 5,
+    },
+    {
       id: "4844",
       name: "EIP-4844: Shard Blob Transactions",
       status: "Draft",
@@ -1954,6 +2007,17 @@ export const data = {
       value: 5,
     },
     {
+      id: "4907",
+      name: "EIP-4907: ERC-721 User And Expires Extension",
+      status: "Draft",
+      author: ["Anders", "Lance", "Shrug"],
+      url: "https://eips.ethereum.org/EIPS/eip-4907",
+      category: "ERC",
+      discussions:
+        "https://ethereum-magicians.org/t/idea-erc-721-user-and-expires-extension/8572",
+      value: 5,
+    },
+    {
       id: "86",
       name: "EIP-86: Abstraction of transaction origin and signature",
       status: "Stagnant",
@@ -1996,6 +2060,9 @@ export const data = {
       author: "Vitalik Buterin",
       url: "https://eips.ethereum.org/EIPS/eip-210",
       category: "Core",
+      summary: [
+        "Stores blockhashes in the state, reducing the protocol complexity and the need for client implementation complexity in order to process the BLOCKHASH opcode. Also extends the range of how far back blockhash checking can go, with the side effect of creating direct links between blocks with very distant block numbers, facilitating much more efficient initial light client syncing.",
+      ],
       value: 5,
     },
     {
@@ -2181,6 +2248,9 @@ export const data = {
       ],
       url: "https://eips.ethereum.org/EIPS/eip-918",
       category: "ERC",
+      abstract: [
+        "This specification describes a method for initially locking tokens within a token contract and slowly dispensing them with a mint() function which acts like a faucet. This mint() function uses a Proof of Work algorithm in order to minimize gas fees and control the distribution rate. Additionally, standardization of mineable tokens will give rise to standardized CPU and GPU token mining software, token mining pools and other external tools in the token mining ecosystem.",
+      ],
       value: 5,
     },
     {
@@ -2663,16 +2733,6 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-proposal-ldgrtoken-a-compatible-security-token-for-issuing-and-trading-sec-compliant-securities/1468",
-      value: 5,
-    },
-    {
-      id: "1459",
-      name: "EIP-1459: Node Discovery via DNS",
-      status: "Stagnant",
-      author: ["Felix Lange", "P\u00e9ter Szil\u00e1gyi"],
-      url: "https://eips.ethereum.org/EIPS/eip-1459",
-      category: "Networking",
-      discussions: "https://github.com/ethereum/devp2p/issues/50",
       value: 5,
     },
     {
@@ -4747,6 +4807,7 @@ export const data = {
     { source: "150", target: "1884" },
     { source: "1052", target: "1884" },
     { source: "1", target: "2028" },
+    { source: "2", target: "2098" },
     { source: "1", target: "2124" },
     { source: "1", target: "2159" },
     { source: "1", target: "2200" },
@@ -4781,7 +4842,7 @@ export const data = {
     { source: "1", target: "173" },
     { source: "55", target: "1191" },
     { source: "155", target: "1191" },
-    { source: "2", target: "2098" },
+    { source: "1", target: "1967" },
     { source: "1", target: "2266" },
     { source: "2124", target: "2364" },
     { source: "2364", target: "2464" },
@@ -4794,8 +4855,8 @@ export const data = {
     { source: "191", target: "712" },
     { source: "2200", target: "1153" },
     { source: "3529", target: "1153" },
+    { source: "778", target: "1459" },
     { source: "1", target: "1581" },
-    { source: "1", target: "1967" },
     { source: "20", target: "2612" },
     { source: "712", target: "2612" },
     { source: "1", target: "2803" },
@@ -4862,6 +4923,7 @@ export const data = {
     { source: "721", target: "4393" },
     { source: "1155", target: "4393" },
     { source: "1", target: "4396" },
+    { source: "1", target: "4430" },
     { source: "1", target: "4444" },
     { source: "1", target: "4488" },
     { source: "165", target: "4494" },
@@ -4887,6 +4949,11 @@ export const data = {
     { source: "1", target: "4760" },
     { source: "1", target: "4762" },
     { source: "1", target: "4788" },
+    { source: "165", target: "4799" },
+    { source: "20", target: "4834" },
+    { source: "137", target: "4834" },
+    { source: "165", target: "4834" },
+    { source: "1155", target: "4834" },
     { source: "1559", target: "4844" },
     { source: "2718", target: "4844" },
     { source: "2930", target: "4844" },
@@ -4896,6 +4963,8 @@ export const data = {
     { source: "721", target: "4885" },
     { source: "1155", target: "4885" },
     { source: "1", target: "4895" },
+    { source: "165", target: "4907" },
+    { source: "721", target: "4907" },
     { source: "1", target: "86" },
     { source: "1", target: "101" },
     { source: "1", target: "107" },
@@ -4973,7 +5042,6 @@ export const data = {
     { source: "1", target: "1438" },
     { source: "1", target: "1444" },
     { source: "1", target: "1450" },
-    { source: "778", target: "1459" },
     { source: "20", target: "1462" },
     { source: "1066", target: "1462" },
     { source: "1", target: "1470" },

@@ -52,6 +52,27 @@ for number in get_eip_numbers():
 
     eips[number] = page_data
 
+    # extract summary and abstract paragraphs:
+    summary = soup.find("h3", id="summary")
+    if summary is not None:
+        summary_text = []
+        for sibling in summary.find_next_siblings():
+            if sibling.name == "h3":
+                break
+            if sibling.name == "p":
+                summary_text.append(" ".join(sibling.text.strip().split("\n")))
+        page_data["summary"] = summary_text
+
+    abstract = soup.find("h3", id="abstract")
+    if abstract is not None:
+        abstract_text = []
+        for sibling in abstract.find_next_siblings():
+            if sibling.name == "h3":
+                break
+            if sibling.name == "p":
+                abstract_text.append(" ".join(sibling.text.strip().split("\n")))
+        page_data["abstract"] = abstract_text
+
 
 # prep data for use in the frontend:
 nodes = []
@@ -71,6 +92,10 @@ for key, value in eips.items():
             node_info["category"] = "None"
         if "discussions-to" in value:
             node_info["discussions"] = value["discussions-to"]
+        if "summary" in value:
+            node_info["summary"] = value["summary"]
+        if "abstract" in value:
+            node_info["abstract"] = value["abstract"]
 
         node_info["value"] = 5
         nodes.append(node_info)
