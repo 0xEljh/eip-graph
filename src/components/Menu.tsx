@@ -16,7 +16,7 @@ const Menu = () => {
   const nodeInfo = useContext(InfoContext);
 
   return (
-    <motion.ul variants={variants}>
+    <motion.ul className="menu-ul" variants={variants}>
       {nodeInfo.map((info, i) => (
         <MenuItem title={info.title} content={info.content} i={i} key={i} />
       ))}
