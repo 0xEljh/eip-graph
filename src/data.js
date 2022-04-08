@@ -80,6 +80,10 @@ export const data = {
       author: ["Fabian Vogelsteller", "Vitalik Buterin"],
       url: "https://eips.ethereum.org/EIPS/eip-20",
       category: "ERC",
+      summary: ["A standard interface for tokens."],
+      abstract: [
+        "The following standard allows for the implementation of a standard API for tokens within smart contracts. This standard provides basic functionality to transfer tokens, as well as allow tokens to be approved so they can be spent by another on-chain third party.",
+      ],
       value: 5,
     },
     {
@@ -117,6 +121,12 @@ export const data = {
       author: ["Alex Beregszaszi", "Nikolai Mushegian"],
       url: "https://eips.ethereum.org/EIPS/eip-140",
       category: "Core",
+      summary: [
+        "The REVERT instruction provides a way to stop execution and revert state changes, without consuming all provided gas and with the ability to return a reason.",
+      ],
+      abstract: [
+        "The REVERT instruction will stop execution, roll back all state changes done so far and provide a pointer to a memory section, which can be interpreted as an error code or message. While doing so, it will not consume all the remaining gas.",
+      ],
       value: 5,
     },
     {
@@ -126,6 +136,9 @@ export const data = {
       author: "Alex Beregszaszi",
       url: "https://eips.ethereum.org/EIPS/eip-141",
       category: "Core",
+      abstract: [
+        "An instruction is designated to remain as an invalid instruction.",
+      ],
       value: 5,
     },
     {
@@ -135,6 +148,12 @@ export const data = {
       author: ["Alex Beregszaszi", "Pawe\u0142 Bylica"],
       url: "https://eips.ethereum.org/EIPS/eip-145",
       category: "Core",
+      summary: [
+        "To provide native bitwise shifting with cost on par with other arithmetic operations.",
+      ],
+      abstract: [
+        "Native bitwise shifting instructions are introduced, which are more efficient processing wise on the host and are cheaper to use by a contract.",
+      ],
       value: 5,
     },
     {
@@ -154,6 +173,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-152",
       category: "Core",
       discussions: "https://github.com/ethereum/EIPs/issues/152",
+      summary: [
+        "This EIP will enable the BLAKE2b hash function and other higher-round 64-bit BLAKE2 variants to run cheaply on the EVM, allowing easier interoperability between Ethereum and Zcash as well as other Equihash-based PoW coins.",
+      ],
+      abstract: [
+        "This EIP introduces a new precompiled contract which implements the compression function F used in the BLAKE2 cryptographic hashing algorithm, for the purpose of allowing interoperability between the EVM and Zcash, as well as introducing more flexible cryptographic hash primitives to the EVM.",
+      ],
       value: 5,
     },
     {
@@ -199,6 +224,13 @@ export const data = {
       author: ["Maurelian", "Nick Johnson", "Alex Van de Sande"],
       url: "https://eips.ethereum.org/EIPS/eip-162",
       category: "ERC",
+      abstract: [
+        "This ERC describes the implementation, as deployed to the main ethereum network on 2017-05-04, of a registrar contract to govern the allocation of names in the Ethereum Name Service (ENS). The corresponding source code is here.",
+        "For more background, refer to EIP-137.",
+        "A well designed and governed registrar is essential to the success of the ENS described in EIP 137, but is described separately in this document as it is external to the core ENS protocol.",
+        "In order to maximize utility and adoption of a new namespace, the registrar should mitigate speculation and \u201cname squatting\u201d, however the best approach for mitigation is unclear. Thus an \u201cinitial\u201d registrar is proposed, which implements a simple approach to name allocation. During the initial period, the available namespace will be significantly restricted to the .eth top level domain, and subdomain shorter than 7 characters in length disallowed. This specification largely describes @alexvandesande and @arachnid\u2019s hash registrar implementation in order to facilitate discussion.",
+        "The intent is to replace the Initial Registrar contract with a permanent registrar contract. The Permanent Registrar will increase the available namespace, and incorporate lessons learned from the performance of the Initial Registrar. This upgrade is expected to take place within approximately 2 years of initial deployment.",
+      ],
       value: 5,
     },
     {
@@ -215,6 +247,10 @@ export const data = {
       ],
       url: "https://eips.ethereum.org/EIPS/eip-165",
       category: "ERC",
+      summary: [
+        "Creates a standard method to publish and detect what interfaces a smart contract implements.",
+      ],
+      abstract: ["Herein, we standardize the following:"],
       value: 5,
     },
     {
@@ -267,6 +303,12 @@ export const data = {
       author: "Christian Reitwiessner",
       url: "https://eips.ethereum.org/EIPS/eip-196",
       category: "Core",
+      summary: [
+        "Precompiled contracts for elliptic curve operations are required in order to perform zkSNARK verification within the block gas limit.",
+      ],
+      abstract: [
+        "This EIP suggests to add precompiled contracts for addition and scalar multiplication on a specific pairing-friendly elliptic curve. This can in turn be combined with EIP-197 to verify zkSNARKs in Ethereum smart contracts. The general benefit of zkSNARKs for Ethereum is that it will increase the privacy for users (because of the Zero-Knowledge property) and might also be a scalability solution (because of the succinctness and efficient verifiability property).",
+      ],
       value: 5,
     },
     {
@@ -276,6 +318,12 @@ export const data = {
       author: ["Vitalik Buterin", "Christian Reitwiessner"],
       url: "https://eips.ethereum.org/EIPS/eip-197",
       category: "Core",
+      summary: [
+        "Precompiled contracts for elliptic curve pairing operations are required in order to perform zkSNARK verification within the block gas limit.",
+      ],
+      abstract: [
+        "This EIP suggests to add precompiled contracts for a pairing function on a specific pairing-friendly elliptic curve. This can in turn be combined with EIP-196 to verify zkSNARKs in Ethereum smart contracts. The general benefit of zkSNARKs for Ethereum is that it will increase the privacy for users (because of the Zero-Knowledge property) and might also be a scalability solution (because of the succinctness and efficient verifiability property).",
+      ],
       value: 5,
     },
     {
@@ -294,6 +342,10 @@ export const data = {
       author: "Christian Reitwiessner",
       url: "https://eips.ethereum.org/EIPS/eip-211",
       category: "Core",
+      summary: [
+        "A mechanism to allow returning arbitrary-length data inside the EVM has been requested for quite a while now. Existing proposals always had very intricate problems associated with charging gas. This proposal solves the same problem while at the same time, it has a very simple gas charging mechanism and requires minimal changes to the call opcodes. Its workings are very similar to the way calldata is handled already; after a call, return data is kept inside a virtual buffer from which the caller can copy it (or parts thereof) into memory. At the next call, the buffer is overwritten. This mechanism is 100% backwards compatible.",
+      ],
+      abstract: ["Please see summary."],
       value: 5,
     },
     {
@@ -303,6 +355,12 @@ export const data = {
       author: ["Vitalik Buterin", "Christian Reitwiessner"],
       url: "https://eips.ethereum.org/EIPS/eip-214",
       category: "Core",
+      summary: [
+        "To increase smart contract security, this proposal adds a new opcode that can be used to call another contract (or itself) while disallowing any modifications to the state during the call (and its subcalls, if present).",
+      ],
+      abstract: [
+        "This proposal adds a new opcode that can be used to call another contract (or itself) while disallowing any modifications to the state during the call (and its subcalls, if present). Any opcode that attempts to perform such a modification (see below for details) will result in an exception instead of performing the modification.",
+      ],
       value: 5,
     },
     {
@@ -313,6 +371,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-225",
       category: "Core",
       discussions: "https://github.com/ethereum/EIPs/issues/225",
+      abstract: [
+        "Clique is a proof-of-authority consensus protocol. It shadows the design of Ethereum mainnet, so it can be added to any client with minimal effort.",
+      ],
       value: 5,
     },
     {
@@ -323,6 +384,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-234",
       category: "Interface",
       discussions: "https://github.com/ethereum/EIPs/issues/234",
+      summary: [
+        "Add an option to JSON-RPC filter options (used by eth_newFilter and eth_getLogs) that allows specifying the block hash that should be included in the results. This option would be an alternative to fromBlock/toBlock options.",
+      ],
+      abstract: [
+        "This addition would allow clients to fetch logs for specific blocks, whether those blocks were in the current main chain or not. This resolves some issues that make it difficult/expensive to author robust clients due to the nature of chain reorgs, unreliable network connections and the result set not containing enough details in the empty case.",
+      ],
       value: 5,
     },
     {
@@ -334,6 +401,10 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-erc-app-keys-application-specific-wallet-accounts/2742",
+      abstract: [
+        "This EIP defines a logical hierarchy for deterministic wallets based on BIP32, the purpose scheme defined in BIP43 and this proposed change to BIP43.",
+        "This EIP is a particular application of BIP43.",
+      ],
       value: 5,
     },
     {
@@ -345,6 +416,10 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-erc-app-keys-application-specific-wallet-accounts/2742",
+      abstract: [
+        "This EIP defines a logical hierarchy for deterministic wallets based on BIP32, the purpose scheme defined in BIP43 and eip-draft-ethereum-purpose.",
+        "This EIP is a particular application of eip-draft-ethereum-purpose.",
+      ],
       value: 5,
     },
     {
@@ -354,6 +429,9 @@ export const data = {
       author: "Alex Beregszaszi",
       url: "https://eips.ethereum.org/EIPS/eip-606",
       category: "None",
+      abstract: [
+        "This specifies the changes included in the hard fork named Homestead.",
+      ],
       value: 5,
     },
     {
@@ -363,6 +441,9 @@ export const data = {
       author: "Alex Beregszaszi",
       url: "https://eips.ethereum.org/EIPS/eip-607",
       category: "None",
+      abstract: [
+        "This specifies the changes included in the hard fork named Spurious Dragon.",
+      ],
       value: 5,
     },
     {
@@ -372,6 +453,9 @@ export const data = {
       author: "Alex Beregszaszi",
       url: "https://eips.ethereum.org/EIPS/eip-608",
       category: "None",
+      abstract: [
+        "This specifies the changes included in the hard fork named Tangerine Whistle (EIP 150).",
+      ],
       value: 5,
     },
     {
@@ -381,6 +465,9 @@ export const data = {
       author: "Alex Beregszaszi",
       url: "https://eips.ethereum.org/EIPS/eip-609",
       category: "None",
+      abstract: [
+        "This specifies the changes included in the hard fork named Byzantium.",
+      ],
       value: 5,
     },
     {
@@ -390,6 +477,9 @@ export const data = {
       author: "Vlad Gluhovsky",
       url: "https://eips.ethereum.org/EIPS/eip-627",
       category: "Networking",
+      abstract: [
+        "This EIP describes the format of Whisper messages within the \u00d0\u039eVp2p Wire Protocol. This EIP should substitute the existing specification. More detailed documentation on Whisper could be found here.",
+      ],
       value: 5,
     },
     {
@@ -400,6 +490,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-649",
       category: "Core",
       discussions: "https://github.com/ethereum/EIPs/issues/649",
+      summary: [
+        "The average block times are increasing due to the difficulty bomb (also known as the \u201cice age\u201d) slowly accelerating. This EIP proposes to delay the difficulty bomb for approximately one and a half year and to reduce the block rewards with the Byzantium fork, the first part of the Metropolis fork.",
+      ],
+      abstract: [
+        "Starting with BYZANTIUM_FORK_BLKNUM the client will calculate the difficulty based on a fake block number suggesting the client that the difficulty bomb is adjusting around 3 million blocks later than previously specified with the Homestead fork. Furthermore, block rewards will be adjusted to a base of 3 ETH, uncle and nephew rewards will be adjusted accordingly.",
+      ],
       value: 5,
     },
     {
@@ -409,6 +505,9 @@ export const data = {
       author: "Nick Johnson",
       url: "https://eips.ethereum.org/EIPS/eip-658",
       category: "Core",
+      abstract: [
+        "This EIP replaces the intermediate state root field of the receipt with a status code indicating if the top-level call succeeded or failed.",
+      ],
       value: 5,
     },
     {
@@ -420,6 +519,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-681-representing-various-transactions-as-urls",
+      summary: [
+        "A standard way of representing various transactions, especially payment requests in ether and ERC-20 tokens as URLs.",
+      ],
+      abstract: [
+        "URLs embedded in QR-codes, hyperlinks in web-pages, emails or chat messages provide for robust cross-application signaling between very loosely coupled applications. A standardized URL format for payment requests allows for instant invocation of the user\u2019s preferred wallet application (even if it is a webapp or a swarm \u0111app), with the correct parameterization of the payment transaction only to be confirmed by the (authenticated) user.",
+      ],
       value: 5,
     },
     {
@@ -431,6 +536,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-695-create-eth-chainid-method-for-json-rpc/1845",
+      summary: [
+        "Include eth_chainId method in eth_-namespaced JSON-RPC methods.",
+      ],
+      abstract: [
+        "The eth_chainId method should return a single STRING result for an integer value in hexadecimal format, describing the currently configured CHAIN_ID value used for signing replay-protected transactions, introduced by EIP-155.",
+      ],
       value: 5,
     },
     {
@@ -440,6 +551,10 @@ export const data = {
       author: "P\u00e9ter Szil\u00e1gyi",
       url: "https://eips.ethereum.org/EIPS/eip-706",
       category: "Networking",
+      abstract: [
+        "The base networking protocol (DEVp2p) used by Ethereum currently does not employ any form of compression. This results in a massive amount of bandwidth wasted in the entire network, making both initial sync as well as normal operation slower and laggier.",
+        "This EIP proposes a tiny extension to the DEVp2p protocol to enable Snappy compression on all message payloads after the initial handshake. After extensive benchmarks, results show that data traffic is decreased by 60-80% for initial sync. You can find exact numbers below.",
+      ],
       value: 5,
     },
     {
@@ -455,6 +570,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-721",
       category: "ERC",
       discussions: "https://github.com/ethereum/eips/issues/721",
+      summary: [
+        "A standard interface for non-fungible tokens, also known as deeds.",
+      ],
+      abstract: [
+        "The following standard allows for the implementation of a standard API for NFTs within smart contracts. This standard provides basic functionality to track and transfer NFTs.",
+        "We considered use cases of NFTs being owned and transacted by individuals as well as consignment to third party brokers/wallets/auctioneers (\u201coperators\u201d). NFTs can represent ownership over digital or physical assets. We considered a diverse universe of assets, and we know you will dream up many more:",
+        "In general, all houses are distinct and no two kittens are alike. NFTs are distinguishable and you must track the ownership of each one separately.",
+      ],
       value: 5,
     },
     {
@@ -465,6 +588,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-777",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/777",
+      summary: [
+        "This EIP defines standard interfaces and behaviors for token contracts.",
+      ],
+      abstract: [
+        "This standard defines a new way to interact with a token contract while remaining backward compatible with ERC-20.",
+        "It defines advanced features to interact with tokens. Namely, operators to send tokens on behalf of another address\u2014contract or regular account\u2014and send/receive hooks to offer token holders more control over their tokens.",
+        "It takes advantage of ERC-1820 to find out whether and where to notify contracts and regular addresses when they receive tokens as well as to allow compatibility with already-deployed contracts.",
+      ],
       value: 5,
     },
     {
@@ -484,6 +615,9 @@ export const data = {
       author: "Casey Detrio",
       url: "https://eips.ethereum.org/EIPS/eip-779",
       category: "None",
+      abstract: [
+        "This documents the changes included in the hard fork named \u201cDAO Fork\u201d. Unlike other hard forks, the DAO Fork did not change the protocol; all EVM opcodes, transaction format, block structure, and so on remained the same. Rather, the DAO Fork was an \u201cirregular state change\u201d that transferred ether balances from a list of accounts (\u201cchild DAO\u201d contracts) into a specified account (the \u201cWithdrawDAO\u201d contract).",
+      ],
       value: 5,
     },
     {
@@ -494,6 +628,17 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-820",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/820",
+      summary: [
+        "This standard defines a universal registry smart contract where any address (contract or regular account) can register which interface it supports and which smart contract is responsible for its implementation.",
+        "This standard keeps backward compatibility with ERC-165.",
+      ],
+      abstract: [
+        "This standard defines a registry where smart contracts and regular accounts can publish which functionalities they implement\u2014either directly or through a proxy contract.",
+        "Anyone can query this registry to ask if a specific address implements a given interface and which smart contract handles its implementation.",
+        "This registry MAY be deployed on any chain and shares the same address on all chains.",
+        "Interfaces with zeroes (0) as the last 28 bytes are considered ERC-165 interfaces, and this registry SHALL forward the call to the contract to see if it implements the interface.",
+        "This contract also acts as an ERC-165 cache to reduce gas consumption.",
+      ],
       value: 5,
     },
     {
@@ -513,6 +658,9 @@ export const data = {
       author: "Nick Savers",
       url: "https://eips.ethereum.org/EIPS/eip-1013",
       category: "None",
+      abstract: [
+        "This meta-EIP specifies the changes included in the Ethereum hardfork named Constantinople.",
+      ],
       value: 5,
     },
     {
@@ -532,6 +680,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1052",
       category: "Core",
       discussions: "https://ethereum-magicians.org/t/extcodehash-opcode/262",
+      abstract: [
+        "This EIP specifies a new opcode, which returns the keccak256 hash of a contract\u2019s code.",
+      ],
       value: 5,
     },
     {
@@ -543,6 +694,14 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-1108-reduce-alt-bn128-precompile-gas-costs/3206",
+      summary: [
+        "The elliptic curve arithmetic precompiles are currently overpriced. Re-pricing the precompiles would greatly assist a number of privacy solutions and scaling solutions on Ethereum.",
+      ],
+      abstract: [
+        "Changes in 2018 to the underlying library used by the official Go reference implementation led to significant performance gains for the ECADD, ECMUL, and pairing check precompiled contracts on the alt_bn128 elliptic curve.",
+        "In the Parity client, field operations used by the precompile algorithms were optimized in 2018, and recent changes to the pairing algorithm used by the bn crate have brought considerable speedups.",
+        "Faster operations on Ethereum clients should be reflected in reduced gas costs.",
+      ],
       value: 5,
     },
     {
@@ -560,6 +719,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1155",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1155",
+      summary: [
+        "A standard interface for contracts that manage multiple token types. A single deployed contract may include any combination of fungible tokens, non-fungible tokens or other configurations (e.g. semi-fungible tokens).",
+      ],
+      abstract: [
+        "This standard outlines a smart contract interface that can represent any number of fungible and non-fungible token types. Existing standards such as ERC-20 require deployment of separate contracts per token type. The ERC-721 standard\u2019s token ID is a single non-fungible index and the group of these non-fungibles is deployed as a single contract with settings for the entire collection. In contrast, the ERC-1155 Multi Token Standard allows for each token ID to represent a new configurable token type, which may have its own metadata, supply and other attributes.",
+        "The _id argument contained in each function\u2019s argument set indicates a specific token or token type in a transaction.",
+      ],
       value: 5,
     },
     {
@@ -570,6 +736,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1167",
       category: "ERC",
       discussions: "https://github.com/optionality/clone-factory/issues/10",
+      summary: [
+        "To simply and cheaply clone contract functionality in an immutable way, this standard specifies a minimal bytecode implementation that delegates all calls to a known, fixed address.",
+      ],
+      abstract: [
+        "By standardizing on a known minimal bytecode redirect implementation, this standard allows users and third party tools (e.g. Etherscan) to (a) simply discover that a contract will always redirect in a known manner and (b) depend on the behavior of the code at the destination contract as the behavior of the redirecting contract. Specifically, tooling can interrogate the bytecode at a redirecting address to determine the location of the code that will run - and can depend on representations about that code (verified source, third-party audits, etc). This implementation forwards all calls and 100% of the gas to the implementation contract and then relays the return value back to the caller. In the case where the implementation reverts, the revert is passed back along with the payload data (for revert with message).",
+      ],
       value: 5,
     },
     {
@@ -586,6 +758,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1193",
       category: "Interface",
       discussions: "https://github.com/ethereum/EIPs/issues/2319",
+      summary: [
+        "A JavaScript Ethereum Provider API for consistency across clients and applications.",
+      ],
+      abstract: [
+        "A common convention in the Ethereum web application (\u201cdapp\u201d) ecosystem is for key management software (\u201cwallets\u201d) to expose their API via a JavaScript object in the web page. This object is called \u201cthe Provider\u201d.",
+        "Historically, Provider implementations have exhibited conflicting interfaces and behaviors between wallets. This EIP formalizes an Ethereum Provider API to promote wallet interoperability. The API is designed to be minimal, event-driven, and agnostic of transport and RPC protocols. Its functionality is easily extended by defining new RPC methods and message event types.",
+        "Historically, Providers have been made available as window.ethereum in web browsers, but this convention is not part of the specification.",
+      ],
       value: 5,
     },
     {
@@ -597,6 +777,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-1234-constantinople-difficulty-bomb-delay-and-block-reward-adjustment/833",
+      summary: [
+        "The average block times are increasing due to the difficulty bomb (also known as the \u201cice age\u201d) slowly accelerating. This EIP proposes to delay the difficulty bomb for approximately 12 months and to reduce the block rewards with the Constantinople fork, the second part of the Metropolis fork.",
+      ],
+      abstract: [
+        "Starting with CNSTNTNPL_FORK_BLKNUM the client will calculate the difficulty based on a fake block number suggesting the client that the difficulty bomb is adjusting around 5 million blocks later than previously specified with the Homestead fork. Furthermore, block rewards will be adjusted to a base of 2 ETH, uncle and nephew rewards will be adjusted accordingly.",
+      ],
       value: 5,
     },
     {
@@ -614,6 +800,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1271",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1271",
+      abstract: [
+        "Externally Owned Accounts (EOA) can sign messages with their associated private keys, but currently contracts cannot. We propose a standard way for any contracts to verify whether a signature on a behalf of a given contract is valid. This is possible via the implementation of a isValidSignature(hash, signature) function on the signing contract, which can be called to validate a signature.",
+      ],
       value: 5,
     },
     {
@@ -624,6 +813,10 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1283",
       category: "Core",
       discussions: "https://github.com/sorpaas/EIPs/issues/1",
+      abstract: [
+        "This EIP proposes net gas metering changes for SSTORE opcode, enabling new usages for contract storage, and reducing excessive gas costs where it doesn\u2019t match how most implementation works.",
+        "This acts as an alternative for EIP-1087, where it tries to be friendlier to implementations that use different optimization strategies for storage change caches.",
+      ],
       value: 5,
     },
     {
@@ -635,6 +828,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/add-chain-id-opcode-for-replay-protection-when-handling-signed-messages-in-contracts/1131",
+      abstract: [
+        "This EIP adds an opcode that returns the current chain\u2019s EIP-155 unique identifier.",
+      ],
       value: 5,
     },
     {
@@ -645,6 +841,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1363",
       category: "ERC",
       discussions: "https://github.com/ethereum/eips/issues/1363",
+      summary: [
+        "Defines a token interface for ERC-20 tokens that supports executing recipient code after transfer or transferFrom, or spender code after approve.",
+      ],
+      abstract: [
+        "Standard functions a token contract and contracts working with tokens can implement to make a token Payable.",
+        "transferAndCall and transferFromAndCall will call an onTransferReceived on a ERC1363Receiver contract.",
+        "approveAndCall will call an onApprovalReceived on a ERC1363Spender contract.",
+      ],
       value: 5,
     },
     {
@@ -663,6 +867,13 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-1559-fee-market-change-for-eth-1-0-chain/2783",
+      summary: [
+        "A transaction pricing mechanism that includes fixed-per-block network fee that is burned and dynamically expands/contracts block sizes to deal with transient congestion.",
+      ],
+      abstract: [
+        "We introduce a new EIP-2718 transaction type, with the format 0x02 || rlp([chain_id, nonce, max_priority_fee_per_gas, max_fee_per_gas, gas_limit, destination, amount, data, access_list, signature_y_parity, signature_r, signature_s]).",
+        "There is a base fee per gas in protocol, which can move up or down each block according to a formula which is a function of gas used in parent block and gas target (block gas limit divided by elasticity multiplier) of parent block. The algorithm results in the base fee per gas increasing when blocks are above the gas target, and decreasing when blocks are below the gas target. The base fee per gas is burned. Transactions specify the maximum fee per gas they are willing to give to miners to incentivize them to include their transaction (aka: priority fee). Transactions also specify the maximum fee per gas they are willing to pay total (aka: max fee), which covers both the priority fee and the block\u2019s network fee per gas (aka: base fee). The transaction will always pay the base fee per gas of the block it was included in, and they will pay the priority fee per gas set in the transaction, as long as the combined amount of the two fees doesn\u2019t exceed the transaction\u2019s maximum fee per gas.",
+      ],
       value: 5,
     },
     {
@@ -674,6 +885,9 @@ export const data = {
       category: "None",
       discussions:
         "https://ethereum-magicians.org/t/hardfork-meta-istanbul-discussion/3207",
+      abstract: [
+        "This meta-EIP specifies the changes included in the Ethereum hardfork named Istanbul.",
+      ],
       value: 5,
     },
     {
@@ -683,6 +897,9 @@ export const data = {
       author: ["Afri Schoedon", "Marius van der Wijden"],
       url: "https://eips.ethereum.org/EIPS/eip-1716",
       category: "None",
+      abstract: [
+        "This meta-EIP specifies the changes included in the Ethereum hardfork that removes EIP-1283 from Constantinople.",
+      ],
       value: 5,
     },
     {
@@ -693,6 +910,17 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1820",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/pull/1820",
+      summary: [
+        "This standard defines a universal registry smart contract where any address (contract or regular account) can register which interface it supports and which smart contract is responsible for its implementation.",
+        "This standard keeps backward compatibility with ERC-165.",
+      ],
+      abstract: [
+        "This standard defines a registry where smart contracts and regular accounts can publish which functionality they implement\u2014either directly or through a proxy contract.",
+        "Anyone can query this registry to ask if a specific address implements a given interface and which smart contract handles its implementation.",
+        "This registry MAY be deployed on any chain and shares the same address on all chains.",
+        "Interfaces with zeroes (0) as the last 28 bytes are considered ERC-165 interfaces, and this registry SHALL forward the call to the contract to see if it implements the interface.",
+        "This contract also acts as an ERC-165 cache to reduce gas consumption.",
+      ],
       value: 5,
     },
     {
@@ -703,6 +931,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1884",
       category: "Core",
       discussions: "https://ethereum-magicians.org/t/opcode-repricing/3024",
+      summary: [
+        "This EIP proposes repricing certain opcodes, to obtain a good balance between gas expenditure and resource consumption.",
+      ],
+      abstract: [
+        "The growth of the Ethereum state has caused certain opcodes to be more resource-intensive at this point than they were previously. This EIP proposes to raise the gasCost for those opcodes.",
+      ],
       value: 5,
     },
     {
@@ -720,6 +954,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2028-calldata-gas-cost-reduction/3280",
+      summary: [
+        "We propose to reduce the gas cost of Calldata (GTXDATANONZERO) from its current value of 68 gas per byte to 16 gas per byte, to be backed by mathematical modeling and empirical estimates. The mathematical model is the one used in the works of Sompolinsky and Zohar [1] and Pass, Seeman and Shelat [2], which relates network security to network delay. We shall (1) evaluate the theoretical impact of lower Calldata gas cost on network delay using this model, (2) validate the model empirically, and (3) base the proposed gas cost on our findings.",
+      ],
       value: 5,
     },
     {
@@ -730,6 +967,10 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2098",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2440",
+      abstract: [
+        "The secp256k1 curve permits the computation of the public key of signed digest when coupled with a signature, which is used implicitly to establish the origin of a transaction from an Externally Owned Account as well as on-chain in EVM contracts for example, in meta-transactions and multi-sig contracts.",
+        "Currently signatures require 65 bytes to represent, which when aligned to 256-bit words, requires 96 bytes (with 31 zero bytes injected). The yParity in RLP-encoded transactions also require (on average) 1.5 bytes. With compact signatures, this can be reduced to 64 bytes, which remains 64 bytes when word-aligned, and in the case of RLP-encoded transactions saves the 1.5 bytes required for the yParity.",
+      ],
       value: 5,
     },
     {
@@ -740,6 +981,18 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2124",
       category: "Networking",
       discussions: "https://github.com/ethereum/EIPs/issues/2125",
+      summary: [
+        "Currently nodes in the Ethereum network try to find each other by establishing random connections to remote machines \u201clooking\u201d like an Ethereum node (public networks, private networks, test networks, etc), hoping that they found a useful peer (same genesis, same forks). This wastes time and resources, especially for smaller networks.",
+        "To avoid this overhead, Ethereum needs a mechanism that can precisely identify whether a node will be useful, as early as possible. Such a mechanism requires a way to summarize chain configurations, as well as a way to disseminate said summaries in the network.",
+        "This proposal focuses only on the definition of said summary - a generally useful fork identifier - and it\u2019s validation rules, allowing it to be embedded into arbitrary network protocols (e.g. discovery ENRs or eth/6x handshakes).",
+      ],
+      abstract: [
+        "There are many public and private Ethereum networks, but the discovery protocol doesn\u2019t differentiate between them. The only way to check if a peer is good or bad (same chain or not), is to establish a TCP/IP connection, wrap it with RLPx cryptography, then execute an eth handshake. This is an extreme cost to bear if it turns out that the remote peer is on a different network and it\u2019s not even precise enough to differentiate Ethereum and Ethereum Classic. This cost is magnified for small networks, where a lot more trial and errors are needed to find good nodes.",
+        "Even if the peer is on the same chain, during non-controversial consensus upgrades, not everybody updates their nodes in time (developer nodes, leftovers, etc). These stale nodes put a meaningless burden on the peer-to-peer network, since they just latch on to good nodes, but don\u2019t accept upgraded blocks. This causes valuable peer slots and bandwidth to be lost until the stale nodes finally update. This is a serious issue for test networks, where leftovers can linger for months.",
+        "This EIP proposes a new identity scheme to both precisely and concisely summarize the chain\u2019s current status (genesis and all applied forks). The conciseness is particularly important to make the identity useful across datagram protocols too. The EIP solves a number of issues:",
+        "This EIP does not attempt to solve the clean separation of 3-way-forks! If at the same future block number, the network splits into three (non-fork, fork-A and fork-B), separating the forkers from each another will need case-by-case special handling. Not handling this keeps the proposal pragmatic, simple and also avoids making it too easy to fork off mainnet.",
+        "To keep the scope limited, this EIP only defines the identity scheme and validation rules. The same scheme and algorithm can be embedded into various networking protocols, allowing both the eth/6x handshake to be more precise (Ethereum vs. Ethereum Classic); as well as the discovery to be more useful (reject surely peers without ever connecting).",
+      ],
       value: 5,
     },
     {
@@ -750,6 +1003,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2159",
       category: "Interface",
       discussions: "https://ethereum-magicians.org/t/common-chain-metrics/3415",
+      summary: [
+        "Standardized names of common metrics for Ethereum clients to use with Prometheus, a widely used monitoring and alerting solution.",
+      ],
+      abstract: [
+        "Many Ethereum clients expose a range of metrics in a format compatible with Prometheus to allow operators to monitor the client\u2019s behaviour and performance and raise alerts if the chain isn\u2019t progressing or there are other indications of errors. While the majority of these metrics are highly client-specific, reporting on internal implementation details of the client, some are applicable to all clients. By standardizing the naming and format of these common metrics, operators are able to monitor the operation of multiple clients in a single dashboard or alerting configuration.",
+      ],
       value: 5,
     },
     {
@@ -760,6 +1019,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2200",
       category: "Core",
       discussions: "https://github.com/sorpaas/EIPs/issues/1",
+      summary: [
+        "This is an EIP that implements net gas metering. It\u2019s a combined version of EIP-1283 and EIP-1706, with a structured definition so as to make it interoperable with other gas changes such as EIP-1884.",
+      ],
+      abstract: [
+        "This EIP provides a structured definition of net gas metering changes for SSTORE opcode, enabling new usages for contract storage, and reducing excessive gas costs where it doesn\u2019t match how most implementation works.",
+        "This is a combination of EIP-1283 and EIP-1706.",
+      ],
       value: 5,
     },
     {
@@ -770,6 +1036,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2228",
       category: "None",
       discussions: "https://github.com/ethereum/EIPs/issues/2228",
+      summary: [
+        "The Ethereum network with network ID 1 and chain ID 1 is named Ethereum Mainnet.",
+      ],
+      abstract: [
+        "The name for the Ethereum network with network ID 1 and chain ID 1 shall be Ethereum Mainnet or just Mainnet. This is a proper noun.",
+        "This standard specifies the name for this network and provides reference examples in an effort to standardize the word choice and provide a common language for use to refer to this network.",
+      ],
       value: 5,
     },
     {
@@ -780,6 +1053,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2309",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2309",
+      summary: [
+        "A standardized event emitted when creating/transferring one, or many non-fungible tokens using consecutive token identifiers.",
+      ],
+      abstract: [
+        "The optional ERC-721 Consecutive Transfer Extension provides a standardized event which could be emitted during the creation/transfer of one, or many non-fungible tokens. This standard does not set the expectation of how you might create/transfer many tokens it is only concerned with the event emitted after the creation, or transfer of ownership of these tokens. This extension assumes that token identifiers are in consecutive order.",
+      ],
       value: 5,
     },
     {
@@ -791,6 +1070,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2384-difficulty-bomb-delay",
+      summary: [
+        "The average block times are increasing due to the difficulty bomb (also known as the \u201cice age\u201d) and slowly accelerating. This EIP proposes to delay the difficulty bomb for another 4,000,000 blocks (~611 days).",
+      ],
+      abstract: [
+        "Starting with MUIR_GLACIER_FORK_BLKNUM the client will calculate the difficulty based on a fake block number suggesting to the client that the difficulty bomb is adjusting 9 million blocks later than the Homestead fork, which is also 7 million blocks later than the Byzantium fork and 4 million blocks later than the Constantinople fork.",
+      ],
       value: 5,
     },
     {
@@ -802,6 +1087,9 @@ export const data = {
       category: "None",
       discussions:
         "https://ethereum-magicians.org/t/hard-fork-to-address-the-ice-age-eip-2387",
+      abstract: [
+        "This meta-EIP specifies the changes included in the Ethereum hard fork named Muir Glacier. This hard fork addresses the impending Ice Age on Ethereum Mainnet and includes a commitment to solving the problems with the ice age more permanently.",
+      ],
       value: 5,
     },
     {
@@ -819,6 +1107,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/big-integer-modular-exponentiation-eip-198-gas-cost/4150",
+      summary: ["Defines the gas cost of the ModExp (0x00..05) precompile."],
+      abstract: [
+        "To accurately reflect the real world operational cost of the ModExp precompile, this EIP specifies an algorithm for calculating the gas cost. This algorithm approximates the multiplication complexity cost and multiplies that by an approximation of the iterations required to execute the exponentiation.",
+      ],
       value: 5,
     },
     {
@@ -837,6 +1129,11 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/ethpm-v3-specification-working-group/4086",
+      summary: ["A data format describing a smart contract software package."],
+      abstract: [
+        "This EIP defines a data format for package manifest documents, representing a package of one or more smart contracts, optionally including source code and any/all deployed instances across multiple networks. Package manifests are minified JSON objects, to be distributed via content addressable storage networks, such as IPFS. Packages are then published to on-chain EthPM registries, defined in EIP-1319, from where they can be freely accessed.",
+        "This document presents a natural language description of a formal specification for version 3 of this format.",
+      ],
       value: 5,
     },
     {
@@ -848,6 +1145,7 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2681-limit-account-nonce-to-2-64-1/4324",
+      abstract: ["Limit account nonce to be between 0 and 2^64-1."],
       value: 5,
     },
     {
@@ -858,6 +1156,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2696",
       category: "Interface",
       discussions: "https://github.com/ethereum/EIPs/issues/2697",
+      summary: [
+        "A standard for remote procedure calls between an Ethereum Provider and an Ethereum Client when both are able to interface with each other via a shared JavaScript object.",
+      ],
+      abstract: [
+        "This standard provides the description of an object that is made available to JavaScript applications which they can use to communicate with the Ethereum blockchain through. This standard only describes the transport mechanism, it does not specify the payloads that are valid nor does it specify how the client or the provider will discover or agree on payload content.",
+        "How/where this Ethereum object is exposed is left to future standards.",
+      ],
       value: 5,
     },
     {
@@ -868,6 +1173,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2700",
       category: "Interface",
       discussions: "https://github.com/ethereum/EIPs/issues/2701",
+      summary: [
+        "A standard mechanism for JavaScript Ethereum Providers to notify clients about chain state changes when both are able to interface with each other via a shared JavaScript object.",
+      ],
+      abstract: [
+        "This standard provides the description of an object that is made available to JavaScript applications which they can use to receive notifications from an Ethereum Provider. This standard only describes the notification mechanism, it does not specify the payloads that are valid nor does it specify how the client or the provider will discover or agree on payload content.",
+        "How/where this Ethereum Provider object is exposed is left to future standards.",
+      ],
       value: 5,
     },
     {
@@ -879,6 +1191,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2718-typed-transaction-envelope/4355",
+      abstract: [
+        "TransactionType || TransactionPayload is a valid transaction and TransactionType || ReceiptPayload is a valid transaction receipt where TransactionType identifies the format of the transaction and *Payload is the transaction/receipt contents, which are defined in future EIPs.",
+      ],
       value: 5,
     },
     {
@@ -890,6 +1205,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2929-gas-cost-increases-for-state-access-opcodes/4558",
+      summary: [
+        "Increases gas cost for SLOAD, *CALL, BALANCE, EXT* and SELFDESTRUCT when used for the first time in a transaction.",
+      ],
+      abstract: [
+        "Increase the gas cost of SLOAD (0x54) to 2100, and the *CALL opcode family (0xf1, f2, f4, fA), BALANCE 0x31 and the EXT* opcode family (0x3b, 0x3c, 0x3f) to 2600. Exempts (i) precompiles, and (ii) addresses and storage slots that have already been accessed in the same transaction, which get a decreased gas cost. Additionally reforms SSTORE metering and SELFDESTRUCT to ensure \u201cde-facto storage loads\u201d inherent in those opcodes are priced correctly.",
+      ],
       value: 5,
     },
     {
@@ -901,6 +1222,13 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2930-optional-access-lists/4561",
+      summary: [
+        "Adds a transaction type which contains an access list, a list of addresses and storage keys that the transaction plans to access. Accesses outside the list are possible, but become more expensive.",
+      ],
+      abstract: [
+        "We introduce a new EIP-2718 transaction type, with the format 0x01 || rlp([chainId, nonce, gasPrice, gasLimit, to, value, data, accessList, signatureYParity, signatureR, signatureS]).",
+        "The accessList specifies a list of addresses and storage keys; these addresses and storage keys are added into the accessed_addresses and accessed_storage_keys global sets (introduced in EIP-2929). A gas cost is charged, though at a discount relative to the cost of accessing outside the list.",
+      ],
       value: 5,
     },
     {
@@ -911,6 +1239,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2981",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2907",
+      summary: [
+        "A standardized way to retrieve royalty payment information for non-fungible tokens (NFTs) to enable universal support for royalty payments across all NFT marketplaces and ecosystem participants.",
+      ],
+      abstract: [
+        "This standard allows contracts, such as NFTs that support ERC-721 and ERC-1155 interfaces, to signal a royalty amount to be paid to the NFT creator or rights holder every time the NFT is sold or re-sold. This is intended for NFT marketplaces that want to support the ongoing funding of artists and other NFT creators. The royalty payment must be voluntary, as transfer mechanisms such as transferFrom() include NFT transfers between wallets, and executing them does not always imply a sale occurred. Marketplaces and individuals implement this standard by retrieving the royalty payment information with royaltyInfo(), which specifies how much to pay to which address for a given sale price. The exact mechanism for paying and notifying the recipient will be defined in future EIPs. This ERC should be considered a minimal, gas-efficient building block for further innovation in NFT royalty payments.",
+      ],
       value: 5,
     },
     {
@@ -927,6 +1261,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-3156-flash-loans-review-discussion/5077",
+      summary: [
+        "This ERC provides standard interfaces and processes for single-asset flash loans.",
+      ],
+      abstract: [
+        "A flash loan is a smart contract transaction in which a lender smart contract lends assets to a borrower smart contract with the condition that the assets are returned, plus an optional fee, before the end of the transaction. This ERC specifies interfaces for lenders to accept flash loan requests, and for borrowers to take temporary control of the transaction within the lender execution. The process for the safe execution of flash loans is also specified.",
+      ],
       value: 5,
     },
     {
@@ -938,6 +1278,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3198-basefeeopcode/5162",
+      summary: [
+        "Adds an opcode that gives the EVM access to the block\u2019s base fee.",
+      ],
+      abstract: [
+        "Add a BASEFEE (0x48) that returns the value of the base fee of the current block it is executing in.",
+      ],
       value: 5,
     },
     {
@@ -949,6 +1295,10 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-3448-metaproxy-factory/5834",
+      abstract: [
+        "By standardizing on a known minimal bytecode proxy implementation with support for immutable metadata, this standard allows users and third party tools (e.g. Etherscan) to (a) simply discover that a contract will always redirect in a known manner and (b) depend on the behavior of the code at the destination contract as the behavior of the redirecting contract and (c) verify/view the attached metadata.",
+        "Tooling can interrogate the bytecode at a redirecting address to determine the location of the code that will run along with the associated metadata - and can depend on representations about that code (verified source, third-party audits, etc). This implementation forwards all calls via DELEGATECALL and any (calldata) input plus the metadata at the end of the bytecode to the implementation contract and then relays the return value back to the caller. In the case where the implementation reverts, the revert is passed back along with the payload data.",
+      ],
       value: 5,
     },
     {
@@ -960,6 +1310,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3529-reduction-in-refunds-alternative-to-eip-3298-and-3403-that-better-preserves-existing-clearing-incentives/6097",
+      summary: [
+        "Remove gas refunds for SELFDESTRUCT, and reduce gas refunds for SSTORE to a lower level where the refunds are still substantial, but they are no longer high enough for current \u201cexploits\u201d of the refund mechanism to be viable.",
+      ],
       value: 5,
     },
     {
@@ -978,6 +1331,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/evm-object-format-eof/5727",
+      abstract: [
+        "Disallow new code starting with the 0xEF byte to be deployed. Code already existing in the account trie starting with 0xEF byte is not affected semantically by this change.",
+      ],
       value: 5,
     },
     {
@@ -989,6 +1345,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3554-ice-age-delay-targeting-december-2021/6188",
+      summary: [
+        "Delays the difficulty bomb to show effect the first week of December 2021.",
+      ],
+      abstract: [
+        "Starting with FORK_BLOCK_NUMBER the client will calculate the difficulty based on a fake block number suggesting to the client that the difficulty bomb is adjusting 9,700,000 blocks later than the actual block number.",
+      ],
       value: 5,
     },
     {
@@ -999,6 +1361,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3607",
       category: "Core",
       discussions: "https://github.com/ethereum/EIPs/issues/3608",
+      abstract: [
+        "Ethereum addresses are currently only 160 bits long. This means it is possible to create a collision between a contract account and an Externally Owned Account (EOA) using an estimated 2**80 computing operations, which is feasible now given a large budget (ca. 10 billion USD). The fix in this EIP prevents the worst possible attack, where a safe looking contract (e.g. a token wrapper or an AMM-type contract) is deployed to attract user funds, which can then be spent using the EOA key for the same address. The fix is to never allow to use an address that already has code deployed as an EOA address.",
+      ],
       value: 5,
     },
     {
@@ -1010,6 +1375,10 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/durin-secure-offchain-data-retrieval/6728",
+      abstract: [
+        "Contracts wishing to support lookup of data from external sources may, instead of returning the data directly, revert using OffchainLookup(address sender, string[] urls, bytes callData, bytes4 callbackFunction, bytes extraData). Clients supporting this specification then make an RPC call to a URL from urls, supplying callData, and getting back an opaque byte string response. Finally, clients call the function specified by callbackFunction on the contract, providing response and extraData. The contract can then decode and verify the returned data using an implementation-specific method.",
+        "This mechanism allows for offchain lookups of data in a way that is transparent to clients, and allows contract authors to implement whatever validation is necessary; in many cases this can be provided without any additional trust assumptions over and above those required if data is stored onchain.",
+      ],
       value: 5,
     },
     {
@@ -1021,6 +1390,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4345-difficulty-bomb-delay-to-may-2022/7209",
+      abstract: [
+        "Starting with FORK_BLOCK_NUMBER the client will calculate the difficulty based on a fake block number suggesting to the client that the difficulty bomb is adjusting 10,700,000 blocks later than the actual block number.",
+      ],
       value: 5,
     },
     {
@@ -1038,6 +1410,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-4626-yield-bearing-vault-standard/7900",
+      abstract: [
+        "The following standard allows for the implementation of a standard API for tokenized Vaults representing shares of a single underlying ERC-20 token. This standard is an extension on the ERC-20 token that provides basic functionality for depositing and withdrawing tokens and reading balances.",
+      ],
       value: 5,
     },
     {
@@ -1048,6 +1423,11 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-173",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/173",
+      summary: ["A standard interface for ownership of contracts."],
+      abstract: [
+        "This specification defines standard functions for owning or controlling a contract.",
+        "An implementation allows reading the current owner (owner() returns (address)) and transferring ownership (transferOwnership(address newOwner)) along with a standardized event for when ownership is changed (OwnershipTransferred(address indexed previousOwner, address indexed newOwner)).",
+      ],
       value: 5,
     },
     {
@@ -1058,6 +1438,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1191",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1121",
+      summary: [
+        "This EIP extends EIP-55 by optionally adding a chain id defined by EIP-155 to the checksum calculation.",
+      ],
+      abstract: [
+        "The EIP-55 was created to prevent users from losing funds by sending them to invalid addresses. This EIP extends EIP-55 to protect users from losing funds by sending them to addresses that are valid but that where obtained from a client of another network.For example, if this EIP is implemented, a wallet can alert the user that is trying to send funds to an Ethereum Testnet address from an Ethereum Mainnet wallet.",
+      ],
       value: 5,
     },
     {
@@ -1069,6 +1455,10 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-1967-standard-proxy-storage-slots/3185",
+      abstract: [
+        "Delegating proxy contracts are widely used for both upgradeability and gas savings. These proxies rely on a logic contract (also known as implementation contract or master copy) that is called using delegatecall. This allows proxies to keep a persistent state (storage and balance) while the code is delegated to the logic contract.",
+        "To avoid clashes in storage usage between the proxy and logic contract, the address of the logic contract is typically saved in a specific storage slot guaranteed to be never allocated by a compiler. This EIP proposes a set of standard slots to store proxy information. This allows clients like block explorers to properly extract and show this information to end users, and logic contracts to optionally act upon it.",
+      ],
       value: 5,
     },
     {
@@ -1079,6 +1469,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2266",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2266",
+      summary: [
+        "A standard for token contracts providing Atomic Swap-based American Call Option functionalities.",
+      ],
+      abstract: [
+        "This standard provides functionality to make Atomic Swap-based American Call Option payment. The Atomic Swap protocol based on Hashed Time-Locked Contract (HTLC) 1 has optionality 2, and such optionality can be utilised to construct American Call Options without trusted third party. This standard defines the common way of implementing this protocol. In particular, this EIP defines technical terms, provides interfaces, and gives reference implementations of this protocol.",
+      ],
       value: 5,
     },
     {
@@ -1093,6 +1489,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2364",
       category: "Networking",
       discussions: "https://github.com/ethereum/EIPs/issues/2365",
+      abstract: [
+        "This EIP specifies the inclusion of the forkid, originally defined in (EIP-2124), as a new field in the Ethereum wire protocol (eth) handshake. This change is implemented as a new version of the wire protocol, eth/64.",
+      ],
       value: 5,
     },
     {
@@ -1108,6 +1507,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2464",
       category: "Networking",
       discussions: "https://github.com/ethereum/EIPs/issues/2465",
+      abstract: [
+        "This EIP introduces three additional message types into the eth protocol (releasing a new version, eth/65): NewPooledTransactionHashes (0x08) to announce a set of transactions without their content; GetPooledTransactions (0x09) to request a batch of transactions by their announced hash; and PooledTransactions (0x0a) to reply to a transaction request. This permits reducing the bandwidth used for transaction propagation from linear complexity in the number of peers to square root; and also reducing the initial transaction exchange from 10s-100s MB to len(pool) * 32B ~= 128KB.",
+      ],
       value: 5,
     },
     {
@@ -1118,6 +1520,21 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2481",
       category: "Networking",
       discussions: "https://github.com/ethereum/EIPs/issues/2482",
+      summary: [
+        "This document proposes a way to increase the efficiency of the eth networking protocol while at the same time reducing complexity in Ethereum node implementations. It does so by introducing a request id to all requests which their corresponding responses must include.",
+      ],
+      abstract: [
+        "The eth protocol defines various request and response commands that are used to exchange data between Ethereum nodes. For example, to ask a peer node for a specific set of headers, a node sends it the GetBlockHeaders command.",
+        "Citing from the GetBlockHeaders spec definition:",
+        "The node that receives the GetBlockHeaders command should answer it with the BlockHeaders response command accordingly.",
+        "Citing from the BlockHeaders spec definition:",
+        "Let\u2019s consider a client making many simultaneous requests for GetBlockHeaders to one of its peers. By nature it can not be guaranteed that the expected responses arrive in the same order as they were sent. For the client to associate the incoming responses to the correct requests it has to loop through all pending requests trying to match it with the incoming response based on its contents.",
+        "This can be particular tricky for responses that are ambiguous such as empty responses.",
+        "This EIP proposes to change the GetBlockHeaders and the BlockHeaders command to include a request_id.",
+        "The request_id is a 64-bit integer set by the client when it makes the request. On the responding side, the exact same request_id from the incoming request is put back into the response object.",
+        "This change allows the requesting client to match incoming responses directly back to their pending requests without going through all of the pending requests to check if they might match based on the response data.",
+        "The selected request/response pair serves as an example for many similar request/response pairs in the eth networking protocol.",
+      ],
       value: 5,
     },
     {
@@ -1128,6 +1545,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2535",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2535",
+      summary: [
+        "Standard for creating modular smart contract systems that can be extended after deployment.",
+        "Enables people to write smart contracts with virtually no size limit.",
+        "Diamonds can be upgraded without having to redeploy existing functionality. Parts of a diamond can be added/replaced/removed while leaving other parts alone.",
+        "Standardizes contract interfaces and implementation details of diamonds, enabling software integration and interoperability.",
+        "A diamond is a contract that implements the Specification in this standard.",
+        "Diamond analogy helps conceptualize development.",
+      ],
       value: 5,
     },
     {
@@ -1139,6 +1564,12 @@ export const data = {
       category: "Networking",
       discussions:
         "https://ethereum-magicians.org/t/eip-2976-eth-typed-transactions-over-gossip/4610",
+      summary: [
+        "Adds support for transmission of typed transactions over devp2p.",
+      ],
+      abstract: [
+        "Typed Transactions can be sent over devp2p as TransactionType || TransactionPayload. The exact contents of the TransactionPayload are defined by the TransactionType in future EIPs, and clients may start supporting their gossip without incrementing the devp2p version. If a client receives a TransactionType that it doesn\u2019t recognize, it SHOULD disconnect from the peer who sent it. Clients MUST NOT send new transaction types before they believe the fork block is reached.",
+      ],
       value: 5,
     },
     {
@@ -1149,6 +1580,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2982",
       category: "None",
       discussions: "https://ethereum-magicians.org/t/serenity-phase-0-eip/4621",
+      summary: [
+        "Serenity, aka eth2, is the long-planned upgrade of Ethereum to a scalable, proof-of-stake (PoS) consensus. Specifications, development, and releases are divided into phases to iteratively manage the complexity of the upgrade. This EIP addresses Phase 0 of the release schedule.",
+        "Early phases of eth2 are executed without any breaking consensus changes on current Ethereum mainnet. This EIP serves to document the bootstrapping of this consensus mechanism and note the path for eth2 to supplant Ethereum\u2019s current proof-of-work (PoW) consensus.",
+      ],
+      abstract: [
+        "This EIP specifies Phase 0 of Serenity (eth2), a multi-phased upgrade to the consensus mechanism for Ethereum mainnet. In Phase 0, the existing PoW chain and mechanics are entirely unaffected, while a PoS chain \u2013 the beacon chain \u2013 is built in parallel to serve as the core of the upgraded consensus. In subsequent phases, the beacon chain is enhanced to support and secure the consensus of a number of parallel shard chains, ultimately incorporating current Ethereum mainnet as one of those shards.",
+        "At the core of the beacon chain is a proof of stake consensus mechanism called Casper the Friendly Finality Gadget (FFG) and a fork-choice rule called Latest Message Driven Greedy Heaviest Observed Sub-Tree (LMD-GHOST). Phase 0 is centered primarily around the mechanics and incentives of validators executing these algorithms. The detailed specifications for eth2 are contained in an independent repository from this EIP, and safety and liveness proofs can be found in the Combining GHOST and Casper paper. To avoid duplication, this EIP just references relevant spec files and releases.",
+      ],
       value: 5,
     },
     {
@@ -1160,6 +1599,9 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-3076-validator-client-interchange-format-slashing-protection/",
+      abstract: [
+        "A standard format for transferring a key\u2019s signing history allows validators to easily switch between clients without the risk of signing conflicting messages. While a common keystore format provides part of the solution, it does not contain any information about a key\u2019s signing history. For a validator moving their keys from client A to client B, this could lead to scenarios in which client B inadvertently signs a message that conflicts with an earlier message signed with client A. The interchange format described here provides a solution to this problem.",
+      ],
       value: 5,
     },
     {
@@ -1171,6 +1613,14 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-712-eth-signtypeddata-as-a-standard-for-machine-verifiable-and-human-readable-typed-data-signing/397",
+      summary: [
+        "Signing data is a solved problem if all we care about are bytestrings. Unfortunately in the real world we care about complex meaningful messages. Hashing structured data is non-trivial and errors result in loss of the security properties of the system.",
+        "As such, the adage \u201cdon\u2019t roll your own crypto\u201d applies. Instead, a peer-reviewed well-tested standard method needs to be used. This EIP aims to be that standard.",
+      ],
+      abstract: [
+        "This is a standard for hashing and signing of typed structured data as opposed to just bytestrings. It includes a",
+        "It does not include replay protection.",
+      ],
       value: 5,
     },
     {
@@ -1182,6 +1632,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-transient-storage-opcodes/553",
+      abstract: [
+        "This proposal introduces transient storage opcodes, which manipulate state that behaves identically to storage, except that transient storage is discarded after every transaction. In other words, the values of transient storage are never deserialized from storage or serialized to storage. Thus transient storage is cheaper since it never requires disk access. Transient storage is accessible to smart contracts via 2 new opcodes, TLOAD and TSTORE, where \u201cT\u201d stands for \u201ctransient:\u201d",
+      ],
       value: 5,
     },
     {
@@ -1192,6 +1645,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1459",
       category: "Networking",
       discussions: "https://github.com/ethereum/devp2p/issues/50",
+      abstract: [
+        "This document describes a scheme for authenticated, updateable Ethereum node lists retrievable via DNS.",
+      ],
       value: 5,
     },
     {
@@ -1203,6 +1659,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/non-wallet-usage-of-keys-derived-from-bip-32-trees/1817",
+      abstract: [
+        "BIP32 defines a way to generate hierarchical trees of keys which can be derived from a common master key. BIP32 and BIP44 defines the usage of these keys as wallets. In this EIP we describe the usage of such keys outside the scope of the blockchain defining a logical tree for key usage which can coexist (and thus share the same master) with existing BIP44 compatible wallets.",
+      ],
       value: 5,
     },
     {
@@ -1213,6 +1672,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2612",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2613",
+      abstract: [
+        "Arguably one of the main reasons for the success of ERC-20 tokens lies in the interplay between approve and transferFrom, which allows for tokens to not only be transferred between externally owned accounts (EOA), but to be used in other contracts under application specific conditions by abstracting away msg.sender as the defining mechanism for token access control.",
+        "However, a limiting factor in this design stems from the fact that the ERC-20 approve function itself is defined in terms of msg.sender. This means that user\u2019s initial action involving ERC-20 tokens must be performed by an EOA (but see Note below). If the user needs to interact with a smart contract, then they need to make 2 transactions (approve and the smart contract call which will internally call transferFrom). Even in the simple use case of paying another person, they need to hold ETH to pay for transaction gas costs.",
+        "This ERC extends the ERC-20 standard with a new function permit, which allows users to modify the allowance mapping using a signed message, instead of through msg.sender.",
+        "For an improved user experience, the signed data is structured following ERC-712, which already has wide spread adoption in major RPC providers.",
+        "Note: ERC-20 must be performed by an EOA unless the address owning the token is actually a contract wallet. Although contract wallets solves many of the same problems that motivates this EIP, they are currently only scarcely adopted in the ecosystem. Contract wallets suffer from a UX problem \u2013 since they separate the EOA owner of the contract wallet from the contract wallet itself (which is meant to carry out actions on the owners behalf and holds all of their funds), user interfaces need to be specifically designed to support them. The permit pattern reaps many of the same benefits while requiring little to no change in user interfaces.",
+      ],
       value: 5,
     },
     {
@@ -1224,6 +1690,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/rich-transactions-via-evm-bytecode-execution-from-externally-owned-accounts/4025",
+      abstract: [
+        "If a transaction has a to of address x, then the data of the transaction will be treated as EVM bytecode and it will be executed from the context of the CALLER of the transaction (aka: the transaction signer).",
+      ],
       value: 5,
     },
     {
@@ -1239,6 +1708,10 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2980",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2983",
+      abstract: [
+        "This new standard is an ERC-20 compatible token with restrictions that comply with the following Swiss laws: the Stock Exchange Act, the Banking Act, the Financial Market Infrastructure Act, the Act on Collective Investment Schemes and the Anti-Money Laundering Act. The Financial Services Act and the Financial Institutions Act must also be considered. The solution achieved meet also the European jurisdiction.",
+        "This new standard meets the new era of asset tokens (known also as \u201csecurity tokens\u201d). These new methods manage securities ownership during issuance and trading.\u00a0The issuer is the only role that can manage a white-listing and the only one that is allowed to execute \u201cfreeze\u201d or \u201crevoke\u201d functions.",
+      ],
       value: 5,
     },
     {
@@ -1250,6 +1723,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3074-sponsored-transaction-precompile/4880",
+      summary: [
+        "Allow externally owned accounts (EOAs) to delegate control of their account to a contract.",
+      ],
+      abstract: [
+        "This EIP introduces two EVM instructions AUTH and AUTHCALL. The first sets a context variable authorized based on an ECDSA signature. The second sends a call as the authorized. This essentially delegates control of the EOA to smart contract.",
+      ],
       value: 5,
     },
     {
@@ -1261,6 +1740,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3436-expanded-clique-block-choice-rule/5809",
+      summary: [
+        "Add a four step block rule to Clique that should reduce block production deadlocks",
+      ],
+      abstract: [
+        "The current specification of Clique allows for multiple competing blocks from producers but does not provide any strategies to pick blocks aside from the current \u201chighest total difficulty\u201d rule. This EIP proposes a four step choice rule of highest total difficulty, shortest chain, most recently in-turn, and lowest hash. This would prevent deadlocks that have occurred in production systems.",
+      ],
       value: 5,
     },
     {
@@ -1272,6 +1757,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/evm-object-format-eof/5727",
+      abstract: [
+        "We introduce an extensible and versioned container format for the EVM with a once-off validation at deploy time. The version described here brings the tangible benefit of code and data separation, and allows for easy introduction of a variety of changes in the future. This change relies on the reserved byte introduced by EIP-3541.",
+        "To summarise, EOF bytecode has the following layout:",
+      ],
       value: 5,
     },
     {
@@ -1283,6 +1772,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3651-warm-coinbase/6640",
+      abstract: [
+        "The COINBASE address shall be warm at the start of transaction execution, in accordance with the actual cost of reading that account.",
+      ],
       value: 5,
     },
     {
@@ -1294,6 +1786,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3670-eof-code-validation/6693",
+      abstract: [
+        "Introduce code validation at contract creation time for EOF formatted (EIP-3540) contracts. Reject contracts which contain truncated PUSH-data or undefined instructions. Legacy bytecode (code which is not EOF formatted) is unaffected by this change.",
+      ],
       value: 5,
     },
     {
@@ -1305,6 +1800,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3675-upgrade-consensus-to-proof-of-stake/6706",
+      abstract: [
+        "This EIP deprecates Proof-of-Work (PoW) and supersedes it with the new Proof-of-Stake consensus mechanism (PoS) driven by the beacon chain. Information on the bootstrapping of the new consensus mechanism is documented in EIP-2982. Full specification of the beacon chain can be found in the consensus-specs repository.",
+        "This document specifies the set of changes to the block structure, block processing, fork choice rule and network interface introduced by the consensus upgrade.",
+      ],
       value: 5,
     },
     {
@@ -1316,6 +1815,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-poster-a-ridiculously-simple-general-purpose-social-media-smart-contract/6751",
+      abstract: [
+        "A ridiculously simple general purpose social media smart contract. It takes two strings (content and tag) as parameters and emits those strings, along with msg.sender, as an event. That\u2019s it. The EIP also includes a proposed standard json format for a Twitter-like application, where each post() call can include multiple posts and/or operations. The assumption being that application state will be constructed off-chain via some indexer.",
+      ],
       value: 5,
     },
     {
@@ -1327,6 +1829,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3855-push0-instruction/7014",
+      abstract: [
+        "Introduce the PUSH0 (0x5f) instruction, which pushes the constant value 0 onto the stack.",
+      ],
       value: 5,
     },
     {
@@ -1343,6 +1848,11 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3860-limit-and-meter-initcode/7018",
+      abstract: [
+        "We extend EIP-170 by introducing a maximum size limit for initcode (MAX_INITCODE_SIZE = 2 * MAX_CODE_SIZE = 49152).",
+        "Furthermore, we introduce a charge of 2 gas for every 32-byte chunk of initcode to represent the cost of jumpdest-analysis.",
+        "Lastly, the size limit results in the nice-to-have property that EVM code size, code offset (PC), and jump offset fits a 16-bit value.",
+      ],
       value: 5,
     },
     {
@@ -1354,6 +1864,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3920-static-relative-jumps/7108",
+      abstract: [
+        "Two new EVM jump instructions are introduced (RJUMP and RJUMPI) which encode the destination as a signed immediate value. These can be useful in the majority of (but not all) use cases and offer a cost reduction.",
+      ],
       value: 5,
     },
     {
@@ -1365,6 +1878,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4399-supplant-difficulty-opcode-with-random/7368",
+      abstract: [
+        "This EIP supplants the semantics of the return value of existing DIFFICULTY (0x44) opcode and renames the opcode to PREVRANDAO (0x44).",
+        "The return value of the DIFFICULTY (0x44) instruction after this change is the output of the randomness beacon provided by the beacon chain.",
+      ],
       value: 5,
     },
     {
@@ -1376,6 +1893,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-4400-erc721consumer-extension/7371",
+      abstract: [
+        "This specification defines standard functions outlining a consumer role for instance(s) of ERC-721. An implementation allows reading the current consumer for a given NFT (tokenId) along with a standardized event for when an consumer has changed. The proposal depends on and extends the existing ERC-721.",
+      ],
       value: 5,
     },
     {
@@ -1387,6 +1907,7 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4803-limit-transaction-gas-to-a-maximum-of-2-63-1/8296",
+      abstract: ["Limit transaction gas to be between 0 and 2^63-1."],
       value: 5,
     },
     {
@@ -1397,6 +1918,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-634",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2439",
+      abstract: [
+        "This EIP defines a resolver profile for ENS that permits the lookup of arbitrary key-value text data. This allows ENS name holders to associate e-mail addresses, URLs and other informational data with a ENS name.",
+      ],
       value: 5,
     },
     {
@@ -1408,6 +1932,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-663-unlimited-swap-and-dup-instructions/3346",
+      abstract: [
+        "Currently, SWAP and DUP instructions are limited to a stack depth of 16. Introduce two new instructions, SWAPN and DUPN, which lift this limitation and allow accessing the stack up to depth of 256 items.",
+      ],
       value: 5,
     },
     {
@@ -1418,6 +1945,15 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-725",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/725",
+      summary: [
+        "A standard interface for a smart contract based account with attachable key value store.",
+      ],
+      abstract: [
+        "The following describes standard functions for a unique smart contract based account that can be used by humans, groups, organisations, objects and machines.",
+        "The standard is divided into two sub standards:",
+        "ERC725X: Can execute arbitrary smart contracts and deploy other smart contracts.",
+        "ERC725Y: Can hold arbitrary data through a generic key/value store.",
+      ],
       value: 5,
     },
     {
@@ -1428,6 +1964,18 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-998",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/998",
+      summary: [
+        "An extension of the ERC-721 standard to enable ERC721 tokens to own other ERC721 tokens and ERC20 tokens.",
+        "An extension of the ERC-20 and ERC-223 standards to enable ERC20 and ERC223 tokens to be owned by ERC721 tokens.",
+        "This specification covers four different kinds of composable tokens:",
+      ],
+      abstract: [
+        "A top-down composable contract stores and keeps track of child tokens for each of its tokens.",
+        "A bottom-up composable contract stores and keeps track of a parent token for each its tokens.",
+        "With composable tokens it is possible to compose lists or trees of ERC721 and ERC20 tokens connected by ownership. Any such structure will have a single owner address at the root of the structure that is the owner of the entire composition. The entire composition can be transferred with one transaction by changing the root owner.",
+        "Different composables, top-down and bottom-up, have their advantages and disadvantages which are explained in the Rational section. It is possible for a token to be one or more kinds of composable token.",
+        "A non-fungible token is ERC998 compliant and is an ERC998 Composable if it implements one or more of the following interfaces:",
+      ],
       value: 5,
     },
     {
@@ -1438,6 +1986,10 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1202",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1202",
+      summary: ["Propose a standard interface for voting."],
+      abstract: [
+        "This proposal creates a standard API for implementing voting within smart contract. This standard provides functionalities to voting as well as to view the vote result and set voting status.",
+      ],
       value: 5,
     },
     {
@@ -1458,6 +2010,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1523",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1523",
+      summary: [
+        "A standard interface for insurance policies, based on ERC 721.",
+      ],
+      abstract: [
+        "The following standard allows for the implementation of a standard API for insurance policies within smart contracts. Insurance policies are financial assets which are unique in some aspects, as they are connected to a customer, a specific risk, or have other unique properties like premium, period, carrier, underwriter etc. Nevertheless, there are many potential applications where insurance policies can be traded, transferred or otherwise treated as an asset. The ERC 721 standard already provides the standard and technical means to handle policies as a specific class of non fungible tokens. insurance In this proposal, we define a minimum metadata structure with properties which are common to the greatest possible class of policies.",
+      ],
       value: 5,
     },
     {
@@ -1468,6 +2026,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2135",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2135",
+      summary: [
+        "An interface marking certain digital assets being consumable.",
+      ],
+      abstract: [
+        "The interface identifies functions and events needed for creating a contract to be able to mark a digital asset as \u201cconsumable\u201d, and react to the request of \u201cconsumption\u201d.",
+      ],
       value: 5,
     },
     {
@@ -1484,6 +2048,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2315-simple-subroutines-for-the-evm/3941",
+      abstract: [
+        "This proposal introduces two opcodes to support simple subroutines: RJUMPSUB and RETURNSUB.",
+        "Taken together with other recent propoposals they provides a static, complete, safe, and efficient control-flow facility.",
+      ],
       value: 5,
     },
     {
@@ -1494,6 +2062,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2334",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2338",
+      summary: [
+        "This EIP defines the purpose of a given key, or family thereof, within a tree of keys. When combined with EIP-2333, the combination of a seed and knowledge of the desired purpose of a key is sufficient to determine a key pair.",
+      ],
+      abstract: [
+        "A standard for allocating keys generated by EIP-2333 to a specific purpose. It defines a path which is a string that parses into the indices to be used when traversing the tree of keys that EIP-2333 generates.",
+      ],
       value: 5,
     },
     {
@@ -1505,6 +2079,11 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-2544-ens-wildcard-resolution",
+      abstract: [
+        "The Ethereum Name Service Specification (EIP-137) establishes a two-step name resolution process. First, an ENS client performs the namehash algorithm on the name to determine the associated \u201cnode\u201d, and supplies that node to the ENS Registry contract to determine the resolver. Then, if a resolver has been set on the Registry, the client supplies that same node to the resolver contract, which will return the associated address or other record.",
+        "As currently specified, this process terminates if a resolver is not set on the ENS Registry for a given node. This EIP changes the name resolution process by adding an additional step if a resolver is not set for a domain. This step strips out the leftmost label from the name, derives the node of the new fragment, and supplies that node to the ENS Registry. If a resolver is located for that node, the client supplies the original, complete node to that resolver contract to derive the relevant records. This step is repeated until a node with a resolver is found.",
+        "Further, this specification defines a new way for resolvers to resolve names, using a unified resolve() method that permits more flexible handling of name resolution.",
+      ],
       value: 5,
     },
     {
@@ -1516,6 +2095,11 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-2569-saving-and-displaying-image-onchain-for-universal-tokens/4167",
+      abstract: [
+        "This set of interfaces allow a smart contract to save an SVG image in Ethereum and to retrieve an SVG image from Ethereum for fungible tokens, non-fungible tokens and tokens based on standards that will be developed in the future.",
+        "The interface set has two interfaces: one to save an SVG file in Ethereum and the other to retrieve an SVG file from Ethereum.",
+        "Typical applications include but not limited to:",
+      ],
       value: 5,
     },
     {
@@ -1527,6 +2111,14 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2677-limit-size-of-initcode/4550",
+      summary: [
+        "Enforce a maximum size limit (max_initcode_size) of 49152 (0xc000) for initcode.",
+      ],
+      abstract: [
+        "Enforce a maximum size limit (max_initcode_size) for initcode. If the size of initcode exceeds max_initcode_size, then contract creation fails with an out of gas error.",
+        "Since EIP-170 was implemented, there has been a size limit of 24576 (0x6000) on contract code. We propose to also limit the size of executable code to 2x the above limit, i.e. 49152 (0xc000).",
+        "This also leads to two nice properties:",
+      ],
       value: 5,
     },
     {
@@ -1537,6 +2129,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3102",
       category: "Core",
       discussions: "https://ethresear.ch/t/binary-trie-format/7621",
+      summary: [
+        "Change the storage structure from hexary to binary, merge the account and storage tries, and use blake2b.",
+      ],
+      abstract: [
+        "This proposal presents a binary structure and merkelization rule for the account and storage tries, which are merged into a single \u201cstate\u201d trie. RLP and most of the MPT\u2019s optimizations are dropped to simplify the design. Keccak256 is replaced with blake2b.",
+      ],
       value: 5,
     },
     {
@@ -1547,6 +2145,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3224",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/3225",
+      abstract: [
+        "Human-readable descriptions for machine executable operations, described in higher level machine readable data, so that wallets can provide meaningful feedback to the user describing the action the user is about to perform.",
+      ],
       value: 5,
     },
     {
@@ -1557,6 +2158,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3475",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/3467",
+      summary: [
+        "A standard interface for contract, that manage multiple callable bonds. A single contract includes any given number of bond classes, bond nonce, bond balance of an address. This standard provides independent functions to read, transfer any collection of bonds, as well as allow bonds to be redeemed from the bond issuer if certain conditions are met. This token standard can replace current ERC20 LP token. ERC-3475 has more complex data structure, which will allow the LP token to store more information, and allow the developer to build more sophisticated logic for the redemption and reward system of the DEFI project in question.",
+      ],
+      abstract: [
+        "This API standard allows for the creation of any number of bonds type in a single contract. Existing LP token standards like ERC-20 require deployment of separate factory and token contracts per token type. The need of issuing bonds with multiple redemption data can\u2019t be achieved with existing token standards. ERC-3475 Multiple Callable Bonds Standard allows for each bond class ID to represent a new configurable token type, and for each bond nonce to represent an issuing date or any other forms of data in uint256. Every single nonce of a bond class may have its own metadata, supply and other redemption conditions.",
+      ],
       value: 5,
     },
     {
@@ -1574,6 +2181,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3525",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/3641",
+      summary: [
+        "This is a standard for semi-fungible tokens. The set of smart contract interfaces described in this document defines an ERC-721 extension, by introducing an <ID, SLOT, AMOUNT> triple scalar model to represent the semi-fungible nature of a token. This standard also introduces an optional set of interfaces called \u2018UnderlyingContainer\u2019, for an ERC-3525 token to act as a representing layer of existing tokens, which is one of the key purpose of tokenization.",
+      ],
+      abstract: [
+        "ERC-3525 is ERC-721 compatible, which means, as an ERC-721 token, each ERC-3525 token contains an ID property to identify itself as a universally unique entity. What empowers a ERC-3525 token is that it contains a \u2018units\u2019 property, representing the quantitative nature of the token. Thus, a ERC-3525 token can be split into several different ERC-3525 tokens, with certain properties maintained unchanged but the sum of the units of all split-out token equals that of the original one. Nevertheless, each ERC-3525 token has a \u2018SLOT\u2019 attribute, which labels its logical category. Several ERC-3525 tokens can be merged into one if their SLOT attributes indicate that they are of the same category.",
+      ],
       value: 5,
     },
     {
@@ -1585,6 +2198,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-3569-sealed-nft-metadata-standard/7130",
+      summary: [
+        "The Sealed NFT Metadata Extension provides a mechanism to immortalize NFT metadata in a cost-effective manner.",
+      ],
+      abstract: [
+        "This standard accomplishes three things; it provides a way for potential collectors to verify that the NFT metadata will not change, allows creators to immortalize metadata for multiple tokens at one time, and allows metadata for many NFTs to be read and cached from one file. A creator can call the seal function for a range of one or many sequential NFTs. Included as an argument is a URI which points to a decentralized storage service like IPFS and will be stored in the smart contract. The URI will return a JSON object in which the keys are token IDs and the values are either a string which is a URI pointing to a metadata file stored on a decentralized file system, or raw metadata JSON for each token ID. The token ID(s) will then be marked as sealed in the smart contract and cannot be sealed again. The seal function can be called after NFT creation, or during the NFT creation process.",
+      ],
       value: 5,
     },
     {
@@ -1596,6 +2215,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-3709-deprecate-type-1-transactions/6810",
+      summary: [
+        "Deprecates usage of EIP-2718 TransactionType 1 in wallets and providers, upgrading all type 1 transactions to a type 2 transaction.",
+      ],
+      abstract: [
+        "Since both TransactionType 1 and 2 contain access_list, we propose the removal of offering TransactionType 1 from wallets and providers, instead the transaction will be converted to TransactionType 2 to make use of the new gas properties introduced by EIP-1559.",
+      ],
       value: 5,
     },
     {
@@ -1606,6 +2231,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3754",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/3753",
+      abstract: [
+        "In this standard, a non-fungible token stands as atomic existence and encourages layers of abstraction built on top of it. Ideal for representing concepts like rights, a form of abstract ownership. Such right can take the form of NFT options, oracle membership, virtual coupons, etc., and can then be made liquid because of this tokenization.",
+      ],
       value: 5,
     },
     {
@@ -1617,6 +2245,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/chain-specific-addresses/6449",
+      abstract: [
+        "This EIP introduced a new address standard to be adapted by wallets and dApps to display chain-specific addresses by mapping human-readable names to CAIP-3 blockchain IDs.",
+      ],
       value: 5,
     },
     {
@@ -1627,6 +2258,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3772",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/3772",
+      abstract: [
+        "This document specifies compression of uint256 to smaller data structures like uint64, uint96, uint128, for optimizing costs for storage. The smaller data structure (represented as cintx) is divided into two parts, in the first one we store significant bits and in the other number of left shifts needed on the significant bits to decompress. This document also includes two specifications for decompression due to the nature of compression being lossy, i.e. it causes underflow.",
+      ],
       value: 5,
     },
     {
@@ -1638,6 +2272,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3779-safe-control-flow-for-the-evm/6975",
+      abstract: [
+        "We define a safe EVM contract as one that cannot encounter an exceptional halting state. In general, we cannot prove safety for Turing-complete programs. But we can prove a useful subset.",
+        "This EIP specifies validity rules to ensure that:",
+        "This EIP does not introduce any new opcodes. Rather, it restricts the use of existing and proposed control-flow instructions. The restrictions must be validated at contract initialization time \u2013 not at runtime \u2013 by the provided algorithm or its equivalent. This algorithm must take time and space near-linear in the size of the contract, so as not to be a denial of service vulnerability.",
+        "This specification is entirely semantic. It imposes no further syntax on bytecode, as none is required to ensure the specified level of safety. Ethereum Virtual Machine bytecode is just that \u2013 a sequence of bytes that when executed causes a sequence of changes to the machine state. The safety we seek here is simply to not, as it were, jam up the gears.",
+      ],
       value: 5,
     },
     {
@@ -1649,6 +2289,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3978-gas-refunds-on-reverts/7071/",
+      abstract: [
+        "For reverted state modification operations, keep access cost, but refund modification cost.",
+      ],
       value: 5,
     },
     {
@@ -1668,6 +2311,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-4337-account-abstraction-via-entry-point-contract-specification/7160",
+      abstract: [
+        "An account abstraction proposal which completely avoids the need for consensus-layer protocol changes. Instead of adding new protocol features and changing the bottom-layer transaction type, this proposal instead introduces a higher-layer pseudo-transaction object called a UserOperation. Users send UserOperation objects into a separate mempool. A special class of actor called bundlers (either miners, or users that can send transactions to miners through a bundle marketplace) package up a set of these objects into a transaction making a handleOps call to a special contract, and that transaction then gets included in a block.",
+      ],
       value: 5,
     },
     {
@@ -1678,6 +2324,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-4341",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/3782",
+      abstract: [
+        "This standard introduces a smart contract interface that can represent a batch of non-fungible tokens of which the ordering information shall be retained and managed. Such information is particularly useful if tokenIds are encoded with the sets of unicodes for logographic characters and emojis. As a result, NFTs can be utilized as carriers of meanings.",
+      ],
       value: 5,
     },
     {
@@ -1694,6 +2343,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-4361-sign-in-with-ethereum/7263",
+      abstract: [
+        "Sign-In with Ethereum describes how Ethereum accounts authenticate with off-chain services by signing a standard message format parameterized by scope, session details, and security mechanisms (e.g., a nonce). The goals of this specification are to provide a self-custodied alternative to centralized identity providers, improve interoperability across off-chain services for Ethereum-based authentication, and provide wallet vendors a consistent machine-readable message format to achieve improved user experiences and consent management.",
+      ],
       value: 5,
     },
     {
@@ -1705,6 +2357,10 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-proposal-micropayments-standard-for-nfts-and-multi-tokens/7366",
+      abstract: [
+        "This standard outlines a smart contract interface for tipping to non-fungible and multi tokens. Holders of the tokens are able to withdraw the tips as ERC-20 rewards.",
+        "For the purpose of this EIP, a micropayment is termed as a financial transaction that involves usually a small sum of money called \u201ctips\u201d that are sent to specific ERC-721 NFTs and ERC-1155 multi tokens, as rewards to their holders. A holder (also referred to as controller) is used as a more generic term for owner, as NFTs may represent non-digital assets such as services.",
+      ],
       value: 5,
     },
     {
@@ -1716,6 +2372,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4396-time-aware-base-fee-calculation/7363",
+      abstract: [
+        "This EIP proposes accounting for time between blocks in the base fee calculation to target a stable throughput by time, instead of by block. Aiming to minimize changes to the calculation, it only introduces a variable block gas target proportional to the block time. The EIP can, in principle, be applied to either a Proof-of-Work or a Proof-of-Stake chain, however the security implications for the Proof-of-Work case remain unexplored.",
+      ],
       value: 5,
     },
     {
@@ -1727,6 +2386,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/discussion-eip-4430-described-transactions/8762",
+      abstract: [
+        "Use a contract method to provide virtual functions which can generate a human-readable description at the same time as the machine-readable bytecode, allowing the user to agree to the human-readable component in a UI while the machine can execute the bytecode once accepted.",
+      ],
       value: 5,
     },
     {
@@ -1738,6 +2400,9 @@ export const data = {
       category: "Networking",
       discussions:
         "https://ethereum-magicians.org/t/eip-4444-bound-historical-data-in-execution-clients/7450",
+      abstract: [
+        "Clients must stop serving historical headers, bodies, and receipts older than one year on the p2p layer. Clients may locally prune this historical data.",
+      ],
       value: 5,
     },
     {
@@ -1749,6 +2414,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4488-transaction-calldata-gas-cost-reduction-with-total-calldata-limit/7555",
+      abstract: [
+        "Decrease transaction calldata gas cost, and add a limit of how much total transaction calldata can be in a block.",
+      ],
       value: 5,
     },
     {
@@ -1760,6 +2428,10 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-extending-erc2612-style-permits-to-erc721-nfts/7519/2",
+      abstract: [
+        "The \u201cPermit\u201d approval flow outlined in ERC-2612 has proven a very valuable advancement in UX by creating gasless approvals for ERC20 tokens. This EIP extends the pattern to ERC-721 NFTs. This EIP borrows heavily from ERC-2612.",
+        "This requires a separate EIP due to the difference in structure between ERC-20 and ERC-721 tokens. While ERC-20 permits use value (the amount of the ERC-20 token being approved) and a nonce based on the owner\u2019s address, ERC-721 permits focus on the tokenId of the NFT and increment nonce based on the transfers of the NFT.",
+      ],
       value: 5,
     },
     {
@@ -1770,6 +2442,7 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-4520",
       category: "Core",
       discussions: "https://ethereum-magicians.org/t/multi-byte-opcodes/7681",
+      abstract: ["Reserve 0xEB and 0xEC for usage as extended opcode space."],
       value: 5,
     },
     {
@@ -1781,6 +2454,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-4521-721-20-compatible-transfer/7903",
+      abstract: [
+        "ERC-721, the popular standard for non-fungible tokens (NFTs), includes send functions, such as transferFrom() and safeTransferFrom(), but does not include a backwards-compatible transfer() found in fungible ERC-20 tokens. This standard provides references to add such a transfer().",
+      ],
       value: 5,
     },
     {
@@ -1792,6 +2468,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/why-isnt-there-an-erc-for-safetransfer-for-erc20/7604",
+      abstract: [
+        "This standard extends ERC-20 tokens with EIP-165, and adds familiar functions from ERC-721 and ERC-1155 ensuring receiving contracts have implemented proper functionality.",
+      ],
       value: 5,
     },
     {
@@ -1811,6 +2490,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/add-qr-code-scanning-between-software-wallet-cold-signer-hardware-wallet/6568",
+      abstract: [
+        "The purpose of this EIP is to provide a process and data transmission protocol via QR Code between offline signers and watch-only wallets.",
+      ],
       value: 5,
     },
     {
@@ -1822,6 +2504,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/wrapped-deposit-contract-eip/7740",
+      abstract: [
+        "The wrapped deposit contract handles deposits of assets (Ether, ERC-20, ERC-721) on behalf of a user. A user must only approve a spend limit once and then an asset may be deposited to any number of different applications that support deposits from the contract.",
+      ],
       value: 5,
     },
     {
@@ -1833,6 +2518,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4573-named-procedures-for-evm-code-sections/7776",
+      abstract: [
+        "Five EVM instructions are introduced to define, call, and return from named EVM procedures and access their call frames in memory - ENTERPROC, LEAVEPROC, CALLPROC, RETURNPROC, and FRAMEADDRESS.",
+      ],
       value: 5,
     },
     {
@@ -1844,6 +2532,11 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-4671-non-tradable-token/7976",
+      abstract: [
+        "A non-tradable token, or NTT, represents inherently personal possessions (material or immaterial), such as university diplomas, online training certificates, government issued documents (national id, driving license, visa, wedding, etc.), labels, and so on.",
+        "As the name implies, non-tradable tokens are not made to be traded or transferred, they are \u201csoulbound\u201d. They don\u2019t have monetary value, they are personally delivered to you, and they only serve as a proof of possession/achievement.",
+        "In other words, the possession of a token carries a strong meaning in itself depending on why it was delivered.",
+      ],
       value: 5,
     },
     {
@@ -1855,6 +2548,9 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/consensus-layer-withdrawal-protection/8161",
+      abstract: [
+        "If a consensus layer mnemonic phrase is compromised, it is impossible for the consensus layer network to differentiate the \u201clegitimate\u201d holder of the key from an \u201cillegitimate\u201d holder. However, there are signals that can be considered in a wider sense without changing core Ethereum consensus. This proposal outlines ways in which the execution layer deposit address, a consensus layer rebroadcast delay, and list of signed messages could create a social consensus that would significantly favor but not guarantee legitimate mnemonic holders would win a race condition against an attacker, while not changing core Ethereum consensus.",
+      ],
       value: 5,
     },
     {
@@ -1866,6 +2562,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4747-simplify-eip-161/8246",
+      abstract: [
+        "Simplify the definition of EIP-161, removing the requirement for implementors to support edge cases that are impossible on Ethereum Mainnet.",
+      ],
       value: 5,
     },
     {
@@ -1877,6 +2576,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4750-eof-functions/8195",
+      abstract: [
+        "Introduce the ability to have several code sections in EOF-formatted (EIP-3540) bytecode, each one representing a separate subroutine/function. Two new opcodes,CALLF and RETF, are introduced to call and return from such a function.",
+      ],
       value: 5,
     },
     {
@@ -1888,6 +2590,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4758-deactivate-selfdestruct/8710",
+      abstract: [
+        "This EIP renames the SELFDESTRUCT opcode to SENDALL, and replaces its functionality. The new functionality will be only to send all Ether in the account to the caller.",
+      ],
       value: 5,
     },
     {
@@ -1899,6 +2604,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4760-selfdestruct-bomb/8713",
+      abstract: [
+        "This EIP renames the SELFDESCRUCT opcode to SENDALL, and replaces its functionality. The new functionality will be only to send all Ether in the account to the caller.",
+        "In order to give apps more warning even if their developers are completely unaware of the EIP process, this version will exponentially increase the gas costs of the opcode, so any developer has time to see this change and react by implementing a version of their contract that does not rely on SELFDESTRUCT .",
+      ],
       value: 5,
     },
     {
@@ -1910,6 +2619,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4762-statelessness-gas-cost-changes/8714",
+      abstract: [
+        "This EIP introduces changes in the gas schedule to reflect the costs of creating a witness. It requires clients to update their database layout to match this, so as to avoid potential DoS attacks.",
+      ],
       value: 5,
     },
     {
@@ -1921,6 +2633,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4788-beacon-state-root-in-evm/8281",
+      abstract: [
+        "Commit to the state root of the beacon chain in the ommers field in the post-merge execution block. Reflect the changes in the ommersHash field of the execution block header.",
+        "Store each beacon chain state root into a contract and add a new opcode that reads this contract.",
+      ],
       value: 5,
     },
     {
@@ -1932,6 +2648,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-4799-non-fungible-token-wrapping-standard/8396",
+      abstract: [
+        "The following defines a standard interface for designating ownership of an NFT to someone while the NFT is held in escrow by a smart contract. The standard allows for the construction of a directed acyclic graph of NFTs, where the designated owner of every NFT in a given chain is the terminal address of that chain. This enables the introduction of additional functionality to pre-existing NFTs, without having to give up the authenticity of the original. In effect, this means that all NFTs are composable and can be rented, used as collateral, fractionalized, and more.",
+      ],
       value: 5,
     },
     {
@@ -1943,6 +2662,11 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-4834-hierarchical-domains-standard/8388",
+      abstract: [
+        "This is a standard for generic name resolution with access control. It permits a contract that implements EIP-4834 (referred to as a \u201cdomain\u201d hereafter) to be addressable with a more human-friendly name, with a similar purpose to EIP-137 (referred to as \u201cENS\u201d hereafter).",
+        "Unlike ENS, any program that resolves domains should treat domains as equivalent to their resolved addresses. In practice, this means users of DApps that implement EIP-4834 name resolution may specify an address that looks like dai.token instead of 0x6b175474e89094c44da98b954eedeac495271d0f. In this instance, dai.token and 0x6b175474e89094c44da98b954eedeac495271d0f are not different, unlike ENS, where names are simply keys to be hashed and inputted into a storage contract that then resolves the name to an address.",
+        "Another notable divergence from ENS is that access control can be arbitrarily complex. ENS domains have a defined owner that has full permission to create, update, and delete subdomains, as well as update the metadata of the domain in resolver contracts. While this can be made more strict by delegating control of the ENS domain to a smart contract, EIP-4834 takes a different approach, and permits any access control patterns to be implemented. This could allow for interesting use-cases, such as an EIP-20 token that could be \u201credeemed\u201d for subdomains by linking permission to create subdomains to ownership of a specific amount of that token and having that much token burned when a domain is created.",
+      ],
       value: 5,
     },
     {
@@ -1960,6 +2684,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4844-shard-blob-transactions/8430",
+      abstract: [
+        "Introduce a new transaction format for \u201cblob-carrying transactions\u201d which contain a large amount of data that cannot be accessed by EVM execution, but whose commitment can be accessed. The format is intended to be fully compatible with the format that will be used in full sharding.",
+      ],
       value: 5,
     },
     {
@@ -1971,6 +2698,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4863-beacon-chain-push-withdrawals/8465",
+      abstract: [
+        "Introduce a new EIP-2718 transaction type to support validator withdrawals that are \u201cpushed\u201d from the beacon chain to the EVM.",
+        "Add block validations to ensure the withdrawal transactions are sound with respect to withdrawal processing on the beacon chain.",
+      ],
       value: 5,
     },
     {
@@ -1982,6 +2713,9 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-4881-deposit-contract-snapshot-interface/",
+      abstract: [
+        "This EIP defines a standard format for transmitting the deposit contract Merkle tree in a compressed form during weak subjectivity sync. This allows newly syncing consensus clients to reconstruct the deposit tree much faster than downloading all historical deposits. The format proposed also allows clients to prune deposits that are no longer needed to participate fully in consensus (see Deposit Finalization Flow).",
+      ],
       value: 5,
     },
     {
@@ -1993,6 +2727,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-subscription-token-standard/8531",
+      abstract: [
+        "The following standard allows for the implementation of a standard API for subscribing to non-fungible and multi tokens. ERC-20 tokens are deposited in exchange for subscription tokens that give the right to use said non-fungible and multi tokens for a specified time limited or unlimited period.",
+      ],
       value: 5,
     },
     {
@@ -2004,6 +2741,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-4895-beacon-chain-withdrawals-as-system-level-operations/8568",
+      abstract: [
+        "Introduce a system-level \u201coperation\u201d to support validator withdrawals that are \u201cpushed\u201d from the beacon chain to the EVM.",
+        "These operations effect unconditional balance increases to the specified recipients.",
+      ],
       value: 5,
     },
     {
@@ -2015,6 +2756,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/idea-erc-721-user-and-expires-extension/8572",
+      abstract: [
+        "This standard is an extension of ERC-721. It proposes an additional role (user) which can be granted to addresses, and a time where the role is automatically revoked (expires). The user role represents permission to \u201cuse\u201d the NFT, but not be able to transfer it or set operators.",
+      ],
       value: 5,
     },
     {
@@ -2051,6 +2795,14 @@ export const data = {
       author: "Nick Johnson",
       url: "https://eips.ethereum.org/EIPS/eip-205",
       category: "ERC",
+      summary: [
+        "This EIP proposes a mechanism for storing ABI definitions in ENS, for easy lookup of contract interfaces by callers.",
+      ],
+      abstract: [
+        "ABIs are important metadata required for interacting with most contracts. At present, they are typically supplied out-of-band, which adds an additional burden to interacting with contracts, particularly on a one-off basis or where the ABI may be updated over time. The small size of ABIs permits an alternative solution, storing them in ENS, permitting name lookup and ABI discovery via the same process.",
+        "ABIs are typically quite compact; the largest in-use ABI we could find, that for the DAO, is 9450 bytes uncompressed JSON, 6920 bytes uncompressed CBOR, and 1128 bytes when the JSON form is compressed with zlib. Further gains on CBOR encoding are possible using a CBOR extension that permits eliminating repeated strings, which feature extensively in ABIs. Most ABIs, however, are far shorter than this, consisting of only a few hundred bytes of uncompressed JSON.",
+        "This EIP defines a resolver profile for retrieving contract ABIs, as well as encoding standards for storing ABIs for different applications, allowing the user to select between different representations based on their need for compactness and other considerations such as onchain access.",
+      ],
       value: 5,
     },
     {
@@ -2074,6 +2826,9 @@ export const data = {
       category: "None",
       discussions:
         "https://ethereum-magicians.org/t/eip-233-formal-process-of-hard-forks/1387",
+      abstract: [
+        "To describe the formal process of preparing and activating hard forks.",
+      ],
       value: 5,
     },
     {
@@ -2090,6 +2845,13 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-615-subroutines-and-static-jumps-for-the-evm-last-call/3472",
+      summary: [
+        "In the 21st century, on a blockchain circulating billions of ETH, formal specification and verification are an essential tool against loss. Yet the design of the EVM makes this unnecessarily difficult. Further, the design of the EVM makes near-linear-time compilation to machine code difficult. We propose to move forward with proposals to resolve these problems by tightening EVM security guarantees and reducing barriers to performance.",
+      ],
+      abstract: [
+        "EVM code is currently difficult to statically analyze, hobbling critical tools for preventing the many expensive bugs our blockchain has experienced. Further, none of the current implementations of the Ethereum Virtual Machine\u2014including the compilers\u2014are sufficiently performant to reduce the need for precompiles and otherwise meet the network\u2019s long-term demands. This proposal identifies dynamic jumps as a major reason for these issues, and proposes changes to the EVM specification to address the problem, making further efforts towards a safer and more performant the EVM possible.",
+        "We also propose to validate\u2014in near-linear time\u2014that EVM contracts correctly use subroutines, avoid misuse of the stack, and meet other safety conditions before placing them on the blockchain. Validated code precludes most runtime exceptions and the need to test for them. And well-behaved control flow and use of the stack makes life easier for interpreters, compilers, formal analysis, and other tools.",
+      ],
       value: 5,
     },
     {
@@ -2099,6 +2861,9 @@ export const data = {
       author: "Greg Colvin",
       url: "https://eips.ethereum.org/EIPS/eip-616",
       category: "Core",
+      abstract: [
+        "A proposal to provide Single Instruction Multiple Data types and operations for the Ethereum Virtual Machine, making full use of the 256-bit wide EVM stack items, and offering substantial performance gains for both vector and scalar operations.",
+      ],
       value: 5,
     },
     {
@@ -2108,6 +2873,13 @@ export const data = {
       author: "Tobias Oberstein",
       url: "https://eips.ethereum.org/EIPS/eip-665",
       category: "Core",
+      summary: [
+        "Support performant and cheap verification of Ed25519 cryptographic signatures in smart contracts in general by adding a precompiled contract for Ed25519 signature verification to the EVM.",
+      ],
+      abstract: [
+        "Verification of Ed25519 cryptographic signatures is obviously possible in EVM bytecode. However, the gas cost will be very high, and computationally expensive, as such tight, wide word operations intensive code as required for Ed25519 is not a good fit for the EVM bytecode model.",
+        "The addition of a native compiled function, in a precompiled contract, to the EVM solves both cost and performance problems.",
+      ],
       value: 5,
     },
     {
@@ -2117,6 +2889,12 @@ export const data = {
       author: "Yoichi Hirai",
       url: "https://eips.ethereum.org/EIPS/eip-689",
       category: "Core",
+      summary: [
+        "This EIP proposes to make contract creation fail on an account with nonempty code or non-zero nonce.",
+      ],
+      abstract: [
+        "Some test cases in the consensus test suite try to deploy a contract at an address already with nonempty code. Although such cases can virtually never happen on the main network before the Constantinople fork block, the test cases detected discrepancies in clients\u2019 behavior. Currently, the Yellow Paper says that the contract creation starts with the empty code and the initial nonce even in the case of address collisions. To simplify the semantics, this EIP proposes that address collisions cause failures of contract creation.",
+      ],
       value: 5,
     },
     {
@@ -2127,6 +2905,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-698",
       category: "Core",
       discussions: "https://github.com/ethereum/EIPs/issues/698",
+      summary: [
+        "This EIP adds an additional opcode to the EVM which will return a finalized blocks reward value.",
+      ],
+      abstract: [
+        "In the EVM, the 0x40 opcodes are reserved for Block Information. Currently reserved opcodes are:",
+        "This EIP would add an additional opcode, 0x46 BLOCKREWARD, which would return the block reward for any finalized block. The finalized block reward would include the base reward, uncle payments, and gas.",
+      ],
       value: 5,
     },
     {
@@ -2138,6 +2923,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-747-eth-watchtoken/1048",
+      summary: [
+        "An RPC method for allowing users to easily track new assets with a suggestion from sites they are visiting.",
+      ],
+      abstract: [
+        "Web3 JavaScript wallet browsers may implement the wallet_watchAsset RPC method to allow any website to suggest a token for the user\u2019s wallet to track.",
+      ],
       value: 5,
     },
     {
@@ -2147,6 +2938,12 @@ export const data = {
       author: "Jack Peterson",
       url: "https://eips.ethereum.org/EIPS/eip-758",
       category: "Interface",
+      summary: [
+        "Provide a way for external callers to be notified of completed transactions, and access the return data of functions executed when a transaction is mined.",
+      ],
+      abstract: [
+        "When a new transaction is submitted successfully to an Ethereum node, the node responds with the transaction\u2019s hash. If the transaction involved the execution of a contract function that returns data, the data is discarded. If the return data is state-dependent, which is common, there is no straightforward way for the caller to access or compute the return data. This EIP proposes that callers should be able to subscribe to (or poll for) completed transactions. The Ethereum node sends the return data to the caller when the transactions are sealed.",
+      ],
       value: 5,
     },
     {
@@ -2156,6 +2953,10 @@ export const data = {
       author: "ligi",
       url: "https://eips.ethereum.org/EIPS/eip-801",
       category: "ERC",
+      summary: ["A standard interface for canary contracts."],
+      abstract: [
+        "The following standard allows the implementation of canaries within contracts. This standard provides basic functionality to check if a canary is alive, keeping the canary alive and optionally manage feeders.",
+      ],
       value: 5,
     },
     {
@@ -2165,6 +2966,12 @@ export const data = {
       author: "Kashish Khullar",
       url: "https://eips.ethereum.org/EIPS/eip-823",
       category: "ERC",
+      summary: [
+        "A standard for token contracts, providing token exchange services thereby facilitating cross token payments.",
+      ],
+      abstract: [
+        "The following standard provides functionally to make payments in the form of any other registered tokens, as well as allow token contracts to store any other tokens in an existing token contract. This standard allows ERC20 token holders to exchange their token with another ERC20 token and use the exchanged tokens to make payments. After a successful payment, the former specified ERC20 tokens, will be stored within the ERC20 token contract they are exchanged with. This proposal uses the term target contract which is used to denote the contract to the token with whom we want to exchange our tokens.",
+      ],
       value: 5,
     },
     {
@@ -2174,6 +2981,12 @@ export const data = {
       author: "ligi",
       url: "https://eips.ethereum.org/EIPS/eip-831",
       category: "ERC",
+      summary: [
+        "A standard way of creating Ethereum URIs for various use-cases.",
+      ],
+      abstract: [
+        "URIs embedded in QR-codes, hyperlinks in web-pages, emails or chat messages provide for robust cross-application signaling between very loosely coupled applications. A standardized URI format allows for instant invocation of the user\u2019s preferred wallet application.",
+      ],
       value: 5,
     },
     {
@@ -2183,6 +2996,12 @@ export const data = {
       author: "Carl Larson",
       url: "https://eips.ethereum.org/EIPS/eip-858",
       category: "Core",
+      summary: [
+        "Reduce the block reward to 1 ETH and delay the difficulty bomb.",
+      ],
+      abstract: [
+        "The current public Ethereum network has a hashrate that corresponds to a tremendous level of energy consumption. As this energy consumption has a correlated environmental cost the network participants have an ethical obligation to ensure this cost is not higher than necessary. At this time, the most direct way to reduce this cost is to lower the block reward in order to limit the appeal of ETH mining. Unchecked growth in hashrate is also counterproductive from a security standpoint. Recent research developments also now time the switch to POS as sometime in 2019 and as a result there is need to further delay the difficulty bomb so the network doesn\u2019t grind to a halt.",
+      ],
       value: 5,
     },
     {
@@ -2194,6 +3013,14 @@ export const data = {
       category: "None",
       discussions:
         "https://ethereum-magicians.org/t/eip-867-standardized-ethereum-recovery-proposals-erps/139",
+      summary: [
+        "Provide a standardized format for Ethereum Recovery Proposals (ERPs), which relate to recovery of certain classes of lost funds. Individual ERPs will follow the same process as any EIP, but will be formatted and evaluated in a standard way to ensure consistency and transparency.",
+        "This EIP does not advocate for or against the acceptance of any particular recovery proposals, nor would its acceptance alone result in any state changes to the blockchain.",
+      ],
+      abstract: [
+        "This proposal identifies a common solution method that can be used to address certain classes of lost funds on the Ethereum blockchain. In particular, it is intended to address cases where there is no disagreement about the right outcome between directly affected parties, enabling timely and low-risk solutions to many issues that have already occurred or are likely to occur again as Ethereum grows.",
+        "The solution method is divided into three parts:",
+      ],
       value: 5,
     },
     {
@@ -2203,6 +3030,12 @@ export const data = {
       author: "Dave Sag",
       url: "https://eips.ethereum.org/EIPS/eip-884",
       category: "ERC",
+      summary: [
+        "An ERC-20 compatible token that conforms to Delaware State Senate, 149th General Assembly, Senate Bill No. 69: An act to Amend Title 8 of the Delaware Code Relating to the General Corporation Law, henceforth referred to as \u2018The Act\u2019.",
+      ],
+      abstract: [
+        "The recently amended \u2018Title 8 of the Delaware Code Relating to the General Corporation Law\u2019 now explicitly allows for the use of blockchains to maintain corporate share registries. This means it is now possible to create a tradable ERC-20 token where each token represents a share issued by a Delaware corporation. Such a token must conform to the following principles over and above the ERC-20 standard.",
+      ],
       value: 5,
     },
     {
@@ -2213,6 +3046,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-897",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/pull/897",
+      summary: [
+        "Proxy contracts are being increasingly used as both as an upgradeability mechanism and a way to save gas when deploying many instances of a particular contract. This standard proposes a set of interfaces for proxies to signal how they work and what their main implementation is.",
+      ],
+      abstract: [
+        "Using proxies that delegate their own logic to another contract is becoming an increasingly popular technique for both smart contract upgradeability and creating cheap clone contracts.",
+        "We don\u2019t believe there is value in standardizing any particular implementation of a DelegateProxy, given its simplicity, but we believe there is a lot of value in agreeing on an interface all proxies use that allows for a standard way to operate with proxies.",
+      ],
       value: 5,
     },
     {
@@ -2223,6 +3063,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-900",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/900",
+      abstract: [
+        "The following standard describes a common staking interface allowing for easy to use staking systems. The interface is kept simple allowing for various use cases to be implemented. This standard describes the common functionality for staking as well as providing information on stakes.",
+      ],
       value: 5,
     },
     {
@@ -2248,6 +3091,9 @@ export const data = {
       ],
       url: "https://eips.ethereum.org/EIPS/eip-918",
       category: "ERC",
+      summary: [
+        "A specification for a standardized Mineable Token that uses a Proof of Work algorithm for distribution.",
+      ],
       abstract: [
         "This specification describes a method for initially locking tokens within a token contract and slowly dispensing them with a mint() function which acts like a faucet. This mint() function uses a Proof of Work algorithm in order to minimize gas fees and control the distribution rate. Additionally, standardization of mineable tokens will give rise to standardized CPU and GPU token mining software, token mining pools and other external tools in the token mining ecosystem.",
       ],
@@ -2260,6 +3106,9 @@ export const data = {
       author: "Nick Johnson",
       url: "https://eips.ethereum.org/EIPS/eip-926",
       category: "ERC",
+      abstract: [
+        "This EIP specifies a registry for address metadata, permitting both contracts and external accounts to supply metadata about themselves to onchain and offchain callers. This permits use-cases such as generalised authorisations, providing token acceptance settings, and claims registries.",
+      ],
       value: 5,
     },
     {
@@ -2269,6 +3118,9 @@ export const data = {
       author: "Nick Johnson",
       url: "https://eips.ethereum.org/EIPS/eip-927",
       category: "ERC",
+      abstract: [
+        "This EIP specifies a generic authorisation mechanism, which can be used to implement a variety of authorisation patterns, replacing approvals in ERC20, operators in ERC777, and bespoke authorisation patterns in a variety of other types of contract.",
+      ],
       value: 5,
     },
     {
@@ -2280,6 +3132,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://gitter.im/ethereum/topics/topic/5ac4d974109bb043328911ce/eip-969-discussion",
+      summary: [
+        "This EIP modifies ethash in order to break ASIC miners specialized for the current ethash mining algorithm.",
+      ],
+      abstract: [
+        "There are companies who currently have dedicated hardware based ethereum miners in production, and may be actively mining. This EIP aims to \u201cpoison the well\u201d by modifying the block mining algorithm in a low risk manner that may \u201cbreak\u201d these miners if they are in-fact built as traditional ASICs.",
+      ],
       value: 5,
     },
     {
@@ -2290,6 +3148,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1010",
       category: "Core",
       discussions: "https://github.com/andywesley/EIPs/issues/1",
+      summary: [
+        "This document proposes to improve the uniformity of ether distribution between wallet address 0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B and wallet address 0x15E55EF43efA8348dDaeAa455F16C43B64917e3c which are currently experiencing a significant non-uniformity.",
+      ],
+      abstract: [
+        "As of the date of this EIP, the difference in balance between address 0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B and address 0x15E55EF43efA8348dDaeAa455F16C43B64917e3c is far from equitable or uniform, with the former having more than 365,000 ether more than the latter. The distribution of ether between these two addresses must be improved in order to protect the Ethereum economy from centralized control. This will be accomplished by transferring 100,000 ether from the former address to the latter. This is a properly motivated improvement in keeping with the core Ethereum philosophy of decentralization.",
+      ],
       value: 5,
     },
     {
@@ -2300,6 +3164,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1011",
       category: "Core",
       discussions: "https://github.com/djrtwo/EIPs/issues/5",
+      summary: [
+        "Specification of the first step to transition Ethereum main net from Proof of Work (PoW) to Proof of Stake (PoS). The resulting consensus model is a PoW/PoS hybrid.",
+      ],
+      abstract: [
+        "This EIP specifies a hybrid PoW/PoS consensus model for Ethereum main net. Existing PoW mechanics are used for new block creation, and a novel PoS mechanism called Casper the Friendly Finality Gadget (FFG) is layered on top using a smart contract.",
+        "Through the use of Ether deposits, slashing conditions, and a modified fork choice, FFG allows the underlying PoW blockchain to be finalized. As network security is greatly shifted from PoW to PoS, PoW block rewards are reduced.",
+        "This EIP does not contain safety and liveness proofs or validator implementation details, but these can be found in the Casper FFG paper and Validator Implementation Guide respectively.",
+      ],
       value: 5,
     },
     {
@@ -2311,6 +3183,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-dynamic-block-rewards-with-governance-contract/204",
+      summary: [
+        "This EIP changes the block reward step by instead of setting it to be hard coded on the clients and to be given to the miner/validator etherbase, it should instead go to an address decided by an on-chain contract, with hard limits on how it would be issued (six month lock-in; issuance can only decrease or be maintained, but not increase;). A decision method is suggested but not essential to the notion of this EIP. This would not be a generic governance solution, which is a much broader and harder topic, would not affect technical upgrade decisions or other hard forks, but seen as a forum to attempt to prevent contentious hard forks that can be solved with the issuance.",
+      ],
       value: 5,
     },
     {
@@ -2322,6 +3197,13 @@ export const data = {
       category: "ERC",
       discussions:
         "https://www.reddit.com/r/raredigitalart/comments/8hfh1g/erc20_metadata_extension_eip_1046/",
+      summary: [
+        "Optionally extend ERC20 token interface to support the same metadata standard as ERC721 tokens.",
+      ],
+      abstract: [
+        "The ERC721 standard introduced the tokenURI parameter for non-fungible tokens to handle metadata such as:",
+        "Metadata is critical for assets such as crypto-collectibles and video game assets to have real utility and value. However, not all crypto-collectibles and gaming assets will be non-fungible. It is critical for fungible ERC20 tokens to have a metadata standard like that of ERC721 tokens. Standardization of metadata between ERC20 and ERC721 will simplify development of dApps and infrastructure that must support both fungible and non-fungible assets.",
+      ],
       value: 5,
     },
     {
@@ -2333,6 +3215,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-arithmetic-overflow-detection-for-the-evm/261",
+      abstract: [
+        "This EIP adds overflow checking for EVM arithmetic operations, and two new opcodes that check and clear the overflow flags.",
+      ],
       value: 5,
     },
     {
@@ -2343,6 +3228,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1056",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1056",
+      summary: [
+        "A registry for key and attribute management of lightweight blockchain identities.",
+      ],
+      abstract: [
+        "This ERC describes a standard for creating and updating identities with a limited use of blockchain resources. An identity can have an unlimited number of delegates and attributes associated with it. Identity creation is as simple as creating a regular key pair ethereum account, which means that it\u2019s free (no gas costs) and all ethereum accounts are valid identities. Furthermore this ERC is fully DID compliant.",
+      ],
       value: 5,
     },
     {
@@ -2359,6 +3250,13 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-progpow-a-programmatic-proof-of-work/272",
+      summary: [
+        "A new Proof-of-Work algorithm to replace Ethash that utilizes almost all parts of commodity GPUs.",
+      ],
+      abstract: [
+        "ProgPoW is a proof-of-work algorithm designed to close the efficiency gap available to specialized ASICs. It utilizes almost all parts of commodity hardware (GPUs), and comes pre-tuned for the most common hardware utilized in the Ethereum network.",
+        "This document presents an overview of the algorithm and examines what it means to be \u201cASIC-resistant.\u201d Next, we compare existing PoW designs by analyzing how each algorithm executes in hardware. Finally, we present the detailed implementation by walking through the code.",
+      ],
       value: 5,
     },
     {
@@ -2370,6 +3268,13 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-1062-formalize-ipfs-hash-into-ens-ethereum-name-service-resolver/281",
+      summary: [
+        "To specify the mapping protocol between resources stored on IPFS and ENS(Ethereum Naming Service).",
+      ],
+      abstract: [
+        "The following standard details the implementation of how to combine the IPFS cryptographic hash unique fingerprint with ENS public resolver. This standard provides a functionality to get and set IPFS online resources to ENS resolver.",
+        "We think that this implementation is not only aim to let more developers and communities to provide more use cases, but also leverage the human-readable features to gain more user adoption accessing decentralized resources. We considered the IPFS ENS resolver mapping standard a cornerstone for building future Web3.0 service.",
+      ],
       value: 5,
     },
     {
@@ -2381,6 +3286,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-1066-ethereum-status-codes-esc/",
+      summary: ["Broadly applicable status codes for smart contracts."],
+      abstract: [
+        "This standard outlines a common set of status codes in a similar vein to HTTP statuses. This provides a shared set of signals to allow smart contracts to react to situations autonomously, expose localized error messages to users, and so on.",
+        "The current state of the art is to either revert on anything other than a clear success (ie: require human intervention), or return a low-context true or false. Status codes are similar-but-orthogonal to reverting with a reason, but aimed at automation, debugging, and end-user feedback (including translation). They are fully compatible with both revert and revert-with-reason.",
+        "As is the case with HTTP, having a standard set of known codes has many benefits for developers. They remove friction from needing to develop your own schemes for every contract, makes inter-contract automation easier, and makes it easier to broadly understand which of the finite states your request produced. Importantly, it makes it much easier to distinguish between expected errors states, truly exceptional conditions that require halting execution, normal state transitions, and various success cases.",
+      ],
       value: 5,
     },
     {
@@ -2392,6 +3303,13 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc1077-and-1078-the-magic-of-executable-signed-messages-to-login-and-do-actions/351",
+      summary: [
+        "A standard interface for gas abstraction in top of smart contracts.",
+        "Allows users to offer EIP-20 token for paying the gas used in a call.",
+      ],
+      abstract: [
+        "A main barrier for adoption of DApps is the requirement of multiple tokens for executing in chain actions. Allowing users to sign messages to show intent of execution, but allowing a third party relayer to execute them can circumvent this problem, while ETH will always be required for ethereum transactions, it\u2019s possible for smart contract to take EIP-191 signatures and forward a payment incentive to an untrusted party with ETH for executing the transaction.",
+      ],
       value: 5,
     },
     {
@@ -2403,6 +3321,37 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc1077-and-1078-the-magic-of-executable-signed-messages-to-login-and-do-actions/351",
+      summary: [
+        "The unique identifier of the user is a contract which implements both Identity and the Executable Signed Messages ERCs. The user should not need provide this address directly, only a ens name pointing to it. These types of contracts are indirectly controlled by private keys that can sign messages indicating intents, which are then deployed to the contract by a third party (or a decentralized network of deployers).",
+        "In this context, therefore, a device \u201clogging into\u201d an app using an identity, means that the device will generate a private key locally and then request an authorization to add that key as one of the signers of that identity, with a given set of permissions. Since that private key is only used for signing messages, it is not required to hold ether, tokens or assets, and if lost, it can be simply be replaced by a new one \u2013\u00a0the user\u2019s funds are kept on the identity contract.",
+        "In this context, ethereum accounts are used in a manner more similar to auth tokens, rather than unique keys.",
+        "The login process is as follows:",
+        "The first step of the process is to request from the user the ENS name that points to their identity. If the user doesn\u2019t have a login set up, the app should\u2013if they have an integrated identity manager\u2013provide an option to provide a subdomain or a name they own.",
+        "UX Note: there are many ways to provide this interface, the app can ask if they want to signup/login before hand or simply directly ask them to type the name. Note that since it\u2019s trivial to verify if a username exists, your app should adapt to it gracefully and not require the user to type their name twice. If they ask to signup and provide a name that exists then ask them if they want to login using that name, or similarly if they ask to connect to an existing name but type a non-existent name show them a nice alert and ask them if they want to create that name now. Don\u2019t force them to type the same name twice in two different fields.",
+        "If the user doesn\u2019t have an identity, the app should provide the option to create one for them. Each app must have one or more domains they control which they can create immediate subdomains on demand. The app therefore will make these actions on the background:",
+        "All those steps can be designed to be set up in a single ethereum transaction. Since this step is not free, the app reserves the right to charge for registering users, or require the user to be verified in a sybil resistant manner of the app\u2019s choosing (captcha, device ID registration, proof of work, etc)",
+        "The user shouldn\u2019t be forced to wait for transaction confirmation times. Instead, have an indicator somewhere on the app the shows the progress and then allow the user to interact with your app normally. It\u2019s unlikely that they\u2019ll need the identity in the first few minutes and if something goes wrong (username gets registered at the same time), you can then ask the user for an action.",
+        "Implementation note: in order to save gas, some of these steps can be done in advance. The app can automatically deploy a small number of contracts when the gas price is low, and set up all their main variables to be 0xFFFFFF\u2026FFFFF. These should be considered \u2018vacant\u2019 and when the user registers one, they will get a gas discount for freeing up space on the chain. This has the added benefit of allowing the user a choice in contract address/icon.",
+        "If the user wants to connect with an existing identity, then the first thing the app needs to understand is what level of privilege it\u2019s going to ask for:",
+        "Manager the higher level, allows the key to initiate or sign transactions that change the identity itself, like adding or removing keys. An app should only require this level if it integrates an identity manager. Depending on how the identity is set up, it might require signature from more keys before these transactions can be deployed.",
+        "Action this level allows the key to initiate or sign transactions on address other than itself. It can move funds, ether, assets etc. An app should only require this level of privilege if it\u2019s a general purpose wallet or browser for sending ethereum transactions. Depending on how the identity is set up, it might require signature from more keys before these transactions can be deployed.",
+        "Encryption the lower level has no right to initiate any transactions, but it can be used to represent the user in specific instances or off-chain signed messages. It\u2019s the ideal level of privilege for games, chat or social media apps, as they can be used to sign moves, send messages, etc. If a game requires actual funds (say, to start a game with funds in stake) then it should still use the encryption level, and then require the main wallet/browser of the user to sign messages using the ethereum URI standard.",
+        "Once the desired level is known, the app must take these steps:",
+        "Here\u2019s an example of a EIP681 compatible address to add a public key generated locally in the app:",
+        "ethereum:bob.example.eth?function=addKey(address='0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef',uint=1)",
+        "If adding the new key requires multiple signatures, or if the app receiving that request exclusiveky deals with executable signed messages and has no ether on itself, then it should follow the steps in the next section on how to request transactions.",
+        "As before, the user shouldn\u2019t be forced to wait for transaction confirmation times. Instead, have an indicator somewhere on the app the shows the progress and then allow the user to interact with your app normally.",
+        "After step 2, the end result should be that your app should have the identity address of the user, their main ens name and a private key, whose public account is listed on the identity as one of their keys, with roles being either manager, action or encryption. Now it can start using that information to sign and execute transactions.",
+        "Not all transactions need to be on chain, actually most common uses of signed messages should be off chain. If you have a chat app, for instance, you can use the local key for signing messages and sending it to the other parties, and they can just query the identity contract to see if that key actually comes from the user. If you have a game with funds at stake, only the first transaction moving funds and setting up the initial game needs to be executed by the identity: at each turn the players can sign a hash of the current state of the board and at the end, the last two plays can be used to determine the winner. Notice that keys can be revoked at any time, so your app should take that in consideration, for instance saving all keys at the start of the game. Keys that only need this lower level of privilege, should be set at level 4 (encryption).",
+        "Once you decided you actually need an on-chain transaction, follow these steps:",
+        "After having all the signed executable message, we need to deploy it to the chain. If the transaction only requires a single signature, then the app provider can deploy it themselves. Send the transaction to the from address and attempt to call the function executeSigned, using the parameters and signature you just collected.",
+        "If the transaction need to collect more signatures or the app doesn\u2019t have a deployable server, the app should follow these steps:",
+        "The goal is to keep broadcasting signatures via whisper until a node that is willing to deploy them is able to collect all messages.",
+        "Once you\u2019ve followed the above steps, watch the transaction pool to any transaction to that address and then take the user to your app. Once you seen the desired transaction, you can stop showing the QRcode and proceed with the app, while keeping some indication that the transaction is in progress. Subscribe to the event ExecutedSigned of the desired contract: once you see the transaction with the nonce, you can call it a success. If you see a different transaction with the same or higher nonce (or timestamp) then you consider the transaction permanently failed and restart the process.",
+      ],
+      abstract: [
+        "This presents a method to replace the usual signup/login design pattern with a minimal ethereum native scheme, that doesn\u2019t require passwords, backing up private keys nor typing seed phrases. From the user point of view it will be very similar to patterns they\u2019re already used to with second factor authentication (without relying in a central server), but for dapp developers it requires a new way to think about ethereum transactions.",
+      ],
       value: 5,
     },
     {
@@ -2414,6 +3363,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-1080-recoverabletoken-standard/364",
+      summary: [
+        "A standard interface for tokens that support chargebacks, theft prevention, and lost & found resolutions.",
+      ],
+      abstract: [
+        "The following standard allows for the implementation of a standard API for tokens extending ERC-20 or ERC-791. This standard provides basic functionality to recover stolen or lost accounts, as well as provide for the chargeback of tokens.",
+      ],
       value: 5,
     },
     {
@@ -2424,6 +3379,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1081",
       category: "ERC",
       discussions: "https://gitter.im/bounties-network/Lobby",
+      summary: [
+        "A standard contract and interface for issuing bounties on Ethereum, usable for any type of task, paying in any ERC20 token or in ETH.",
+      ],
+      abstract: [
+        "In order to encourage cross-platform interoperability of bounties on Ethereum, and for easier reputational tracking, StandardBounties can facilitate the administration of funds in exchange for deliverables corresponding to a completed task, in a publicly auditable and immutable fashion.",
+      ],
       value: 5,
     },
     {
@@ -2435,6 +3396,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-net-storage-gas-metering-for-the-evm/383",
+      abstract: [
+        "This EIP proposes a change to how gas is charged for EVM SSTORE operations, in order to reduce excessive gas costs in situations where these are unwarranted, and to enable new use-cases for contract storage.",
+      ],
       value: 5,
     },
     {
@@ -2446,6 +3410,13 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-1102-opt-in-provider-access/414",
+      summary: [
+        "This proposal describes a communication protocol between dapps and Ethereum-enabled DOM environments that allows the Ethereum-enabled DOM environment to choose what information to supply the dapp with and when.",
+      ],
+      abstract: [
+        "The previous generation of Ethereum-enabled DOM environments follows a pattern of injecting a provider populated with accounts without user consent. This puts users of such environments at risk because malicious websites can use these accounts to view detailed account information and to arbitrarily initiate unwanted transactions on a user\u2019s behalf.",
+        "This proposal outlines a protocol in which Ethereum-enabled DOM environments can choose to expose no accounts until the user approves account access.",
+      ],
       value: 5,
     },
     {
@@ -2457,6 +3428,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-1109-remove-call-costs-for-precompiled-contracts/447",
+      summary: [
+        "This EIP creates a specific opcode named PRECOMPILEDCALL to call Precompiled contracts without the costs of a normal CALL.",
+      ],
+      abstract: [
+        "This EIP tries to resolve the problem of high gas consumption when calling precompiled contracts with a small gas cost. Using this opcode for calling precompiled contracts allows to define precompiled contracts whose effective cost it is less than 700.",
+      ],
       value: 5,
     },
     {
@@ -2468,6 +3445,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-sda-standardised-dapp-announcements/508?u=thunderdeliverer",
+      summary: [
+        "Standardisation of announcements in DAPPs and services on Ethereum network. This ERC provides proposed mechanics to increase the quality of service provided by DAPP developers and service providers, by setting a framework for announcements. Be it transitioning to a new smart contract or just freezing the service for some reason.",
+      ],
+      abstract: [
+        "The proposed ERC defines format on how to post announcements about the service as well as how to remove them. It also defines mechanics on posting permissions and human friendly interface.",
+      ],
       value: 5,
     },
     {
@@ -2478,6 +3461,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1132",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1132",
+      summary: [
+        "An extension to the ERC20 standard with methods for time-locking of tokens within a contract.",
+      ],
+      abstract: [
+        "This proposal provides basic functionality to time-lock tokens within an ERC20 smart contract for multiple utilities without the need of transferring tokens to an external escrow smart contract. It also allows fetching balance of locked and transferable tokens.",
+        "Time-locking can also be achieved via staking (#900), but that requires transfer of tokens to an escrow contract / stake manager, resulting in the following six concerns:",
+      ],
       value: 5,
     },
     {
@@ -2488,6 +3478,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1175",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1182",
+      summary: [
+        "Make wallets and shops created from certified contracts make erc20 tokens easy to use for commerce.",
+        "",
+      ],
+      abstract: [
+        "The mutual trust between the wallet and the shop created by the authenticated contract allows you to pay for and purchase items at a simple process.",
+      ],
       value: 5,
     },
     {
@@ -2498,6 +3495,10 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1178",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1179",
+      summary: ["A standard interface for multi-class fungible tokens."],
+      abstract: [
+        "This standard allows for the implementation of a standard API for multi-class fungible tokens (henceforth referred to as \u201cMCFTs\u201d) within smart contracts. This standard provides basic functionality to track and transfer ownership of MCFTs.",
+      ],
       value: 5,
     },
     {
@@ -2509,6 +3510,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip1185-dns-resolver-profile-for-ens/1589",
+      abstract: [
+        "This EIP defines a resolver profile for ENS that provides features for storage and lookup of DNS records. This allows ENS to be used as a store of authoritative DNS information.",
+      ],
       value: 5,
     },
     {
@@ -2519,6 +3523,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1186",
       category: "Interface",
       discussions: "https://github.com/ethereum/EIPs/issues/1186",
+      summary: [
+        "One of the great features of Ethereum is the fact, that you can verify all data of the state. But in order to allow verification of accounts outside the client, we need an additional function delivering us the required proof. These proofs are important to secure Layer2-Technologies.",
+      ],
+      abstract: [
+        "Ethereum uses a Merkle Tree to store the state of accounts and their storage. This allows verification of each value by simply creating a Merkle Proof. But currently, the standard RPC-Interface does not give you access to these proofs. This EIP suggests an additional RPC-Method, which creates Merkle Proofs for Accounts and Storage Values.",
+        "Combined with a stateRoot (from the blockheader) it enables offline verification of any account or storage-value. This allows especially IOT-Devices or even mobile apps which are not able to run a light client to verify responses from an untrusted source only given a trusted blockhash.",
+      ],
       value: 5,
     },
     {
@@ -2529,6 +3540,10 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1203",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1203",
+      summary: ["A standard interface for multi-class tokens (MCTs)."],
+      abstract: [
+        "The following standard allows for the implementation of a standard API for MCTs within smart contracts. This standard provides basic functionality to track, transfer, and convert MCTs.",
+      ],
       value: 5,
     },
     {
@@ -2539,6 +3554,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1207",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1207",
+      summary: [
+        "DAuth is a standard interface for accessing authorization delegation between smart contracts and users.",
+      ],
+      abstract: [
+        "The DAuth protocol defines a set of standard API allowing identity delegations between smart contracts without the user\u2019s private key. Identity delegations include accessing and operating a user\u2019s data and assets contained in the delegated contracts.",
+      ],
       value: 5,
     },
     {
@@ -2549,6 +3570,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1227",
       category: "Core",
       discussions: "https://github.com/ethereum/EIPs/issues/1227",
+      summary: [
+        "This EIP proposes to permanently disable the \u201cdifficulty bomb\u201d and reset the block reward to pre-Byzantium levels.",
+      ],
+      abstract: [
+        "Starting with FORK_BLKNUM the client will calculate the difficulty without the additional exponential component. Furthermore, block rewards will be adjusted to a base of 5 ETH, uncle and nephew rewards will be adjusted accordingly.",
+      ],
       value: 5,
     },
     {
@@ -2559,6 +3586,15 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1261",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1261",
+      summary: ["A standard interface for Membership Verification Token(MVT)."],
+      abstract: [
+        "The following standard allows for the implementation of a standard API for Membership Verification Token within smart contracts(called entities). This standard provides basic functionality to track membership of individuals in certain on-chain \u2018organizations\u2019. This allows for several use cases like automated compliance, and several forms of governance and membership structures.",
+        "We considered use cases of MVTs being assigned to individuals which are non-transferable and revocable by the owner. MVTs can represent proof of recognition, proof of membership, proof of right-to-vote and several such otherwise abstract concepts on the blockchain. The following are some examples of those use cases, and it is possible to come up with several others:",
+        "In general, an individual can have different memberships in their day to day life. The protocol allows for the creation of software that puts everything all at one place. Their identity can be verified instantly. Imagine a world where you don\u2019t need to carry a wallet full of identity cards (Passport, gym membership, SSN, Company ID etc) and organizations can easily keep track of all its members. Organizations can easily identify and disallow fake identities.",
+        "Attributes are a huge part of ERC-1261 which help to store identifiable information regarding its members. Polls can make use of attributes to calculate the voterbase. E.g: Users should belong to USA entity and not belong to Washington state attribute to be a part of a poll.",
+        "There will exist a mapping table that maps attribute headers to an array of all possible attributes. This is done in order to subdivide entities into subgroups which are exclusive and exhaustive. For example, header: blood group alphabet Array: [ o, a, b, ab ] header: blood group sign Array: [ +, - ]",
+        "NOT an example of exclusive exhaustive: Header: video subscription Array: [ Netflix, HBO, Amazon ] Because a person is not necessitated to have EXACTLY one of the elements. He or she may have none or more than one.",
+      ],
       value: 5,
     },
     {
@@ -2570,6 +3606,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-1276-eliminate-difficulty-bomb-and-adjust-block-reward-on-constantinople-shift/908",
+      summary: [
+        "The average block times are increasing due to the factor of difficulty logic well known as difficulty bomb. This EIP proposes to eliminate the difficulty bomb forever and to reduce the block rewards with the Constantinople fork, the second part of the Metropolis fork.",
+      ],
+      abstract: [
+        "Starting with CNSTNTNPL_FORK_BLKNUM the client will calculate the difficulty without considering the current block number. Furthermore, block rewards will be adjusted to a base of 2 ETH, uncle and nephew rewards will be adjusted accordingly.",
+      ],
       value: 5,
     },
     {
@@ -2581,6 +3623,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-1285-increase-gcallstipend-gas-in-the-call-opcode/941",
+      summary: [
+        "Increase the Gcallstipend fee parameter in the CALL opcode from 2,300 to 3,500 gas units.",
+      ],
+      abstract: [
+        "Currently, the CALL opcode forwards a stipend of 2,300 gas units for a non zero value CALL operations where a contract is called. This stipend is given to the contract to allow execution of its fallback function. The stipend given is intentionally small in order to prevent the called contract from spending the call gas or performing an attack (like re-entrancy). While the stipend is small it should still give the sufficient gas required for some cheap opcodes like LOG, but it\u2019s not enough for some more complex and modern logics to be implemented. This EIP proposes to increase the given stipend from 2,300 to 3,500 to increase the usability of the fallback function.",
+      ],
       value: 5,
     },
     {
@@ -2591,6 +3639,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1295",
       category: "Core",
       discussions: "https://github.com/atlanticcrypto/Discussion/issues/1",
+      summary: [
+        "Network security and overall ecosystem maturity warrants the continued incentivization of Proof of Work participation but may allow for a reduction in ancillary ETH issuance and the delay of the Difficulty Bomb. This EIP proposes a reduction of Uncle and removal of Nephew rewards while delaying the Difficulty Bomb with the Constantinople hard fork.",
+      ],
+      abstract: [
+        "Starting with CNSTNTNPL_FORK_BLKNUM the client will calculate the difficulty based on a fake block number suggesting the client that the difficulty bomb is adjusting around 6 million blocks later than previously specified with the Homestead fork.",
+        "Furthermore, Uncle rewards will be adjusted and Nephew rewards will be removed to eliminate excess ancillary ETH issuance. The current ETH block reward of 3 ETH will remain constant.",
+      ],
       value: 5,
     },
     {
@@ -2606,6 +3661,10 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1319",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1319",
+      summary: ["A standard interface for smart contract package registries."],
+      abstract: [
+        "This EIP specifies an interface for publishing to and retrieving assets from smart contract package registries. It is a companion EIP to 1123 which defines a standard for smart contract package manifests.",
+      ],
       value: 5,
     },
     {
@@ -2616,6 +3675,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1328",
       category: "ERC",
       discussions: "https://ethereum-magicians.org/t/wallet-connect-eip/850",
+      summary: [
+        "A standard to create WalletConnect URIs to initiate connections between applications and wallets.",
+      ],
+      abstract: [
+        "This standard defines how the data to connect some application and a wallet can be encoded with a URI. This URI can then be shown either as a QR code or for mobile to mobile as a link.",
+      ],
       value: 5,
     },
     {
@@ -2638,6 +3703,13 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-1337-subscriptions-on-the-blockchain/4422",
+      summary: [
+        "Monthly subscriptions are a key monetization channel for legacy web, and arguably they are the most healthy monetization channel for businesses on the legacy web (especially when compared to ad/surveillance) based models. They are arguably more healthy than a token based economic system (depending upon the vesting model of the ICO) because",
+        "For these reasons, we think it\u2019s imperative to create a standard way to do \u2018subscriptions\u2019 on Ethereum.",
+      ],
+      abstract: [
+        "To enable replay-able transactions users sign a concatenated bytes hash that is composed of the input data needed to execute the transaction. This data is stored off chain by the recipient of the payment and is transmitted to the customers smart contract for execution alongside a provided signature.",
+      ],
       value: 5,
     },
     {
@@ -2649,6 +3721,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-1352-specify-restricted-address-range-for-precompiles-system-contracts/1151",
+      summary: [
+        "Specify an Ethereum address range occupied by precompiles and future system contracts. Regular accounts and contracts cannot obtain such an address.",
+      ],
+      abstract: [
+        "The address range between 0x0000000000000000000000000000000000000000 and 0x000000000000000000000000000000000000ffff is reserved for precompiles and system contracts.",
+      ],
       value: 5,
     },
     {
@@ -2660,6 +3738,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-1380-reduced-gas-cost-for-call-to-self/1242",
+      abstract: [
+        "Reduce the gas cost for call instructions, when the goal is to run a new instance of the currently loaded contract.",
+      ],
       value: 5,
     },
     {
@@ -2700,6 +3781,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1417",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1417",
+      summary: [
+        "A standard interface for Polls to be used with EIP-1261 (MVT).",
+      ],
+      abstract: [
+        "The following standard allows for the implementation of a standard API for polls to be used with MVTs (refer EIP-1261). The standard provides basic functionality to vote, unvote, tally votes, get voter turnout, and a lot more. The poll standard attempts to modularize blockchain voting by breaking down a poll into 4 crucial building blocks: voterbase qualification, vote weight calculation, vote consequences, and vote tallying. By creating a common interface for polls that have different kinds of building blocks, the poll standard makes it possible to make interactive front end applications which can seamlessly get data from a poll contract in order to bring transparency into consensus and decision making on the blockchain.",
+        "We considered the usage of polls with MVTs because MVTs serve as a permissioning mechanism. The manual permissioning of polls allows for vote weightage functions to take up several shapes and forms. Hence the voterbase function applies several logical checks on the vote sender to confirm that they are member(see EIP 1261) of a certain entity or combination of entities. For the specification of the nature of voting, we define the vote weight function. The vote weight function decides how much of vote share each voter will receive and this can be based on several criteria, some of which are listed below in this article. There are certain kinds of polls that enforce certain consequences on the voter, for example a poll may require a voter to lock in a certain amount of tokens, or require the voter to pay a small fee. These on-chain consequences can be coded into the consequence module of the poll standard. Finally, the last module is where the votes are added. A ballot for each candidate is updated whenever relevant, depending on the vote value, and the corresponding NoV count(number of voters). This module is common for most polls, and is the most straightforward. Polls may be time bound, ie. having a finish time, after which no votes are recorded, or be unbound, such that there is no finish time. The following are some examples of specific polls which leverage the flexibility of the poll standard, and it is possible to come up with several others:",
+        "The poll standard is intended to be a smart contract standard that makes poll deployment flexible, transparent and accessible.",
+      ],
       value: 5,
     },
     {
@@ -2711,6 +3800,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethresear.ch/t/avatar-system-and-universal-wallet-for-ethereum-address/3473",
+      summary: [
+        "Contracts are open source based. And most developers use the public contracts at the start of the project to modify or simply include them. This is project-oriented centralized development and I think it is a waste of resources. Therefore, we propose to make dApp or contracts component-ready for use in other services.",
+      ],
+      abstract: [
+        "There have been suggestions for modified tokens based on erc20, but since many tokens have already been built on erc20, it is necessary to increase the utilization of already developed erc20 tokens. Therefore, we propose a universal wallet that can use erc20 tokens universally. We also propose a component dApp that allows you to create and save your avatar (& social badge system), and use it immediately in other services. All of the dApps suggested in this document are based on decentralized development and use that anyone can create and participate in.",
+      ],
       value: 5,
     },
     {
@@ -2722,6 +3817,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-1444-localized-messaging-with-signal-to-text/",
+      summary: [
+        "A method of converting machine codes to human-readable text in any language and phrasing.",
+      ],
+      abstract: [
+        "An on-chain system for providing user feedback by converting machine-efficient codes into human-readable strings in any language or phrasing. The system does not impose a list of languages, but rather lets users create, share, and use the localizated text of their choice.",
+      ],
       value: 5,
     },
     {
@@ -2733,6 +3834,13 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-proposal-ldgrtoken-a-compatible-security-token-for-issuing-and-trading-sec-compliant-securities/1468",
+      summary: [
+        "ERC-1450 is an ERC-20 compatible token that enables issuing tokens representing securities that are required to comply with one or more of the following Securities Act Regulations: Regulation Crowdfunding, Regulation D, and Regulation A.",
+      ],
+      abstract: [
+        "ERC-1450 facilitates the recording of ownership and transfer of securities sold in compliance with the Securities Act Regulations CF, D and A. The issuance and trading of securities is subject to the Securities Exchange Commission (SEC) and specific U.S. state blue sky laws and regulations.",
+        "ERC-1450 manages securities ownership during issuance and trading. The Issuer is the only role that should create a ERC-1450 and assign the RTA. The RTA is the only role that is allowed to execute ERC-1450\u2019s mint, burnFrom, and transferFrom functions. No role is allowed to execute ERC-1450\u2019s transfer function.",
+      ],
       value: 5,
     },
     {
@@ -2744,6 +3852,13 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-1462-base-security-token/1501",
+      summary: [
+        "An extension to ERC-20 standard token that provides compliance with securities regulations and legal enforceability.",
+      ],
+      abstract: [
+        "This EIP defines a minimal set of additions to the default token standard such as ERC-20, that allows for compliance with domestic and international legal requirements. Such requirements include KYC (Know Your Customer) and AML (Anti Money Laundering) regulations, and the ability to lock tokens for an account, and restrict them from transfer due to a legal dispute. Also the ability to attach additional legal documentation, in order to set up a dual-binding relationship between the token and off-chain legal entities.",
+        "The scope of this standard is being kept as narrow as possible to avoid restricting potential use-cases of this base security token. Any additional functionality and limitations not defined in this standard may be enforced on per-project basis.",
+      ],
       value: 5,
     },
     {
@@ -2754,6 +3869,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1470",
       category: "None",
       discussions: "https://github.com/ethereum/EIPs/issues/1469",
+      summary: [
+        "This EIP proposes a classification scheme for security weaknesses in Ethereum smart contracts.",
+      ],
+      abstract: [
+        "The SWC is a smart contract specific software weakness classification scheme for developers, tool vendors and security practitioners. The SWC is loosely aligned to the terminologies and structure used in the Common Weakness Enumeration - CWE scheme while overlaying a wide range of weakness variants that are specific to smart contracts.",
+        "The goals of the SWC scheme are as follows:",
+      ],
       value: 5,
     },
     {
@@ -2765,6 +3887,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-remote-procedure-call-specification/1537",
+      summary: [
+        "This proposal defines a standard set of remote procedure call methods that an Ethereum node should implement.",
+      ],
+      abstract: [
+        "Nodes created by the current generation of Ethereum clients expose inconsistent and incompatible remote procedure call (RPC) methods because no formal Ethereum RPC specification exists. This proposal standardizes such a specification to provide developers with a predictable Ethereum RPC interface regardless of underlying node implementation.",
+      ],
       value: 5,
     },
     {
@@ -2776,6 +3904,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/define-a-maximum-block-timestamp-drift/1556",
+      summary: [
+        "Include an explicit definition of the acceptable timestamp drift in the protocol specification.",
+      ],
+      abstract: [
+        "On the basis that both Geth and Parity implement the same timestamp validation requirements, this should be written into the reference specification.",
+      ],
       value: 5,
     },
     {
@@ -2791,6 +3925,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1484",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1495",
+      summary: [
+        "A protocol for aggregating digital identity information that\u2019s broadly interoperable with existing, proposed, and hypothetical future digital identity standards.",
+      ],
+      abstract: [
+        "This EIP proposes an identity management and aggregation framework on the Ethereum blockchain. It allows entities to claim an Identity via a singular Identity Registry smart contract, associate it with Ethereum addresses in a variety of meaningful ways, and use it to interact with smart contracts. This enables arbitrarily complex identity-related functionality. Notably (among other features) ERC-1484 Identities: are self-sovereign, can natively support ERC-725 and ERC-1056 identities, are DID compliant, and can be fully powered by meta-transactions.",
+      ],
       value: 5,
     },
     {
@@ -2802,6 +3942,13 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/anti-eth-asic-mining-eip-1488-pr/1807",
+      summary: [
+        "This EIP modifies ethash in order to break ASIC miners specialized for the current ethash mining algorithm.",
+      ],
+      abstract: [
+        "This EIP pursue \u201cobsolete current ASIC miners\u201d by modifying PoW algorithm in a very low risk manner and update to latest hash algorithm from deprecated FNV Hash algorithms.",
+        "Following TEthashV1 algorithm suggests safe transition of PoW algorithms and secure the FNV Algorithm in MIX Parts.",
+      ],
       value: 5,
     },
     {
@@ -2812,6 +3959,10 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1491",
       category: "ERC",
       discussions: "https://github.com/freeworkculture/kazini/issues/11",
+      summary: ["A standard interface for Human Capital Accounting tokens."],
+      abstract: [
+        "The following standard allows for the implementation of a standard API for HUCAP tokens within smart contracts. This standard provides basic functionality to discover, track and transfer the motivational hierarchy of human resources. While blockchain architecture has succeeded in the financialisation of integrity by way of transparency; correspondingly real world outcomes will be proportional to the degree of individualisation of capital by way of knowledge.",
+      ],
       value: 5,
     },
     {
@@ -2828,6 +3979,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1504",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1503",
+      summary: [
+        "A standard interface/guideline that makes a smart contract upgradable.",
+      ],
+      abstract: [
+        "Ethereum smart contracts have suffered a number of security issues in the past few years. The cost of fixing such a bug in smart contract is significant; for example, the consequences of The DAO attack in June 2016 caused tremendous financial loss and the hard fork of Ethereum blockchain.",
+        "The following standard makes it possible to upgrade a standard API within smart contracts. This standard provides basic functionalities to upgrade the operations of the contract without data migration. To ensure the decentralization/community interests, it also contains a voting mechanism to control the upgrading process.",
+      ],
       value: 5,
     },
     {
@@ -2839,6 +3997,9 @@ export const data = {
       category: "Interface",
       discussions:
         "https://github.com/AndreaLanfranchi/EthereumStratum-2.0.0/issues",
+      abstract: [
+        "This draft contains the guidelines to define a new standard for the Stratum protocol used by Ethereum miners to communicate with mining pool servers.",
+      ],
       value: 5,
     },
     {
@@ -2848,6 +4009,9 @@ export const data = {
       author: ["Dean Eigenmann", "Nick Johnson"],
       url: "https://eips.ethereum.org/EIPS/eip-1577",
       category: "ERC",
+      abstract: [
+        "This EIP introduces the new contenthash field for ENS resolvers, allowing for a better defined system of mapping names to network and content addresses. Additionally the content and multihash fields are deprecated.",
+      ],
       value: 5,
     },
     {
@@ -2857,6 +4021,9 @@ export const data = {
       author: "Ikmyeong Na",
       url: "https://eips.ethereum.org/EIPS/eip-1588",
       category: "None",
+      abstract: [
+        "This meta-EIP specifies the changes included in the alternative Ethereum hardfork named Ethereum ProgPoW.",
+      ],
       value: 5,
     },
     {
@@ -2867,6 +4034,17 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1592",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1597",
+      summary: [
+        "We propose a standard and an interface to define transfer rules, in the context of ERC20 tokens and possibly beyond.",
+        "A rule can act based on sender, destination and amount, and is triggered (and rejects the transfer) according to any required business logic.",
+        "To ease rule reusability and composition, we also propose an interface and base implementation for a rule engine.",
+      ],
+      abstract: [
+        "This standard proposal should answer the following challenges:",
+        "If these challenges are answered, this proposal will provide a unified basis for transfer rules and hopefully address the transfer restriction needs of other EIPs as well, e.g. EIP-902, EIP-1066 and EIP-1175.",
+        "This document proposes specifications for a standard of transfer rules and interfaces to both the rules and the rule engine, which was made to be inherited by a token, but may have a much broader scope in the authors\u2019 opinion.",
+        "The last section of this document illustrates the proposal with a rule template and links to rule implementations.",
+      ],
       value: 5,
     },
     {
@@ -2877,6 +4055,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1613",
       category: "ERC",
       discussions: "https://github.com/yoav-tabookey/EIPs/issues/1",
+      summary: [
+        "Make smart contracts (e.g. dapps) accessible to non-ether users by allowing contracts to accept \u201ccollect-calls\u201d, paying for incoming calls. Let contracts \u201clisten\u201d on publicly accessible channels (e.g. web URL or a whisper address). Incentivize nodes to run \u201cgas stations\u201d to facilitate this. Require no network changes, and minimal contract changes.",
+      ],
+      abstract: [
+        "Communicating with dapps currently requires paying ETH for gas, which limits dapp adoption to ether users. Therefore, contract owners may wish to pay for the gas to increase user acquisition, or let their users pay for gas with fiat money. Alternatively, a 3rd party may wish to subsidize the gas costs of certain contracts. Solutions such as described in EIP-1077 could allow transactions from addresses that hold no ETH.",
+        "The gas stations network is an EIP-1077 compliant effort to solve the problem by creating an incentive for nodes to run gas stations, where gasless transactions can be \u201cfueled up\u201d. It abstracts the implementation details from both the dapp maintainer and the user, making it easy to convert existing dapps to accept \u201ccollect-calls\u201d.",
+        "The network consists of a single public contract trusted by all participating dapp contracts, and a decentralized network of relay nodes (gas stations) incentivized to listen on non-ether interfaces such as web or whisper, pay for transactions and get compensated by that contract. The trusted contract can be verified by anyone, and the system is otherwise trustless. Gas stations cannot censor transactions as long as there\u2019s at least one honest gas station. Attempts to undermine the system can be proven on-chain and offenders can be penalized.",
+      ],
       value: 5,
     },
     {
@@ -2893,6 +4079,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1616",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1616",
+      summary: [
+        "EIP-1616 provides a basic interface for querying a registry for attribute metadata assigned to Ethereum accounts.",
+      ],
+      abstract: [
+        "This EIP contains the following core ideas:",
+        "Potential advanced uses of attribute registries include:",
+      ],
       value: 5,
     },
     {
@@ -2903,6 +4096,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1620",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1620",
+      summary: [
+        "Money streaming represents the idea of continuous payments over a finite period of time. Block numbers are used as a proxy of time to continuously update balances.",
+      ],
+      abstract: [
+        "The following describes a standard whereby time is measured using block numbers and streams are mappings in a master contract.",
+      ],
       value: 5,
     },
     {
@@ -2918,6 +4117,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1633",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1634",
+      summary: [
+        "ERC-20 extension for proportional ownership of an ERC-721 token.",
+      ],
+      abstract: [
+        "The intention of this proposal, the Re-Fungible Token Standard, is to extend the ERC-20 Token Standard and utilize ERC-165 Standard Interface Detection in order to represent the shared ownership of an ERC-721 Non-Fungible Token. The ERC-20 Token Standard was modified as little as possible in order to allow this new class of token to operate in all of the ways and locations which are familiar to assets that follow the original ERC-20 specification. While there are many possible variations of this specification that would enable many different capabilities and scenarios for shared ownership, this proposal is focused on the minimal commonalities to enable as much flexibility as possible for various further extensions. This proposal makes it possible to verify, from the contract level or from an external query, whether a fungible token represents a form of shared ownership of a non-fungible token. The inclusion of ERC-165 makes it possible to verify, from the contract level or from an external query, whether a non-fungible token is owned by ERC-20 token representing shared ownership.",
+      ],
       value: 5,
     },
     {
@@ -2929,6 +4134,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/temporal-replay-protection/2355",
+      summary: [
+        "This EIP proposes adding a \u2018temporal\u2019 replay protection to transactions, in the form of a valid-until timestamp. This EIP is very similar to https://github.com/ethereum/EIPs/pull/599 by Nick Johnson and Konrad Feldmeier, the main difference being that this EIP is based on clock-time / walltime instead of block numbers.",
+      ],
       value: 5,
     },
     {
@@ -2939,6 +4147,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1702",
       category: "Core",
       discussions: "https://github.com/sorpaas/EIPs/issues/2",
+      summary: [
+        "Introduce account versioning for smart contracts so upgrading the VM or introducing new VMs can be easier.",
+      ],
+      abstract: [
+        "This defines a method of hard forking while maintaining the exact functionality of existing account by allowing multiple versions of the virtual machines to execute in the same block. This is also useful to define future account state structures when we introduce the on-chain WebAssembly virtual machine.",
+      ],
       value: 5,
     },
     {
@@ -2950,6 +4164,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/standarize-url-format-for-web3-browsers/2422",
+      summary: [
+        "A standard way of representing web3 browser URLs for decentralized applications.",
+      ],
+      abstract: [
+        "Since most normal web browsers (specifically on mobile devices) can not run decentralized applications correctly because of the lack of web3 support, it is necessary to differentiate them from normal urls, so they can be opened in web3 browsers if available.",
+      ],
       value: 5,
     },
     {
@@ -2965,6 +4185,12 @@ export const data = {
       ],
       url: "https://eips.ethereum.org/EIPS/eip-1753",
       category: "ERC",
+      abstract: [
+        "This Ethereum Improvement Proposal (EIP) proposes an Ethereum standard for the issuance of licences, permits and grants (Licences).",
+        "A Licence is a limited and temporary authority, granted to a natural (e.g. you) or legal person (e.g. a corporation), to do something that would otherwise be unlawful pursuant to a legal framework. A public Licence is granted by the government, directly (e.g. by the New South Wales Department of Primary Industries, Australia) or indirectly (e.g. by an agent operating under the government\u2019s authority), and derives its authority from legislation, though this is often practically achieved via delegated legislation such as regulations. This can be contrasted to a private licence \u2013 for example, the licence you grant to a visitor who comes onto your property.",
+        "A Licence has the following properties:",
+        "Additionally, a Licence may be granted in respect of certain information. For example, a Licence may be issued in respect of a vehicle registration number and attaching to that specific registered vehicle.",
+      ],
       value: 5,
     },
     {
@@ -2975,6 +4201,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1761",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1761",
+      summary: [
+        "A standard interface to permit restricted approval in token contracts by defining \u201cscopes\u201d of one or more Token IDs.",
+      ],
+      abstract: [
+        "This interface is designed for use with token contracts that have an \u201cID\u201d domain, such as ERC-1155 or ERC-721. This enables restricted approval of one or more Token IDs to a specific \u201cscope\u201d. When considering a smart contract managing tokens from multiple different domains, it makes sense to limit approvals to those domains. Scoped approval is a generalization of this idea. Implementors can define scopes as needed.",
+        "Sample use cases for scopes:",
+      ],
       value: 5,
     },
     {
@@ -2986,6 +4219,9 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/graphql-interface-to-ethereum-node-data/2710",
+      abstract: [
+        "This EIP specifies a GraphQL schema for accessing data stored on an Ethereum node. It aims to provide a complete replacement to the read-only information exposed via the present JSON-RPC interface, while improving on usability, consistency, efficiency, and future-proofing.",
+      ],
       value: 5,
     },
     {
@@ -2997,6 +4233,16 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-erc-app-keys-application-specific-wallet-accounts/2742",
+      summary: [
+        "Among others cryptographic applications, scalability and privacy solutions for ethereum blockchain require that an user performs a significant amount of signing operations. It may also require her to watch some state and be ready to sign data automatically (e.g. sign a state or contest a withdraw). The way wallets currently implement accounts poses several obstacles to the development of a complete web3.0 experience both in terms of UX, security and privacy.",
+        "This proposal describes a standard and api for a new type of wallet accounts that are derived specifically for a each given application. We propose to call them app keys. They allow to isolate the accounts used for each application, thus potentially increasing privacy. They also allow to give more control to the applications developers over account management and signing delegation. For these app keys, wallets can have a more permissive level of security (e.g. not requesting user\u2019s confirmation) while keeping main accounts secure. Finally wallets can also implement a different behavior such as allowing to sign transactions without broadcasting them.",
+        "This new accounts type can allow to significantly improve UX and permit new designs for applications of the crypto permissionned web.",
+      ],
+      abstract: [
+        "In a wallet, an user often holds most of her funds in her main accounts. These accounts require a significant level of security and should not be delegated in any way, this significantly impacts the design of cryptographic applications if a user has to manually confirm every action. Also often an user uses the same accounts across apps, which is a privacy and potentially also a security issue.",
+        "We introduce here a new account type, app keys, which permits signing delegation and accounts isolation across applications for privacy and security.",
+        "In this EIP, we provide a proposal on how to uniquely identify and authenticate each application, how to derive a master account (or app key) unique for the domain from an user private key (her root private key or any other private key of an account derived or not from her root one). This EIP aims at becoming a standard on how to derive keys specific to each application that can be regenerated from scratch without further input from the user if she restores her wallet and uses again the application for which this key was derived. These app keys can then be endowed a different set of permissions (through the requestPermission model introduced in EIP-2255). This will potentially allow an user to partly trust some apps to perform some crypto operations on their behalf without compromising any security with respect to her main accounts.",
+      ],
       value: 5,
     },
     {
@@ -3008,6 +4254,9 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-1803-rename-opcodes-for-clarity/3345",
+      abstract: [
+        "Rename the BALANCE, SHA3, NUMBER, GASLIMIT, GAS and INVALID opcodes to reflect their true meaning.",
+      ],
       value: 5,
     },
     {
@@ -3019,6 +4268,10 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-1812-ethereum-verifiable-claims/2814",
+      summary: ["Reusable Verifiable Claims using EIP 712 Signed Typed Data."],
+      abstract: [
+        "A new method for Off-Chain Verifiable Claims built on EIP-712. These Claims can be issued by any user with a EIP 712 compatible web3 provider. Claims can be stored off chain and verified on-chain by Solidity Smart Contracts, State Channel Implementations or off-chain libraries.",
+      ],
       value: 5,
     },
     {
@@ -3030,6 +4283,10 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-1822-universal-upgradeable-proxy-standard-uups",
+      summary: ["Standard upgradeable proxy contract."],
+      abstract: [
+        "The following describes a standard for proxy contracts which is universally compatible with all contracts, and does not create incompatibility between the proxy and business-logic contracts. This is achieved by utilizing a unique storage position in the proxy contract to store the Logic Contract\u2019s address. A compatibility check ensures successful upgrades. Upgrading can be performed unlimited times, or as determined by custom logic. In addition, a method for selecting from multiple constructors is provided, which does not inhibit the ability to verify bytecode.",
+      ],
       value: 5,
     },
     {
@@ -3041,6 +4298,13 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/ewasm-precompile-for-general-elliptic-curve-math/2581",
+      summary: [
+        "Currently the EVM only supports secp256k1 in a limited way through ecrecover and altbn128 through two pre-compiles. There are draft proposals to add more curves. There are many more elliptic curve that have useful application for integration with existing systems or newly developed curves for zero-knowledge proofs.",
+        "This EIP adds a precompile that allows whole classes of curves to be used.",
+      ],
+      abstract: [
+        "A precompile that takes a curve and computes a linear combination of curve points.",
+      ],
       value: 5,
     },
     {
@@ -3052,6 +4316,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/ens-interface-discovery/2924",
+      summary: [
+        "Defines a method of associating contract interfaces with ENS names and addresses, and of discovering those interfaces.",
+      ],
+      abstract: [
+        "This EIP specifies a method for exposing interfaces associated with an ENS name or an address (typically a contract address) and allowing applications to discover those interfaces and interact with them. Interfaces can be implemented either by the target contract (if any) or by any other contract.",
+      ],
       value: 5,
     },
     {
@@ -3063,6 +4333,12 @@ export const data = {
       category: "None",
       discussions:
         "https://ethereum-magicians.org/t/eip-1872-ethereum-network-upgrade-windows/2993",
+      summary: [
+        "A proposal to define a limited number of annual time windows in which network upgrades (aka hard forks) should be performed within. Policies for scheduling network upgrades outside these windows are also described.",
+      ],
+      abstract: [
+        "Four different weeks, spaced roughly evenly throughout the year, are targeted for network upgrades to be launched. Regular network upgrades should announce their intention to launch in a particular window early in their process and choose a block number four to six weeks prior to that window. If a network upgrade is cancelled then it would be rescheduled for the next window. Not all windows will be used. Priority upgrades outside the roadmap may be scheduled in the third week of any month, but such use is discouraged. Critical upgrades are scheduled as needed.",
+      ],
       value: 5,
     },
     {
@@ -3074,6 +4350,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethresear.ch/t/reducing-the-verification-cost-of-a-snark-through-hierarchical-aggregation/5128",
+      summary: [
+        "The EVM currently supports elliptic curves operations for curve alt-bn128 thanks to precompiles ecadd and ecmul and ecpairing. The classes MNT4 and 6 contain cycles of curves. Those cycles enable doing operations on one curve inside a SNARK on the other curve (and reversely). This EIP suggests adding support for those curves.",
+      ],
+      abstract: [
+        "Adds supports for the following operations through precompiles:",
+      ],
       value: 5,
     },
     {
@@ -3083,6 +4365,12 @@ export const data = {
       author: "Charles Cooper",
       url: "https://eips.ethereum.org/EIPS/eip-1898",
       category: "Interface",
+      summary: [
+        "For JSON-RPC methods which currently accept a default block parameter, additionally allow the parameter to be a block hash.",
+      ],
+      abstract: [
+        "This EIP can be considered a generalization of EIP-234. It would enable clients to unambiguously specify the block they want to query for certain JSON-RPC methods, even if the block is not in the canonical chain. This allows clients to maintain a coherent picture of blockchain state that they are interested in, even in the presence of reorgs, without requiring that the node maintain a persistent connection with the client or store any client-specific state.",
+      ],
       value: 5,
     },
     {
@@ -3093,6 +4381,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1900",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1882",
+      summary: [
+        "The EVM and related languages such as Solidity need consensus on an extensible Type System in order to further evolve into the Singleton Operating System (The World Computer).",
+      ],
+      abstract: [
+        "We are proposing a decentralized Type System for Ethereum, to introduce data definition (and therefore ABI) consistency. This ERC focuses on defining an on-chain Type Registry (named dType) and a common interface for creating types, based on structs.",
+      ],
       value: 5,
     },
     {
@@ -3103,6 +4397,7 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1901",
       category: "Interface",
       discussions: "https://github.com/ethereum/EIPs/issues/1902",
+      abstract: [],
       value: 5,
     },
     {
@@ -3113,6 +4408,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1921",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1921",
+      summary: [
+        "In the context of dType, the Decentralized Type System described in EIP-1900, we are proposing to add support for registering functions (with a preference for pure and view) in the dType Registry.",
+      ],
+      abstract: [
+        "This proposal is part of a series of EIPs focused on expanding the concept of a Decentralized Type System, as explained in EIP-1900. The current EIP specifies the data definitions and interfaces needed to support registering individual smart contract functions, as entries in the dType Registry.",
+      ],
       value: 5,
     },
     {
@@ -3123,6 +4424,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1922",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1922",
+      summary: [
+        "A standard interface for \u201cVerifier\u201d contracts which verify zk-SNARKs.",
+      ],
+      abstract: [
+        "The following standard allows for the implementation of a standard contract API for the verification of zk-SNARKs (\u201cZero-Knowledge Succinct Non-Interactive Arguments of Knowledge\u201d), also known as \u201cproofs\u201d, \u201carguments\u201d, or \u201ccommitments\u201d.",
+        "This standard provides basic functionality to load all necessary parameters for the verification of any zk-SNARK into a verifier contract, so that the proof may ultimately return a true or false response; corresponding to whether it has been verified or not verified.",
+      ],
       value: 5,
     },
     {
@@ -3133,6 +4441,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1923",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1923",
+      summary: [
+        "A standard interface for a \u201cVerifier Registry\u201d\u2019\u201d contract, through which all zk-SNARK verification activity can be registered.",
+      ],
+      abstract: [
+        "The following standard allows for the implementation of a standard contract API for the registration of zk-SNARKs (\u201cZero-Knowledge Succinct Non-Interactive Arguments of Knowledge\u201d), also known as \u201cproofs\u201d, \u201carguments\u201d, or \u201ccommitments\u201d.",
+        "TODO: Which functionality is exposed in this standard interface?",
+      ],
       value: 5,
     },
     {
@@ -3143,6 +4458,15 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1930",
       category: "Core",
       discussions: "https://github.com/ethereum/EIPs/issues/1930",
+      summary: [
+        "Add the ability for smart contract to execute calls with a specific amount of gas. If this is not possible the execution should revert.",
+      ],
+      abstract: [
+        "The current CALL, DELEGATE_CALL, STATIC_CALL opcode do not enforce the gas being sent, they simply consider the gas value as a maximum. This pose serious problem for applications that require the call to be executed with a precise amount of gas.",
+        "This is for example the case for meta-transaction where the contract needs to ensure the call is executed exactly as the signing user intended.",
+        "But this is also the case for common use cases, like checking \u201con-chain\u201d if a smart contract support a specific interface (via EIP-165 for example).",
+        "The solution presented here is to add new call semantic that enforce the amount of gas specified : the call either proceed with the exact amount of gas or do not get executed and the current call revert.",
+      ],
       value: 5,
     },
     {
@@ -3154,6 +4478,13 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-non-fungible-data-token/3139",
+      summary: [
+        "Some NFT use-cases require to have dynamic data associated with a non-fungible token that can change during its lifetime. Examples for dynamic data:",
+        "The existing metadata standard does not suffice as data can only be set at minting time and not modified later.",
+      ],
+      abstract: [
+        "Non-fungible tokens (NFTs) are extended with the ability to store dynamic data. A 32 bytes data field is added and a read function allows to access it. The write function allows to update it, if the caller is the owner of the token. An event is emitted every time the data updates and the previous and new value is emitted in it.",
+      ],
       value: 5,
     },
     {
@@ -3165,6 +4496,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-1959-valid-chainid-opcode/3170",
+      summary: [
+        "To protect off-chain messages from being reused across different chain, a mechanism need to be given to smart contract to only accept messages for that chain. Since a chain can change its chainID, the mechanism should consider old chainID valid.",
+      ],
+      abstract: [
+        "This EIP adds an opcode that returns whether the specific number passed in has been a valid chainID (EIP-155 unique identifier) in the history of the chain (including the current chainID).",
+      ],
       value: 5,
     },
     {
@@ -3176,6 +4513,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/generalised-precompile-for-elliptic-curve-arithmetics-and-pairings-working-group/3208/2",
+      abstract: [
+        "This EIP proposes a new precompile to bring cryptographic functionality desired for privacy and scaling solutions. Functionality of such precompile will require the following:",
+        "Full functionality of the precompile is described below in Specification section.",
+      ],
       value: 5,
     },
     {
@@ -3187,6 +4528,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-1965-valid-chainid-for-specific-blocknumber-protect-all-forks/3181",
+      abstract: [
+        "This EIP adds a precompile that returns whether a specific chainID (EIP-155 unique identifier) is valid at a specific blockNumber. ChainID are assumed to be valid up to the blockNumber at which they get replaced by a new chainID.",
+      ],
       value: 5,
     },
     {
@@ -3196,6 +4540,15 @@ export const data = {
       author: ["Lee Raj", "Qin Jian"],
       url: "https://eips.ethereum.org/EIPS/eip-1973",
       category: "ERC",
+      summary: [
+        "A mintable token rewards interface that mints \u2018n\u2019 tokens per block which are distributed equally among the \u2018m\u2019 participants in the DAPP\u2019s ecosystem.",
+      ],
+      abstract: [
+        "The mintable token rewards interface allows DApps to build a token economy where token rewards are distributed equally among the active participants. The tokens are minted based on per block basis that are configurable (E.g. 10.2356 tokens per block, 0.1 token per block, 1350 tokens per block) and the mint function can be initiated by any active participant. The token rewards distributed to each participant is dependent on the number of participants in the network. At the beginning, when the network has low volume, the tokens rewards per participant is high but as the network scales the token rewards decreases dynamically.",
+        "## Motivation",
+        "Distributing tokens through a push system to a large amount of participants fails due to block gas limit. As the number of participants in the network grow to tens of thousands, keeping track of the iterable registry of participants and their corresponding rewards in a push system becomes unmanagable. E.g. Looping through 5000 addresses to distribute 0.0000001 reward tokens is highly inefficient. Furthermore, the gas fees in these transactions are high and needs to be undertaken by the DApp developer or the respective company, leading to centralization concerns.",
+        "A pull system is required to keep the application completely decentralized and to avoid the block gas limit problem. However, no standard solution has been proposed to distribute scalable rewards to tens of thousands participants with a pull system. This is what we propose with this EIP through concepts like TPP, round mask, participant mask.",
+      ],
       value: 5,
     },
     {
@@ -3207,6 +4560,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-1985-sane-limits-for-certain-evm-parameters/3224",
+      abstract: [
+        "Introduce an explicit value range for certain EVM parameters (such as gas limit, block number, block timestamp, size field when returning/copying data within EVM). Some of these already have an implicit value range due to various (practical) reasons.",
+      ],
       value: 5,
     },
     {
@@ -3217,6 +4573,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1996",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2103",
+      summary: [
+        "An extension to the ERC-20 standard token that allows tokens to be put on hold. This guarantees a future transfer and makes the held tokens unavailable for transfer in the mean time. Holds are similar to escrows in that are firm and lead to final settlement.",
+      ],
+      abstract: [
+        "A hold specifies a payer, a payee, a maximum amount, a notary and an expiration time. When the hold is created, the specified token balance from the payer is put on hold. A held balance cannot be transferred until the hold is either executed or released. The hold can only be executed by the notary, which triggers the transfer of the tokens from the payer to the payee. If a hold is released, either by the notary at any time, or by anyone after the expiration, no transfer is carried out and the amount is available again for the payer.",
+        "A hold can be partially executed, if the execution specifies an amount less than the maximum amount. In this case the specified amount is transferred to the payee and the remaining amount is available again to the payer.",
+        "Holds can be specified to be perpetual. In this case, the hold cannot be released upon expiration, and thus can only be executed by the notary or released by the notary or payee.",
+      ],
       value: 5,
     },
     {
@@ -3227,6 +4591,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2003",
       category: "Interface",
       discussions: "https://github.com/ethereum/evmc/issues/259",
+      abstract: [
+        "EVMC specifies a generic API for Ethereum execution engines. This EIP specifies a way of providing implementations of Ethereum precompiled contracts using the EVMC VM API.",
+      ],
       value: 5,
     },
     {
@@ -3237,6 +4604,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2009",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2022",
+      summary: [
+        "This EIP proposes a service for decentralized compliance checks for regulated tokens.",
+      ],
+      abstract: [
+        "A regulated token needs to comply with several legal requirements, especially KYC and AML. If the necessary checks have to be made off-chain the token transfer becomes centralized. Further the transfer in this case takes longer to complete as it can not be done in one transaction, but requires a second confirmation step. The goal of this proposal is to make this second step unnecessary by providing a service for compliance checks.",
+      ],
       value: 5,
     },
     {
@@ -3248,6 +4621,11 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2014-extended-state-oracle/3301",
+      summary: [],
+      abstract: [
+        "Introduce a new system contract with an extensible interface following the Contract ABI Encoding to access extended data sets, such as chain identifiers, block hashes, etc.",
+        "This allows Ethereum contract languages to interact with this contract as if it were a regular contract and not needing any language support.",
+      ],
       value: 5,
     },
     {
@@ -3259,6 +4637,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-2015-wallet-update-chain-json-rpc-method-wallet-updatechain/3274",
+      summary: [
+        "Wallets can update the active chain when connected to a Dapp but not vice-versa, with wallet_updateEthereumChain the Dapp will be able to request this change from the Wallet.",
+      ],
+      abstract: [
+        "Dapp can request the Wallet to switch chains by providing the minimal parameters of chainId, chainName, rpcUrl, nativeCurrency and blockExplorerUrl. The Wallet will display a UI element to inform the user of this change.",
+      ],
       value: 5,
     },
     {
@@ -3269,6 +4653,10 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2018",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2104",
+      summary: [],
+      abstract: [
+        "The clearing process turns the promise of a transfer into the actual movement of money from one account to another. A clearing agent decides if the transfer can be executed or not. The amount which should be transferred is not deducted from the balance of the payer, but neither is it available for another transfer and therefore ensures, that the execution of the transfer will be successful when it is executed.",
+      ],
       value: 5,
     },
     {
@@ -3279,6 +4667,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2019",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2105",
+      summary: [
+        "An extension to the ERC-20 standard token that allows Token wallet owners to request a wallet to be funded, by calling the smart contract and attaching a fund instruction string.",
+      ],
+      abstract: [
+        "Token wallet owners (or approved addresses) can order tokenization requests through blockchain. This is done by calling the orderFund or orderFundFrom methods, which initiate the workflow for the token contract operator to either honor or reject the fund request. In this case, fund instructions are provided when submitting the request, which are used by the operator to determine the source of the funds to be debited in order to do fund the token wallet (through minting).",
+        "In general, it is not advisable to place explicit routing instructions for debiting funds on a verbatim basis on the blockchain, and it is advised to use a private communication alternatives, such as private channels, encrypted storage or similar, to do so (external to the blockchain ledger). Another (less desirable) possibility is to place these instructions on the instructions field in encrypted form.",
+      ],
       value: 5,
     },
     {
@@ -3289,6 +4684,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2020",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2407",
+      summary: [
+        "The E-Money Standard Token aims to enable the issuance of regulated electronic money on blockchain networks, and its practical usage in real financial applications.",
+      ],
+      abstract: [
+        "Financial institutions work today with electronic systems, which hold account balances in databases on core banking systems. In order for an institution to be allowed to maintain records of client balances segregated and available for clients, such institution must be regulated under a known legal framework and must possess a license to do so. Maintaining a license under regulatory supervision entails ensuring compliance (i.e. performing KYC on all clients and ensuring good AML practices before allowing transactions) and demonstrating technical and operational solvency through periodic audits, so clients depositing funds with the institution can rest assured that their money is safe.",
+      ],
       value: 5,
     },
     {
@@ -3299,6 +4700,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2021",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2106",
+      summary: [
+        "An extension to the ERC-20 standard token that allows Token wallet owners to request payout from their wallet, by calling the smart contract and attaching a payout instruction string.",
+      ],
+      abstract: [
+        "Token wallet owners (or approved addresses) can order payout requests through blockchain. This is done by calling the orderPayoutFrom or orderPayoutFrom methods, which initiate the workflow for the token contract operator to either honor or reject the payout request. In this case, payout instructions are provided when submitting the request, which are used by the operator to determine the destination of the funds.",
+        "In general, it is not advisable to place explicit routing instructions for the payouts on a verbatim basis on the blockchain, and it is advised to use a private communication alternatives, such as private channels, encrypted storage or similar, to do so (external to the blockchain ledger). Another (less desirable) possibility is to place these instructions on the instructions field in encrypted form.",
+      ],
       value: 5,
     },
     {
@@ -3310,6 +4718,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2026-fixed-rent-prepayment-for-all-accounts-change-h-from-state-rent-v3-proposal/3273",
+      summary: [
+        "Creation of new accounts (both contracts and non-contracts) requires a fixed one-off rent prepayment. Pre-existed accounts require the same prepayment upon the first modification. The act of rent prepayment causes the addition of an extra field to accounts, called rentbalance. This field becomes part of state.",
+      ],
+      abstract: [
+        "This is part of the State Rent roadmap. This particular change introduces a fixed charge for state expansion that comes from adding new accounts to the state. Theoretically, it puts a bound on the number of accounts that can be ever created, because that fixed charge cannot be recycled via mining.",
+      ],
       value: 5,
     },
     {
@@ -3321,6 +4735,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2027-net-contract-size-accounting-change-c-from-state-rent-v3-proposal/3275",
+      summary: [
+        "Ethereum starts counting the number of storage slots filled and emptied in the contracts. Since the number of pre-existing slots is not currently accounted in the state, effectively, only net change in the number of slots is tracked. In the subsequent change, called Gross contract size accounting, the total number of storage slots starts being tracked.",
+      ],
+      abstract: [
+        "This is part of the State Rent roadmap. This particular change introduces initial, net accounting of the number of the contract storage slots. Though not very useful on its own, it makes it possible to introduce gross accounting of the number of storage slots, which is useful for number of things:",
+      ],
       value: 5,
     },
     {
@@ -3332,6 +4752,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2029-state-counters-contract-change-a-from-state-rent-v3-proposal/3279",
+      summary: [
+        "A smart contract is deployed on all Ethereum networks, at a pre-determined address, with the code that simply reads the slot in its storage specified by the only parameter. Later, this contract becomes \u201cspecial\u201d in that Ethereum start writing state counters (number of total transactions, number of accounts, etc.) into that contract.",
+      ],
+      abstract: [
+        "This is part of the State Rent roadmap. This particular change introduces a place in the Ethereum state where various state counters can be stored. At this point, the most important counter is the total number of transactions happened, and this counter will be used to populate the nonces of newly created non-contract accounts. This way of populating nonce ensures replay protection for accounts that were evicted and then brought back by sending ether to them.",
+      ],
       value: 5,
     },
     {
@@ -3343,6 +4769,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2031-net-transaction-counter-change-b-from-state-rent-v3-proposal/3283",
+      summary: [
+        "Ethereum starts to track the number of transactions inside its state (for now, only number of transactions after this change is introduced, therefore it is called Net transaction count). It is done by incrementing a storage slot in the special contract, called State counter contract (EIP-2029).",
+      ],
+      abstract: [
+        "It is part of the State Rent roadmap. This particular change makes any Ethereum transaction increment the transaction counter, which is a special storage slot in the State counter contract. This counter will be used to populate the nonces of newly created non-contract accounts. This way of populating nonce ensures replay protection for accounts that were evicted and then brought back by sending ether to them.",
+      ],
       value: 5,
     },
     {
@@ -3354,6 +4786,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2035-stateless-clients-repricing-sload-and-sstore-to-pay-for-block-proofs/3284",
+      summary: [
+        "The gas cost of EVM opcodes SLOAD and SSTORE increases in order to accommodate extra bandwidth required to propagate block proof together with the block headers and block bodies, as explained here.",
+      ],
+      abstract: [
+        "It is part of the State Rent roadmap. This particular change prepares Ethereum for introduction of the block proofs (current understanding is that they can be introuced without a hard fork). The introduction of the block proofs allows any Ethereum node that wishes to receive them, to process transactions in the blocks without needing to access the Ethereum state. All necessary information for the execution (and the proof of validity) is continued in the block proofs. In most Ethereum nodes, it will speed up the block processing and reduce the memory footprint of such processing. For mining nodes, however, there will be more work to do to construct and transmit the block proofs. Therefore, the extra charge (payable to the miners) is introduced. In the first phase, only contract storage will be covered by the block proofs. It means that the Ethereum nodes will still need access to the accounts in the state, but block proofs will make it optional to have access to contract storage for executing transactions. Therefore, only SSTORE and SLOAD opcodes are affected.",
+      ],
       value: 5,
     },
     {
@@ -3365,6 +4803,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2045-fractional-gas-costs/3311",
+      abstract: [
+        "According to recent benchmarks, EVM opcodes for computation (ADD, SUB, MUL, etc.) are generally overpriced relative to opcodes for storage I/O (SLOAD, SSTORE, etc.). Currently the minimum gas cost is 1 (i.e. one unit of gas), and most computational opcodes have a cost near to 1 (e.g. 3, 5, or 8), so the range in possible cost reduction is limited. A new minimum unit of gas, called a \u201cparticle\u201d, which is a fraction of 1 gas, would expand the range of gas costs and thus enable reductions below the current minimum.",
+      ],
       value: 5,
     },
     {
@@ -3376,6 +4817,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2046-reduced-gas-cost-for-static-calls-made-to-precompiles/3291",
+      summary: [
+        "This change reduces the gas cost of using precompiled contracts.",
+      ],
+      abstract: [
+        "Reduce the base gas cost of calling precompiles using STATICCALL from 700 to 40. This should allow more efficient use of precompiles as well as precompiles with a total cost below 700.",
+      ],
       value: 5,
     },
     {
@@ -3387,6 +4834,9 @@ export const data = {
       category: "None",
       discussions:
         "https://ethereum-magicians.org/t/eip-2069-recommendation-for-using-yaml-abi-in-specifications/3347",
+      summary: [
+        "Recommendation for including contract ABI descriptions in EIPs and ERCs as YAML.",
+      ],
       value: 5,
     },
     {
@@ -3398,6 +4848,9 @@ export const data = {
       category: "None",
       discussions:
         "https://ethereum-magicians.org/t/hardfork-meta-eip-2070-berlin-discussion/3561",
+      abstract: [
+        "This meta-EIP specifies the changes included in the Ethereum hardfork named Berlin.",
+      ],
       value: 5,
     },
     {
@@ -3408,6 +4861,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2157",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2157",
+      summary: [
+        "This ERC is an extension of ERC-1900, proposing an optional storage extension for dType, a decentralized type system, specifying a general ABI for all storage contracts that contain type instances.",
+      ],
+      abstract: [
+        "The storage extension will enable easy navigation and retrieval of type data that is intended to be of public use. This is possible through standardizing the ABI of the dType storage contracts, with the effect of having a deterministic path to a type instance record. This standardization enables a more effective on-chain and off-chain use of data and opens up possibilities for decentralized applications, enabling developers to build on top of public global data.",
+      ],
       value: 5,
     },
     {
@@ -3418,6 +4877,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2193",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2192",
+      summary: [
+        "We are proposing Alias\u200a-\u200aa semantic standard for identifying on-chain resources by human-readable qualifiers, supporting any type of data.",
+      ],
+      abstract: [
+        "The dType Alias is a system for providing human-readable resource identifiers to on-chain content. A resource identifier is based on the type of data (identifier provided by dType, EIP-1900) and the data content (identifier provided by a dType Storage Contract, EIP-2157). It is a universal way of addressing content, supporting any type of data.",
+      ],
       value: 5,
     },
     {
@@ -3429,6 +4894,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2242-transaction-postdata/3557",
+      summary: [
+        "An additional, optional transaction field is added for \u201cpostdata,\u201d data that is posted on-chain but that cannot be read from the EVM.",
+      ],
+      abstract: [
+        "A paradigm shift in how blockchains are used has been seen recently in Eth 2.0, with the rise of Execution Environments (EEs), and stateless clients. This shift involves blockchains serving as a secure data availability and arbitration layer, i.e., they provide a globally-accepted source of available data, and process fraud/validity and data availability proofs. This same paradigm can be applied on Eth 1.x, replacing EEs with trust-minimized side chains.",
+      ],
       value: 5,
     },
     {
@@ -3440,6 +4911,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/web3-login-permissions/3583",
+      summary: [
+        "A proposed standard interface for restricting and permitting access to security-sensitive methods within a restricted web3 context like a website or \u201cdapp\u201d.",
+      ],
+      abstract: [
+        "Web3 JavaScript wallet browsers may implement wallet_getPermissions and wallet_requestPermissions. This provides a standard interface for requesting permissions and checking a domain\u2019s current permissions status.",
+      ],
       value: 5,
     },
     {
@@ -3451,6 +4928,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-2256-add-wallet-getownedassets-json-rpc-method/3600",
+      summary: [
+        "This is a proposal for a new JSON-RPC call for retrieving from a wallet a selection of owned assets by an Ethereum address, with the user\u2019s permission.",
+      ],
+      abstract: [
+        "There is no standardized way for a dApp to request a list of owned assets from a user. Now, each dApp needs to keep a list of all the popular or existing assets and check the user\u2019s balance against the blockchain, for each of these assets. This leads to duplicated effort across dApps. It also leads to the user being presented with asset options that the user does not care about, from various, unwanted airdrops.",
+      ],
       value: 5,
     },
     {
@@ -3462,6 +4945,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://discuss.ens.domains/t/new-standard-proposal-ens-multicoin-support/1148",
+      abstract: [
+        "This EIP introduces new overloads for the the addr field for ENS resolvers, which permit resolution of addresses for other blockchains via ENS.",
+      ],
       value: 5,
     },
     {
@@ -3472,6 +4958,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2327",
       category: "Core",
       discussions: "https://ethereum-magicians.org/t/new-opcode-begindata/3727",
+      summary: [
+        "Introduces a new opcode BEGINDATA, which indicates that the remaining bytes of the contract should be regarded as data rather than contract code and cannot be executed.",
+      ],
+      abstract: [
+        "It is common for smart contracts to efficiently store data directly in the contract bytecode. Examples include constructor arguments, constant variables, compiler metadata and the contract runtime during the init phase. Currently, such data is not distinguished from normal bytecode and is still being analysed for JUMPDESTs by EVM interpreters. This EIP introduces a new opcode BEGINDATA at byte 0xb6, which marks the remainding bytecode as data, indicating to EVM interpreters, static analysis tools and chain explorers that the remaining bytes do not represent opcodes.",
+      ],
       value: 5,
     },
     {
@@ -3483,6 +4975,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2330-extsload-and-abi-for-lower-gas-cost-and-off-chain-apps/3733",
+      summary: [
+        "A new EXTSLOAD <contract> <slot> EVM opcode to read external contract storage data and corresponding allowing to build registry and token contracts that use less gas.",
+      ],
+      abstract: [
+        "While any off-chain application can read all contract storage data of all contracts, this is not possible for deployed smart contracts themselves. These are bound to use contract calls for any interaction including reading data from other contracts. This EIP adds an EVM opcode to directly read external contract storage.",
+      ],
       value: 5,
     },
     {
@@ -3493,6 +4991,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2333",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2337",
+      summary: [
+        "This EIP is a method based on a tree structure for deriving BLS private keys from a single source of entropy while providing a post-quantum cryptographic fallback for each key.",
+      ],
+      abstract: [
+        "This standard is a method for deriving a tree-hierarchy of BLS12-381 keys based on an entropy seed. Starting with the aforementioned seed, a tree of keys is built out using only the parent node\u2019s private key and the index of the desired child. This allows for a practically limitless number of keys to be derived for many different purposes while only requiring knowledge of a single ancestor key in the tree. This allows for keys, or families thereof, to be provisioned for different purposes by further standards.",
+        "In addition to the above, this method of deriving keys provides an emergency backup signature scheme that is resistant to quantum computers for in the event that BLS12-381 is ever deemed insecure.",
+      ],
       value: 5,
     },
     {
@@ -3503,6 +5008,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2335",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2339",
+      summary: [
+        "A JSON format for the storage and interchange of BLS12-381 private keys.",
+      ],
+      abstract: [
+        "A keystore is a mechanism for storing private keys. It is a JSON file that encrypts a private key and is the standard for interchanging keys between devices as until a user provides their password, their key is safe.",
+      ],
       value: 5,
     },
     {
@@ -3513,6 +5024,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2378",
       category: "None",
       discussions: "https://gitter.im/ethereum/EIPs",
+      summary: [
+        "As part of an EIP centric forking model, this EIP tracks the first step in the approval process for any EIP to be included in a fork or upgrade. Specifically, the stage where the Core Developers vet the concept of an EIP and give a \u201cgreen light\u201d sufficient for EIP authors to move forward in development.",
+      ],
+      abstract: [
+        "The pipeline for Core EIPs, per the EIP-Centric upgrade model, is as follows.",
+        "This EIP documents all EIPs marked as Eligible For Inclusion by the All Core Devs. Typically to reach this stage, an EIP must be discussed in brief on an AllCoreDevs Call and motioned by rough consenses to be moved to this stage. Any additions to this list are required to provide a link to the meeting notes when this discussion and decision took place.",
+        "The requirements for Eligible for Inclusion is that the AllCoreDevs, representing the major clients and ecosystem stakeholders etc:",
+      ],
       value: 5,
     },
     {
@@ -3523,6 +5042,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2386",
       category: "ERC",
       discussions: "https://ethereum-magicians.org/t/eip-2386-walletstore/3792",
+      summary: [
+        "A JSON format for the storage and retrieval of Ethereum 2 hierarchical deterministic (HD) wallet definitions.",
+      ],
+      abstract: [
+        "Ethereum has the concept of keystores: pieces of data that define a key (see EIP-2335 for details). This adds the concept of walletstores: stores that define wallets and how keys in said wallets are created.",
+      ],
       value: 5,
     },
     {
@@ -3533,6 +5058,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2390",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2959",
+      summary: [
+        "GeoENS brings geographic split horizon capabilities to ENS. It\u2019s GeoDNS for ENS!",
+      ],
+      abstract: [
+        "This EIP specifies an ENS resolver interface for geographically split horizon DNS. Geographic split horizon DNS returns resource records that are specific to an end user\u2019s location. This technique is commonly used by CDNs to direct traffic to content caches nearest users. Geographic split horizon resolution is primarily geared towards ENS resolvers storing DNS resource records EIP-1185, although the technique could be used on other interfaces like IPFS content hash storage EIP-1062.",
+      ],
       value: 5,
     },
     {
@@ -3544,6 +5075,13 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-2400-transaction-receipt-uri/",
+      summary: [
+        "A standardized URI for transaction receipt with complete information about transaction.",
+        "A standard way of representing a submitted transaction.",
+      ],
+      abstract: [
+        "A transaction hash is not very meaningful on its own, because it looks just like any other hash, and it might lack important information for reading a transaction. This standard includes all needed information for displaying a transaction and it\u2019s details, such as chainId, method signature called and events signatures emitted.",
+      ],
       value: 5,
     },
     {
@@ -3555,6 +5093,13 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-2470-singleton-factory/3933",
+      summary: [
+        "Some DApps needs one, and only one, instance of an contract, which have the same address on any chain.",
+        "A permissionless factory for deploy of keyless deterministic contracts addresses based on its bytecode.",
+      ],
+      abstract: [
+        "Some contracts are designed to be Singletons which have the same address no matter what chain they are, which means that should exist one instance for all, such as EIP-1820 and EIP-2429. These contracts are usually deployed using a method known as Nick\u2019s method, so anyone can deploy those contracts on any chain and they have a deterministic address. This standard proposes the creation of a CREATE2 factory using this method, so other projects requiring this feature can use this factory in any chain with the same setup, even in development chains.",
+      ],
       value: 5,
     },
     {
@@ -3566,6 +5111,15 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethresear.ch/t/gas-abstraction-non-signed-block-validator-only-procedures/4388/2",
+      summary: [
+        "Allow contracts to be called directly by block.coinbase (block validator), without a transaction.",
+      ],
+      abstract: [
+        "In proof-of-work blockchains, validators are known as miners.",
+        "The validator might want to execute functions directly, without having to sign a transaction. Some examples might be presenting a proof in a contract for an change which also benefits the validator.",
+        "A notable example would be when a validator want to act as an EIP-1077 Gas Relayer, incentivized to pick up fees from meta transactions. Without this change, they can do so by signing from any address a gasPrice = 0 transaction with the gas relayed call. However this brings an overhead of a signed transaction by validator that does nothing, as msg.sender is never used, and there is no gas cost to EVM charge.",
+        "This proposal makes possible to remove this unused ecrecover.",
+      ],
       value: 5,
     },
     {
@@ -3576,6 +5130,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2477",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2483",
+      summary: [
+        "This specification defines a mechanism by which clients may verify that a fetched token metadata document has been delivered without unexpected manipulation.",
+        "This is the Web3 counterpart of the W3C Subresource Integrity (SRI) specification.",
+      ],
+      abstract: [
+        "An interface ERC2477 with two functions tokenURIIntegrity and tokenURISchemaIntegrity are specified for smart contracts and a narrative is provided to explain how this improves the integrity of the token metadata documents.",
+      ],
       value: 5,
     },
     {
@@ -3587,6 +5148,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2488-deprecate-the-callcode-opcode/3957",
+      abstract: [
+        "Deprecate CALLCODE in a somewhat backwards compatible way, by making it always return failure.",
+      ],
       value: 5,
     },
     {
@@ -3598,6 +5162,13 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-2494-baby-jubjub-elliptic-curve/3968",
+      summary: [
+        "This proposal defines Baby Jubjub, an elliptic curve designed to work inside zk-SNARK circuits in Ethereum.",
+      ],
+      abstract: [
+        "Two of the main issues behind why blockchain technology is not broadly used by individuals and industry are scalability and privacy guarantees. With a set of cryptographic tools called zero-knowledge proofs (ZKP) it is possible to address both of these problems. More specifically, the most suitable protocols for blockchain are called zk-SNARKs (zero-knowledge Succinct Non-interactive ARguments of Knowledge), as they are non-interactive, have succinct proof size and sublinear verification time. These types of protocols allow proving generic computational statements that can be modelled with arithmetic circuits defined over a finite field (also called zk-SNARK circuits).",
+        "To verify a zk-SNARK proof, it is necessary to use an elliptic curve. In Ethereum, the curve is alt_bn128 (also referred as BN254), which has primer order r. With this curve, it is possible to generate and validate proofs of any F_r-arithmetic circuit. This EIP describes Baby Jubjub, an elliptic curve defined over the finite field F_r which can be used inside any zk-SNARK circuit, allowing for the implementation of cryptographic primitives that make use of elliptic curves, such as the Pedersen Hash or the Edwards Digital Signature Algorithm (EdDSA).",
+      ],
       value: 5,
     },
     {
@@ -3609,6 +5180,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2515-replace-the-difficulty-bomb-with-a-difficulty-freeze/3995",
+      summary: [
+        "The difficulty Freeze is an alternative to the Difficulty Bomb that is implemented within the protocols difficulty adjustment algorithm. The Difficulty Freeze begins at a certain block height, determined in advance, freezes the difficulty and increases by 1% after that block forever. This does not stop the chain, but it incentivizes devs to upgrade at a regular cadence and requires any chain split to address the difficulty freeze.",
+      ],
+      abstract: [
+        "The difficulty Freeze is a mechanism that is easy to predict and model, and the pressures of missing it are more readily felt by the core developers and client maintainers. The client maintainers are also positioned as the group that is most able to respond to an incoming Difficulty Freeze. This combined with the predictability is more likely to lead to the timely diffusual of the bomb.",
+      ],
       value: 5,
     },
     {
@@ -3619,6 +5196,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2520",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2393",
+      summary: [
+        "ENS support for multiple contenthash records on a single ENS name.",
+      ],
       value: 5,
     },
     {
@@ -3629,6 +5209,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2525",
       category: "ERC",
       discussions: "https://ethereum-magicians.org/t/discussion-ens-login/3569",
+      abstract: [
+        "This presents a method to improve a universal method of login to the ethereum blockchain, leveraging the metadata storage provided by the ENS. We consider a user to be logged in when we have an EIP-1193 provider that can sign transaction and messages on his behalf. This method is inspired by Alex Van de Sande\u2019s work and Web3Connect. In the future, the approach described here-after should be extended to work with any blockchain.",
+      ],
       value: 5,
     },
     {
@@ -3640,6 +5223,14 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip2537-bls12-precompile-discussion-thread/4187",
+      summary: [
+        "This precompile adds operation on BLS12-381 curve as a precompile in a set necessary to efficiently perform operations such as BLS signature verification and perform SNARKs verifications.",
+      ],
+      abstract: [
+        "If block.number >= X we introduce nine separate precompiles to perform the following operations:",
+        "Mapping functions specification is included as a separate document. Mapping function does NOT perform mapping of the byte string into field element (as it can be implemented in many different ways and can be efficiently performed in EVM), but only does field arithmetic to map field element into curve point. Such functionality is required for signature schemes.",
+        "Multiexponentiation operation is included to efficiently aggregate public keys or individual signer\u2019s signatures during BLS signature verification.",
+      ],
       value: 5,
     },
     {
@@ -3651,6 +5242,13 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2539-bls12-377-precompile-discussion-thread/4659",
+      summary: [
+        "This precompile adds operation on BLS12-377 curve (from Zexe paper) as a precompile in a set necessary to efficiently perform operations such as BLS signature verification and perform SNARKs verifications. Unique properties of BLS12-377 also later allow to have SNARKs that check BLS12-377 pairing in an efficient way and allow e.g. constant-size BLS signature aggregation.",
+      ],
+      abstract: [
+        "If block.number >= X we introduce nine separate precompiles to perform the following operations:",
+        "Multiexponentiation operation is included to efficiently aggregate public keys or individual signer\u2019s signatures during BLS signature verification.",
+      ],
       value: 5,
     },
     {
@@ -3662,6 +5260,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2542-add-txgaslimit-callgaslimit-txgasrefund-opcodes",
+      summary: [
+        "A mechanism to allow smart contracts to access information on gas limits for the current transaction and execution frame.",
+      ],
+      abstract: [
+        "Currently, there is an existing opcode 0x45 GASLIMIT that provides access to the block gas limit. While this information may be useful in some cases, it is probably not a value that smart contract developers may be concerned about. The opcode 0x5a GAS provides the remaining gas, not the initial one. Also, it is worth noting how existing 0x32 ORIGIN, 0x33 CALLER, 0x34 CALLVALUE and 0x3a GASPRICE opcodes set a pattern of having access to both the transaction and current execution frame state. TBD: as 0x30 opcode range is exhausted, the proposed opcodes can be added to 0x50 range, or a new range can be added.",
+      ],
       value: 5,
     },
     {
@@ -3673,6 +5277,13 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/human-readable-parameters-for-contract-function-execution/4154",
+      summary: [
+        "New Ethereum RPC method eth_sendTransactionToContractFunction that parallels eth_sendTransaction but allows for human-readable contract function execution data to be displayed to users.",
+      ],
+      abstract: [
+        "When a dapp prompts a user to execute a smart contract function via a ProviderWallet, confirmation screens displayed in the ProviderWallet layer cannot display the human readable details of the function to be called and the arguments to be passed. This is because the Ethereum RPC method used for contract function execution (eth_sendTransaction) accepts information about what function to call in a non-human readable (and non-recoverable) format. As such, when a ProviderWallet receives this non-human readable information from a dapp, they are unable to display a human readable version since they never received one and cannot recover one from the data.",
+        "This creates a poor and potentially dangerous user experience. For example, a malicious dapp could swap out the address argument in a token contract\u2019s transfer(address,uint256) function and reroute the tokens intended for someone else to themselves. This sleight-of-hand would be quiet and unlikely to be picked up by a casual user glancing over the non-human readable data. By adding a new Ethereum RPC method (eth_sendTransactionToContractFunction) that accepts the function ABI, ProviderWallets can recreate and display the human readable details of contract function execution to users.",
+      ],
       value: 5,
     },
     {
@@ -3684,6 +5295,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2583-penalties-for-trie-misses/4190",
+      summary: [
+        "This EIP introduces a gas penalty for opcodes which access the account for trie non-existent accounts.",
+      ],
+      abstract: [
+        "This EIP adds a gas penalty for accesses to the account trie, where the address being looked up does not exist. Non-existing accounts can be used in DoS attacks, since they bypass cache mechanisms, thus creating a large discrepancy between \u2018normal\u2019 mode of execution and \u2018worst-case\u2019 execution of an opcode.",
+      ],
       value: 5,
     },
     {
@@ -3695,6 +5312,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethresear.ch/t/overlay-method-for-hex-bin-tree-conversion/7104",
+      summary: [
+        "This EIP proposes a method to convert the state trie format from hexary to binary: new values are directly stored in a binary trie \u201claid over\u201d the hexary trie. Meanwhile, the hexary trie is converted to a binary trie in the background. When the process is finished, both layers are merged.",
+      ],
+      abstract: [
+        "This EIP describes a four phase process to complete the conversion.",
+      ],
       value: 5,
     },
     {
@@ -3706,6 +5329,15 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethresear.ch/t/another-simple-gas-fee-model-the-escalator-algorithm-from-the-agoric-papers/6399",
+      summary: [
+        "The current \u201cfirst price auction\u201d fee model in Ethereum is inefficient and needlessly costly to users. This EIP proposes a way to replace this with a mechanism that allows dynamically priced transaction fees and efficient transaction price discovery.",
+      ],
+      abstract: [
+        "Based on The Agoric Papers.",
+        "Each transaction would have the option of providing parameters that specify an \u201cescalating\u201d bid, creating a time-based auction for validators to include that transaction.",
+        "This creates highly efficient price discovery, where the price will always immediately fall to the highest bid price, which is not necessarily that user\u2019s highest price they would pay.",
+        "",
+      ],
       value: 5,
     },
     {
@@ -3716,6 +5348,15 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2615",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2616",
+      summary: [
+        "This standard proposes an extension to ERC721 Non-Fungible Tokens (NFTs) to support rental and mortgage functions. These functions are necessary for NFTs to emulate real property, just like those in the real world.",
+      ],
+      abstract: [
+        "This standard is an extension of ERC721. It proposes additional roles, the right of tenants to enable rentals, and the right of lien.",
+        "With ERC2615, NFT owners will be able to rent out their NFTs and take out a mortgage by collateralizing their NFTs. For example, this standard can apply to:",
+        "NFT developers are also able to easily integrate ERC2615 since it is fully backwards-compatible with the ERC721 standard.",
+        "One notable point is that the person who has the right to use an application is not the owner but the user (i.e. tenant). Application developers must implement this specification into their applications.",
+      ],
       value: 5,
     },
     {
@@ -3727,6 +5368,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/hierarchical-deterministic-wallet-for-computation-integrity-proof-cip-layer-2/4286",
+      summary: [
+        "In the context of Computation Integrity Proof (CIP) Layer-2 solutions such as ZK-Rollups, users are required to sign messages on new elliptic curves optimized for those environnements. We leverage existing work on Key Derivation (BIP32, BIP39 and BIP44) to define an efficient way to securely produce CIP L2s private keys, as well as creating domain separation between Layer-2 applications.",
+      ],
+      abstract: [
+        "We provide a Derivation Path allowing a user to derive hierarchical keys for Layer-2 solutions depending on the zk-technology, the application, the user\u2019s Layer-1 address, as well as an efficient grinding method to enforce the private key distribution within the curve domain. The propose Derivation Path is defined as follow",
+      ],
       value: 5,
     },
     {
@@ -3737,6 +5384,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2657",
       category: "None",
       discussions: "https://gitter.im/ethereum/AllCoreDevs",
+      abstract: [
+        "The specification for Ephemeral Testnet Yolo. Clients who wish to sync need to implement the following features into their client. It is for testing basic infrastructure and will be nuked.",
+      ],
       value: 5,
     },
     {
@@ -3748,6 +5398,13 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip2666-global-precompiles-repricing-and-many-more-discussion-thread/4332",
+      summary: [
+        "This EIP tries to set prices of certain precompiles and built-in EVM function to be in line with their performance, consumed resources and newer changes in EVM itself.",
+        "New price formulas are proposed for:",
+      ],
+      abstract: [
+        "Costs of many precompiles and built-in functions are invalid at the current state of the clients. This EIP contains a list of changes to the pricing formulas to better reflect underlying computations\u2019 structure.",
+      ],
       value: 5,
     },
     {
@@ -3759,6 +5416,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-2680-ethereum-2-wallet-layout/4323",
+      summary: [
+        "A standard layout and naming format for walletstore and keystore for both hierarchical (e.g. filesystem, Amazon S3) and non-hierarchical (key/value) storage systems.",
+      ],
+      abstract: [
+        "Ethereum wallets have no standards for their layout in persistent storage, making different wallet implementations incompatible. This defines a standard for the placement of Ethereum walletstores and keystores, making it possible for different software to work with the same wallets and keys.",
+      ],
       value: 5,
     },
     {
@@ -3770,6 +5433,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-2746-rules-engine-interface/4435",
+      summary: [
+        "An interface for using a smart contract as a rules engine. A single deployed contract can register a data domain, create sets of rules that perform actions on that domain, and then invoke a set as an atomic transaction.",
+      ],
+      abstract: [
+        "This standard proposes an interface that will allow the creation of hierarchal sets of rules (i.e., RuleTrees) that can be invoked to evaluate and manipulate a registered data domain. At the time of this draft, all intentions to insert additional functionality onto the blockchain requires the coding and creation of a newly deployed contract. However, this standard will allow users to deploy a contract just once, one which will then allow them to create (and invoke) pipelines of commands within that contract.",
+      ],
       value: 5,
     },
     {
@@ -3780,6 +5449,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2767",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2766",
+      summary: [
+        "A standard for Governance contracts that holds the administrative ownership of other smart contracts with voting power distributed as ERC-20 tokens.",
+      ],
+      abstract: [
+        "The following standard defines the implementation of a standard API for a Governance smart contract based on ERC-20. Existing ERC-173 compatible contracts can upgrade from private key wallet ownership to a Governance smart contract. Adhering to a standard API enables general tools to populate governance information of various projects, thus increasing transparency.",
+      ],
       value: 5,
     },
     {
@@ -3791,6 +5466,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-2770-meta-transactions-forwarder-contract/5391",
+      summary: [
+        "Standardized contract interface for extensible meta-transaction forwarding.",
+      ],
+      abstract: [
+        "This proposal defines an external API of an extensible Forwarder whose responsibility is to validate transaction signatures on-chain and expose the signer to the destination contract, that is expected to accommodate all use-cases. The ERC-712 structure of the forwarding request can be extended allowing wallets to display readable data even for types not known during the Forwarder contract deployment.",
+      ],
       value: 5,
     },
     {
@@ -3813,6 +5494,13 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-2771-secure-protocol-for-native-meta-transactions/4488",
+      summary: [
+        "A contract interface for receiving meta transactions through a trusted forwarder.",
+      ],
+      abstract: [
+        "This ERC defines a minimal contract-level protocol that a compliant Recipient contract needs to support in order to be capable of accepting a meta transaction through a compliant Forwarder contract that it trusts to help it identify the address of the Transaction Signer.",
+        "No EVM-level protocol changes are proposed or required.",
+      ],
       value: 5,
     },
     {
@@ -3824,6 +5512,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-2831-transaction-replacement-message-type/4448",
+      summary: [
+        "An extension to the JavaScript Ethereum Provider API (EIP-1193) this creates a new message type in the event a transaction replacement occurs.",
+      ],
+      abstract: [
+        "The current communication between providers and consumers of providers are fundamentally broken in the event that a transaction in the mempool has been superseded by a newer transactions. Providers currently have no way of communicating a transaction replacement, and consumers are required to poll block by block for the resulting transaction.",
+      ],
       value: 5,
     },
     {
@@ -3834,6 +5528,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2844",
       category: "Interface",
       discussions: "https://github.com/ethereum/EIPs/issues/2845",
+      summary: [
+        "Add new methods to the JSON-RPC for signing and decrypting JOSE objects under a new did_* prefix.",
+      ],
+      abstract: [
+        "This EIP describes three new methods to add to the JSON-RPC that enables wallets to support Decentralized Identifiers (DIDs) as well as JSON Object Signing and Encryption (JOSE). These standards enables wallets to support data decryption as well as authenticated data, both in standard formats using JOSE. With these new methods apps can request the DID from a users wallet, from which a DID document can be resolved. The DID document contains public keys that can be used for encryption and signature verification. This enables Alice to discover Bobs public keys by only knowing Bobs DID. This EIP does not enforce the user of any particular DID method or JOSE algorithms, wallets are free to implement these however they wish.",
+      ],
       value: 5,
     },
     {
@@ -3844,6 +5544,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2848",
       category: "ERC",
       discussions: "https://github.com/InternetOfPeers/EIPs/issues/1",
+      summary: [
+        "My Own Messages (MOM) is a standard to create your very own public, always updated, unstoppable, verifiable, message board.",
+      ],
+      abstract: [
+        "My Own Messages (MOM) use Ethereum as a certification layer for commands and multihash of your messages. It don\u2019t use smart contracts but simple self-send transactions with specific payload attached.",
+        "To ge more insights, you can test a live client, watch a full video overview and demo and read a brief presentation.",
+      ],
       value: 5,
     },
     {
@@ -3854,6 +5561,15 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2876",
       category: "ERC",
       discussions: "https://github.com/junderw/deposit-contract-poc/issues/1",
+      summary: [
+        "This ERC defines a simple contract interface for managing deposits. It also defines a new address format that encodes the extra data passed into the interface\u2019s main deposit function.",
+      ],
+      abstract: [
+        "An ERC-2876 compatible deposit system can accept ETH payments from multiple depositors without the need for managing multiple keys or requiring use of a hot wallet.",
+        "An ERC-2876 compatible wallet application can send ETH to ERC-2876 compatible deposit systems in a way that the deposit system can differentiate their payment using the 8 byte id specified in this standard.",
+        "Adoption of ERC-2876 by all exchanges (as a deposit system and as a wallet for their withdrawal systems), merchants, and all wallet applications/libraries will likely decrease total network gas usage by these systems, since two value transactions cost 42000 gas while a simple ETH forwarding contract will cost closer to 30000 gas depending on the underlying implementation.",
+        "This also has the benefit for deposit system administrators of allowing for all deposits to be forwarded to a cold wallet directly without any manual operations to gather deposits from multiple external accounts.",
+      ],
       value: 5,
     },
     {
@@ -3868,6 +5584,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2917",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/2925",
+      summary: [
+        "ERC2917 is a new standardization for on-chain calculation of staking reward.",
+      ],
+      abstract: [
+        "Based on the product of effective collateral and time, ERC2917 calculates the reward a user can get at any time, and realize the real decentralized DeFi. Here below is the formula for the calculation of reward for a user U:",
+        "",
+        "where \u2206pi denotes individual productivity of the user U between the consecutive block numbers ti-1 and ti, \u2206Pi denotes global productivity between the consecutive block numbers ti-1 and ti, and \u2206Gi denotes gross product between the consecutive block numbers ti-1 and ti. The formula ensures that there is no benefit in case of exiting earlier or entering later in the computation. The reward a user can get for a period is based on his total productivity during that specific time. The formula has been simplified through Solidity and generalized design to make it available across all DeFi products. We note that the smart contract can be triggered for every computation of on the following events:",
+      ],
       value: 5,
     },
     {
@@ -3879,6 +5603,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2926-chunk-based-code-merkleization/4555",
+      abstract: [
+        "Code merkleization, along with binarification of the trie and gas cost bump of state accessing opcodes, are considered as the main levers for decreasing block witness sizes in stateless or partial-stateless Eth1x roadmaps. Here we specify a fixed-sized chunk approach to code merkleization and outline how the transition of existing contracts to this model would look like.",
+      ],
       value: 5,
     },
     {
@@ -3890,6 +5617,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2935-save-historical-block-hashes-in-state/4565",
+      summary: [
+        "Store historical block hashes in a contract, and modify the BLOCKHASH (0x40) opcode to read this contract.",
+      ],
       value: 5,
     },
     {
@@ -3901,6 +5631,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2936-extclear-for-selfdestruct/4569",
+      summary: [
+        "Enable new opcode to clear storage for SELFDESTRUCTEDed contracts.",
+      ],
+      abstract: [
+        "Changes SELFDESTRUCT (0xff) to not clear any storage and adds a new EXTCLEAR (0x5c) opcode that will clear a specific storage slot for a contract that has previously been self destructed.",
+      ],
       value: 5,
     },
     {
@@ -3912,6 +5648,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2937-set-indestructible/4571",
+      summary: [
+        "Add a SET_INDESTRUCTIBLE (0xA8) opcode that prevents the contract from calling SELFDESTRUCT (0xFF).",
+      ],
+      abstract: [],
       value: 5,
     },
     {
@@ -3929,6 +5669,14 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2938-account-abstraction/4630",
+      summary: [
+        "Account abstraction (AA) allows a contract to be the top-level account that pays fees and starts transaction execution.",
+      ],
+      abstract: [
+        "See also: https://ethereum-magicians.org/t/implementing-account-abstraction-as-part-of-eth1-x/4020 and the links therein for historical work and motivation.",
+        "Transaction validity, as of Muir Glacier, is defined rigidly by the protocol: ECDSA signature, a simple nonce, and account balance. Account abstraction extends the validity conditions of transactions with the execution of arbitrary EVM bytecode (with some limits on what state may be accessed.) To signal validity, we propose a new EVM opcode PAYGAS, which also sets the gas price and gas limit the contract is willing to pay.",
+        "We split account abstraction into two tiers: single-tenant AA, which is intended to support wallets or other use cases with few participants, and multi-tenant AA, which is intended to support applications with many participants (eg. tornado.cash, Uniswap).",
+      ],
       value: 5,
     },
     {
@@ -3945,6 +5693,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/ethpm-v3-specification-working-group/4086/7",
+      summary: [
+        "A custom URI scheme to identify an EthPM registry, package, release, or specific contract asset within a release.",
+      ],
+      abstract: [
+        "When interacting with the EthPM ecosystem, users and tooling can benefit from a URI scheme to identify EthPM assets. Being able to specify a package, registry, or release with a single string makes simplifies the steps required to install, publish, or distribute EthPM packages.",
+      ],
       value: 5,
     },
     {
@@ -3956,6 +5710,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/is-static-opcode-useful-for-aa/4609",
+      summary: [
+        "Add a IS_STATIC (0x4A) opcode that pushes 1 if the current context is static (ie. the execution is in a STATICCALL or a descendant thereof, so state-changing operations are not possible), and 0 if it is not.",
+      ],
+      abstract: [],
       value: 5,
     },
     {
@@ -3966,6 +5724,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2997",
       category: "Core",
       discussions: "https://ethresear.ch/t/impersonatecall-opcode/8020",
+      abstract: [
+        "Add a new opcode, IMPERSONATECALL at 0xf6, which is similar in idea to CALL (0xF1), except that it impersonates a sender, i.e. the callee sees a sender different from the real caller. The impersonated sender address is derived from the real caller address and a salt.",
+      ],
       value: 5,
     },
     {
@@ -3976,6 +5737,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3000",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/3042",
+      summary: [
+        "Interface for scheduling, executing and challenging contract executions based on off-chain approval",
+      ],
+      abstract: [
+        "ERC-3000 presents a basic on-chain spec for contracts to optimistically enact governance decisions made off-chain.",
+        "The standard is opinionated in defining the 6 entrypoint functions to contracts supporting the standard. But it allows for any sort of resolver mechanism for the challenge/response games characteristic of optimistic contracts.",
+        "While the authors currently believe resolving challenges using a subjective oracle is the right tradeoff, the standard has been designed such that changing to another mechanism is possible (a deterministic resolver like Optimism\u2019s OVM uses), even allowing to hot-swap it in the same live instance.",
+      ],
       value: 5,
     },
     {
@@ -3987,6 +5756,14 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-3005-the-economic-viability-of-batched-meta-transactions/4673",
+      summary: [
+        "Defines an extension function for ERC-20 (and other fungible token standards), which allows receiving and processing a batch of meta transactions.",
+      ],
+      abstract: [
+        "This EIP defines a new function called processMetaBatch() that extends any fungible token standard, and enables batched meta transactions coming from many senders in one on-chain transaction.",
+        "The function must be able to receive multiple meta transactions data and process it. This means validating the data and the signature, before proceeding with token transfers based on the data.",
+        "The function enables senders to make gasless transactions, while reducing the relayer\u2019s gas cost due to batching.",
+      ],
       value: 5,
     },
     {
@@ -3997,6 +5774,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3009",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/3010",
+      summary: [
+        "A contract interface that enables transferring of fungible assets via a signed authorization.",
+      ],
+      abstract: [
+        "A set of functions to enable meta-transactions and atomic interactions with ERC-20 token contracts via signatures conforming to the EIP-712 typed message signing specification.",
+        "This enables the user to:",
+      ],
       value: 5,
     },
     {
@@ -4007,6 +5791,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3014",
       category: "Interface",
       discussions: "https://github.com/ethereum/EIPs/issues/3012",
+      summary: [
+        "Add eth_symbol method to the JSON-RPC that returns the symbol of the native coin of the network.",
+      ],
+      abstract: [
+        "The new method eth_symbol (eth_-namespaced) has no parameters and returns a string of the native coin of the network. For the Ethereum mainnet this will be ETH, other networks will have other symbols.",
+      ],
       value: 5,
     },
     {
@@ -4018,6 +5808,13 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3026-bw6-761-curve-operations/4790",
+      summary: [
+        "This precompile adds operations for the BW6-761 curve (from the EY/Inria research paper) as a precompile in a set necessary to efficiently perform verification of one-layer composed zkSNARKs proofs.",
+      ],
+      abstract: [
+        "If block.number >= X we introduce seven separate precompiles to perform the following operations (addresses to be determined):",
+        "The multiexponentiation operations are a generalization of point multiplication, but separate precompiles are prosposed because running a single MUL through MULTIEXP seems to be 20% more expensive.",
+      ],
       value: 5,
     },
     {
@@ -4029,6 +5826,13 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-3030-bls-remote-signer-http-api-standard/4810",
+      summary: [
+        "This EIP defines a HTTP API standard for a BLS remote signer, consumed by validator clients to sign block proposals and attestations in the context of Ethereum 2.0 (eth2).",
+      ],
+      abstract: [
+        "A validator client contributes to the consensus of the Eth2 blockchain by signing proposals and attestations of blocks, using a BLS private key which must be available to this client at all times.",
+        "The BLS remote signer API is designed to be consumed by validator clients, looking for a more secure avenue to store their BLS12-381 private key(s), enabling them to run in more permissive and scalable environments.",
+      ],
       value: 5,
     },
     {
@@ -4040,6 +5844,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-3041-add-basefee-in-eth-getblockbyhash-response/4825",
+      summary: [
+        "Add basefee field to eth_getBlockByHash RPC endpoint response.",
+      ],
+      abstract: [
+        "Adds baseFee property to the eth_getBlockByHash JSON-RPC request result object. This property will contain the value of the base fee for any block after the EIP-1559 fork.",
+      ],
       value: 5,
     },
     {
@@ -4051,6 +5861,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-3044-add-basefee-to-eth-getblockbynumber/4828",
+      summary: [
+        "Add basefee field to eth_getBlockByNumber RPC endpoint response.",
+      ],
+      abstract: [
+        "Adds baseFee property to the eth_getBlockByNumber JSON-RPC request result object. This property will contain the value of the base fee for any block after the EIP-1559 fork.",
+      ],
       value: 5,
     },
     {
@@ -4062,6 +5878,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/add-basefee-to-eth-getunclebyblockhashandindex/4829",
+      summary: [
+        "Add basefee field to eth_getUncleByBlockHashAndIndex RPC endpoint response.",
+      ],
+      abstract: [
+        "Adds baseFee property to the eth_getUncleByBlockHashAndIndex JSON-RPC request result object. This property will contain the value of the base fee for any block after the EIP-1559 fork.",
+      ],
       value: 5,
     },
     {
@@ -4073,6 +5895,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/add-basefee-to-eth-getunclebyblocknumberandindex/4830",
+      summary: [
+        "Add basefee field to eth_getUncleByBlockNumberAndIndex RPC endpoint response.",
+      ],
+      abstract: [
+        "Adds baseFee property to the eth_getUncleByBlockNumberAndIndex JSON-RPC request result object. This property will contain the value of the base fee for any block after the EIP-1559 fork.",
+      ],
       value: 5,
     },
     {
@@ -4083,6 +5911,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3068",
       category: "Core",
       discussions: "https://ethereum-magicians.org/t/pre-compile-for-bls/3973",
+      summary: [
+        "This EIP defines a hash-to-curve precompile for use in BN256 and would allow for cheaper BLS signature verification.",
+      ],
+      abstract: [
+        "There is currently no inexpensive way to perform BLS signature verification for arbitrary messages. This stems from the fact that there is no precompiled contract in the EVM for a hash-to-curve algorithm for the BN256 elliptic curve. The gas cost of calling a deterministic hash-to-curve algorithm written in Solidity is approximately that of one pairing check, although the latter requires an order of magnitude more computation. This EIP remedies this by implementing a hash-to-curve algorithm for the BN256 G1 curve, which would reduce the cost of signature verification to essentially that of the pairing check precompiled contract. We also include a hash-to-curve algorithm for the BN256 G2 group.",
+      ],
       value: 5,
     },
     {
@@ -4094,6 +5928,12 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-3085-wallet-addethereumchain/5469",
+      summary: [
+        "An RPC method for adding Ethereum chains to wallet applications.",
+      ],
+      abstract: [
+        "The wallet_addEthereumChain RPC method allows Ethereum applications (\u201cdapps\u201d) to suggest chains to be added to the user\u2019s wallet application. The caller must specify a chain ID and some chain metadata. The wallet application may arbitrarily refuse or accept the request. null is returned if the chain was added, and an error otherwise.",
+      ],
       value: 5,
     },
     {
@@ -4105,6 +5945,10 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-3091-block-explorer-api-routes/4907",
+      summary: ["Standard API Routes for Blockchain explorers"],
+      abstract: [
+        "This proposal brings standardization between block explorers API routes when linking transactions, blocks, accounts and tokens.",
+      ],
       value: 5,
     },
     {
@@ -4115,6 +5959,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3135",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/3132",
+      summary: [
+        "This standard defines a token which can be claimed only by token issuer with payer\u2019s signature.",
+      ],
+      abstract: [
+        "This EIP defines a set of additions to the default token standard such as ERC-20, that allows online/offline service providers establish micropayment channels with any number of users by signing and verifying messages about the consumption of token off chain. Using this mechanism will reduce interactions with blockchain to minimal for both participants, thus saving gas and improve performance.",
+      ],
       value: 5,
     },
     {
@@ -4126,6 +5976,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3143-increase-block-rewards-to-5-eth/5061",
+      summary: [
+        "Changes the block reward paid to proof-of-work (POW) miners to 5 ETH.",
+      ],
+      abstract: [
+        "Starting with FORK_BLKNUM block rewards will be increased to a base of 5 ETH, uncle and nephew rewards will be adjusted accordingly.",
+      ],
       value: 5,
     },
     {
@@ -4137,6 +5993,9 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-3155-create-evm-trace-specification/5007",
+      summary: [
+        "Introduce a new JSON standard for EVM traces during execution of state tests.",
+      ],
       value: 5,
     },
     {
@@ -4148,6 +6007,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3220-crosschain-id-specification/5446",
+      summary: [
+        "A self-verifying unique blockchain identifier that deals with forks.",
+      ],
+      abstract: [
+        "The crosschain-id is a 32 byte hex string and with some bytes extracted from blockchain hash and some manually defined to characterize a blockchain. We also propose a registration and lookup service to retrieve blockchain metadata from the crosschain-id.",
+      ],
       value: 5,
     },
     {
@@ -4164,6 +6029,9 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-3234-batch-flash-loans/5271",
+      summary: [
+        "This ERC provides standard interfaces and processes for multiple-asset flash loans.",
+      ],
       value: 5,
     },
     {
@@ -4174,6 +6042,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3238",
       category: "Core",
       discussions: "https://github.com/ethereum/EIPs/issues/3239",
+      summary: [
+        "Delays the difficulty bomb so 30 second blocks won\u2019t happen until around Q2/2022.",
+      ],
+      abstract: [
+        "Starting with FORK_BLOCK_NUMBER the client will calculate the difficulty based on a fake block number suggesting to the client that the difficulty bomb is adjusting eleven million blocks later than the actual block number.",
+      ],
       value: 5,
     },
     {
@@ -4185,6 +6059,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/discussion-of-eip-3267/5343",
+      summary: [
+        "Transfer a part of Ethereum transfer/mining fees to Future Salaries contract",
+      ],
+      abstract: [
+        "Transfer a part (exact fractions - TBD) of mining/transfer fees + (probably: TBD) some minted ETH to the DonateETH contract configured to transfer to SalaryWithDAO contract.",
+      ],
       value: 5,
     },
     {
@@ -4196,6 +6076,7 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3298-removal-of-refunds/5430",
+      summary: ["Remove gas refunds for SSTORE and SELFDESTRUCT."],
       value: 5,
     },
     {
@@ -4207,6 +6088,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3300-phase-out-refunds/5434",
+      summary: ["Phases out the SSTORE and SELFDESTRUCT gas refunds."],
+      abstract: [
+        "This EIP would define a block when the SSTORE and SELFDESTRUCT refunds would begin to diminish. The refund would step linearly downward, eroding the implicit value of such refunds at an accelerating pace.",
+      ],
       value: 5,
     },
     {
@@ -4218,6 +6103,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3322-efficient-gas-storage/5470",
+      summary: [
+        "Allows contract accounts to store gas that can be transferred to the refund counter.",
+      ],
+      abstract: [
+        "Contracts can persist gas for later transfer to the refund counter. Three opcodes are introduced to read, add to, and use this gas counter.",
+      ],
       value: 5,
     },
     {
@@ -4229,6 +6120,13 @@ export const data = {
       category: "Interface",
       discussions:
         "https://ethereum-magicians.org/t/eip-3326-wallet-switchethereumchain",
+      summary: [
+        "An RPC method for switching the wallet\u2019s active Ethereum chain.",
+      ],
+      abstract: [
+        "The wallet_switchEthereumChain RPC method allows Ethereum applications (\u201cdapps\u201d) to request that the wallet switches its active Ethereum chain, if the wallet has a concept thereof. The caller must specify a chain ID. The wallet application may arbitrarily refuse or accept the request. null is returned if the active chain was switched, and an error otherwise.",
+        "Important cautions for implementers of this method are included in the Security Considerations section.",
+      ],
       value: 5,
     },
     {
@@ -4240,6 +6138,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eips-3336-and-3337-improving-the-evms-memory-model/5482",
+      summary: ["Changes the memory model for the EVM to use pagination."],
+      abstract: [
+        "Presently, the EVM charges for memory as a linear array starting at address 0 and extending to the highest address that has been read from or written to. This suffices for simple uses, but means that compilers have to generate programs that use memory compactly, which leads to wasted gas with reallocation of memory elements, and makes some memory models such as separate heap and stack areas impractical. This EIP proposes changing to a page-based billing model, which adds minimal complexity to implementations, while providing for much more versatility in EVM programs.",
+      ],
       value: 5,
     },
     {
@@ -4251,6 +6153,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eips-3336-and-3337-improving-the-evms-memory-model/5482",
+      summary: [
+        "Introduces four new opcodes for loading data from and storing data to memory offset by a frame pointer.",
+      ],
+      abstract: [
+        "This EIP introduces four new opcodes, MLOADFP, MSTOREFP, GETFP and SETFP that allow for more efficient memory access offset by a user-controlled quantity called the \u201cframe pointer\u201d. This permits compilers to more efficiently offload ephemeral data such as local variables to memory instead of the EVM\u2019s evaluation stack, which has a number of benefits, including the effective elimination of restrictions on the number of local variables in a function.",
+      ],
       value: 5,
     },
     {
@@ -4262,6 +6170,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3368-block-reward-increase-w-decay-for-next-two-years/5550",
+      summary: [
+        "Changes the block reward paid to proof-of-work (POW) miners to 3 ETH from existing 2 ETH and starts a decay schedule for next two years to 1 ETH Block Reward.",
+      ],
+      abstract: [
+        "Set the block reward to 3 ETH and then decrease it slightly every block for 4,724,000 blocks (approximately 2 years) until it reaches 1 ETH.",
+      ],
       value: 5,
     },
     {
@@ -4273,6 +6187,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3372-apply-minor-modifications-to-the-ethash-algorithm-to-break-current-asic-implementations-eip-969-resubmission/5655",
+      summary: ["Introduce 5 new FNV primes into the ethash algorithm."],
+      abstract: [
+        "This EIP is to kick current ASIC implementations out of the network to keep the Ethereum network secure and healthy by changing the fnv constants.",
+      ],
       value: 5,
     },
     {
@@ -4283,6 +6201,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3386",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/3384",
+      summary: [
+        "A standard interface for contracts that create generic ERC-20 tokens which derive from a pool of unique ERC-721/ERC-1155 tokens.",
+      ],
+      abstract: [
+        "This standard outlines a smart contract interface to wrap identifiable tokens with fungible tokens. This allows for derivative ERC-20 tokens to be minted by locking the base ERC-721 non-fungible tokens and ERC-1155 multi tokens into a pool. The derivative tokens can be burned to redeem base tokens out of the pool. These derivatives have no reference to the unique id of these base tokens, and should have a proportional rate of exchange with the base tokens. As representatives of the base tokens, these generic derivative tokens can be traded and otherwise utilized according to ERC-20, such that the unique identifier of each base token is irrelevant.",
+        "ERC-721 and ERC-1155 tokens are considered valid base, tokens because they have unique identifiers and are transferred according to similar rules. This allows for both ERC-721 NFTs and ERC-1155 Multi-Tokens to be wrapped under a single common interface.",
+      ],
       value: 5,
     },
     {
@@ -4294,6 +6219,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3298-removal-of-refunds/5430",
+      summary: [
+        "Remove gas refunds for SELFDESTRUCT, and restrict gas refunds for SSTORE to one specific case.",
+      ],
       value: 5,
     },
     {
@@ -4305,6 +6233,13 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3416-median-gas-premium/5755",
+      summary: [
+        "A transaction pricing mechanism with a fixed-per-block network fee and a median inclusion fee with additive updates.",
+      ],
+      abstract: [
+        "There is a base fee per gas in protocol, which can move up or down by a maximum of 1/8 in each block. The base fee per gas is adjusted by the protocol to target an average gas usage per block instead of an absolute gas usage per block. The base fee is increased when blocks are over the gas limit target and decreases when blocks are under the gas limit target. Transaction senders specify their fees by providing only one value:",
+        "Then there is a gas premium that is directly computed as 50% of (fee cap - base fee). This gas premium gets added onto the base fee to calculate the gas price that will be used in the weighted median computation. The gas premium, determined directly by a specified fee cap, can either be set to a fairly low value to compensate miners for uncle rate risk only with the base fee, or to a high value to compete during sudden bursts of activity. Using all transactions that the miner wants to include in the block, a weighted median gas premium is computed, not considering in the computation 5% of gas price outliers on the upper-side for extra robustness against miner manipulation.",
+      ],
       value: 5,
     },
     {
@@ -4316,6 +6251,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-3340-nft-editions-standard-extension/6044",
+      summary: [
+        "This standard addresses an extension to the ERC-721 specification by allowing signatures on NFTs representing works of art. This provides improved provenance by creating functionality for an artist to designate an original and signed limited-edition prints of their work.",
+      ],
+      abstract: [
+        "ERC-3440 is an ERC-721 extension specifically designed to make NFTs more robust for works of art. This extends the original ERC-721 spec by providing the ability to designate the original and limited-edition prints with a specialized enumeration extension similar to the original 721 extension built-in. The key improvement of this extension is allowing artists to designate the limited nature of their prints and provide a signed piece of data that represents their unique signature to a given token Id, much like an artist would sign a print of their work.",
+      ],
       value: 5,
     },
     {
@@ -4327,6 +6268,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/erc-3450-standard-for-applying-shamirs-to-bip-39-mnemonics/5844",
+      summary: [
+        "A standardized algorithm for applying Shamir\u2019s Secret Sharing Scheme to BIP-39 mnemonics.",
+      ],
+      abstract: [
+        "A standardized approach to splitting a BIP-39 mnemonic into N BIP-39 mnemonics, called shares, so that T shares are required to recover the original mnemonic and no information about the original mnemonic, other than its size, is leaked with less than T shares.",
+      ],
       value: 5,
     },
     {
@@ -4338,6 +6285,11 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-draft-transaction-data-opcodes/6017",
+      summary: ["Provide access to original transaction data."],
+      abstract: [
+        "This EIP introduces the following three EVM instructions: ORIGINDATALOAD, ORIGINDATASIZE, and ORIGINDATACOPY.",
+        "These three instructions are meant to provide access to the original transaction\u2019s data payload, enabling a gas-efficient way of accessing large data payloads in cross-contract calls.",
+      ],
       value: 5,
     },
     {
@@ -4349,6 +6301,11 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3520-transaction-destination-opcode/6058",
+      summary: ["Provide access to the original recipient of a transaction."],
+      abstract: [
+        "This EIP introduces the following EVM instruction: ENTRYPOINT.",
+        "This instruction is meant to provide access to the original recipient of the transaction, the to address, enabling new ways of introspection to be applied in conjunction with EIP-3508.",
+      ],
       value: 5,
     },
     {
@@ -4360,6 +6317,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3521-reduce-access-list-cost/6072",
+      summary: [
+        "Reduce the cost of declaring tx.to storage keys in access lists.",
+      ],
       value: 5,
     },
     {
@@ -4371,6 +6331,14 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3534-restricted-chain-context-transaction-type/6112",
+      summary: [
+        "Defines a new transaction type with constraints on ancestor block hash, block author, and/or block timestamp.",
+      ],
+      abstract: [
+        "We introduce a new EIP-2718 transaction type with the format 0x4 || rlp([chainId, chainContext, nonce, gasPrice, gasLimit, to, value, data, access_list, yParity, senderR, senderS]).",
+        "This proposed chainContext element adds a constraint on the validity of a transaction to a chain segment meeting the referenced value(s). Four contexts are defined as subclasses of this type:",
+        "These contexts can be used in arbitrary combinations. Annotated context value combinations are referenced by a composite integer prefix on the annotation.",
+      ],
       value: 5,
     },
     {
@@ -4382,6 +6350,12 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/trust-minimized-proxy/5742",
+      summary: [
+        "Additional storage slots for upgradeability proxy to decrease trust in interaction with upgradeable smart contracts.",
+      ],
+      abstract: [
+        "Removing trust from upgradeability proxy is required for anonymous developers. To achieve that, disallowing sudden, potentially malicious upgrades is required. This EIP introduces a time lock, a period of one month, before defined by proxy admin implementation becomes active implementation.",
+      ],
       value: 5,
     },
     {
@@ -4392,6 +6366,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3584",
       category: "Core",
       discussions: "https://ethresear.ch/t/block-access-list-v0-1/9505",
+      summary: [
+        "A proposal to build a block\u2019s access_list and include its fingerprint AccessListRoot in the block header.",
+      ],
+      abstract: [
+        "EIP-2929/EIP-2930 centers around normalizing the (low) gas costs of data/storage accesses made by a transaction as well as providing for (and encouraging) a new transaction type format:",
+        "that makes upfront access_list declarations, where access_list is some [[{20 bytes}, [{32 bytes}...]]...] map of AccessedAddress=> AccessedStorageKeys.",
+        "The first accesses of these upfront declarations are charged at discounted price (roughly ~10%) and first accesses outside this list are charged higher price. Reason is upfront access declaration provides for a way to preload/optimize/batch loading these locations while executing the transaction. This inadvertently leads to generation of transaction access_list that has all (first) accesses (declared or not) made by a transaction. This proposal is to collate these transaction access_lists for all the transactions in a block access_list document and include its fingerprint in the block header.",
+      ],
       value: 5,
     },
     {
@@ -4402,6 +6384,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-3589",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/3590",
+      summary: [
+        "This standard defines a ERC-721 token called assembly token which can represent a combination of assets.",
+      ],
+      abstract: [
+        "The ERC-1155 multi-token contract defines a way to batch transfer tokens, but those tokens must be minted by the ERC-1155 contract itself. This EIP is an ERC-721 extension with ability to assemble assets such as ether, ERC-20 tokens, ERC-721 tokens and ERC-1155 tokens into one ERC-721 token whose token id is also the asset\u2019s signature. As assets get assembled into one, batch transfer or swap can be implemented very easily.",
+      ],
       value: 5,
     },
     {
@@ -4419,6 +6407,10 @@ export const data = {
       category: "ERC",
       discussions:
         "https://ethereum-magicians.org/t/eip-3643-proposition-of-the-t-rex-token-standard-for-securities/6844",
+      summary: ["The T-REX token is This standard"],
+      abstract: [
+        "Standards should be backwards compatible with ERC-20 and should be able to interact with ERC-735 to validate the claims linked to an ONCHAINID, based on ERC-734 and ERC-735. The standard defines several interfaces that are described hereunder:",
+      ],
       value: 5,
     },
     {
@@ -4430,6 +6422,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3690-eof-jumpdest-table/6806",
+      abstract: [
+        "Introduce a section in the EOF format (EIP-3540) for storing the list of JUMPDESTs, validate the correctness of this list at the time of contract creation, and remove the need for JUMPDEST-analysis at execution time. In EOF contracts, the JUMPDEST instruction is not needed anymore and becomes invalid. Legacy contracts are entirely unaffected by this change.",
+      ],
       value: 5,
     },
     {
@@ -4441,6 +6436,7 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3756-gas-limit-cap/6921",
+      abstract: ["Set an in-protocol cap for the gas limit of 30,000,000."],
       value: 5,
     },
     {
@@ -4452,6 +6448,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/discussion-to-eip-3788-strict-enforcement-of-chainid/7001",
+      abstract: [
+        "Reject transactions that do not explicitly have the same chainId as the node\u2019s configuration.",
+      ],
       value: 5,
     },
     {
@@ -4471,6 +6470,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-875",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/875",
+      summary: [
+        "A simple non fungible token standard that allows batching tokens into lots and settling p2p atomic transfers in one transaction. You can test out an example implementation on rinkeby here: https://rinkeby.etherscan.io/address/0xffab5ce7c012bc942f5ca0cd42c3c2e1ae5f0005 and view the repo here: https://github.com/alpha-wallet/ERC-Example",
+      ],
       value: 5,
     },
     {
@@ -4482,6 +6484,13 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-908-reward-full-nodes-and-clients/241",
+      summary: [
+        "When each transaction is validated, give a reward to clients for developing the client.",
+      ],
+      abstract: [
+        "The tragedy of the commons is a phenomenon that is well known in many sectors, most notably in regard to sustainability. It involves the over-utilization of shared finite resources, which detriments all participants and stakeholders involved (which in the case of a global public good can be everyone, including future generations). Without proper management of public resources, a tragedy of the commons can occur. Internalizing externalities (where externalities can be broadly defined as effects that are not accounted for in the intrinsic price of a good, service or resource) is one way of incentivizing the proper management of resources, although other methods that actually properly manage them are necessary. This EIP proposes to make a change to the protocol to providea reward to clients for providing the software that enables Ethereum to function, where the reward can include a proportion of transaction fees (reducing the full proportion that the miner currently receives), and some newly minted ETH. Thus, clients are incentivized to maintain and improve the security and health of the Ethereum protocol and ecosystem. To summarize the mechanism in the proposal, a user agent is attached to a transaction, where this user agent contains a vector with the index of a client address in an access list. The client address could be inserted by the client and verified that it is the same as a read-only constant in the client\u2019s storage.",
+        "Reward mechanisms that are external to being built in to the protocol are beyond the scope of this EIP. Such extra-protocol reward methods include state channel payments for extra services such as light client servers providing faster information such as receipts; state channel payments for buying state reads from full nodes; archival services (which is only applicable to future proposed versions of Ethereum with stateless clients); and tokens for the client and running full nodes.",
+      ],
       value: 5,
     },
     {
@@ -4493,6 +6502,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-999-restore-contract-code-at-0x863df6bfa4/130",
+      summary: [
+        "This document proposes to restore the contract code of the WalletLibrary contract at 0x863DF6BFa4469f3ead0bE8f9F2AAE51c91A907b4 with a patched version. The contract was accidentally self-destructed and renders a significant amount of Ether inaccessible.",
+      ],
+      abstract: [
+        "The WalletLibrary contract was used by the Parity Wallet to reduce gas costs for users deploying multi-signature wallets on the Ethereum blockchain. It contained basic functionality such as confirming or revoking multi-signature transactions for any wallet deployed that depends on this library. The accidental self-destruction of the library contract caused significant amounts of Ether and other assets owned by many different parties to be inaccessible. This proposal suggests restoring the WalletLibrary by a patched version to allow the owners of the dependent multi-signature wallets regain access to their assets.",
+      ],
       value: 5,
     },
     {
@@ -4518,6 +6533,10 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1154",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1161",
+      summary: ["A standard interface for oracles."],
+      abstract: [
+        "In order for ethereum smart contracts to interact with off-chain systems, oracles must be used. These oracles report values which are normally off-chain, allowing smart contracts to react to the state of off-chain systems. A distinction and a choice is made between push and pull based oracle systems. Furthermore, a standard interface for oracles is described here, allowing different oracle implementations to be interchangeable.",
+      ],
       value: 5,
     },
     {
@@ -4529,6 +6548,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/difficulty-bomb-removal/832",
+      summary: [
+        "The average block times are increasing due to the difficulty bomb (also known as the \u201cice age\u201d) slowly accelerating. This EIP proposes to remove the difficulty increase over time and replace it with a fixed difficulty targeting 15 second blocks.",
+      ],
+      abstract: [
+        "Starting with FORK_BLOCK_NUMBER the client will calculate the difficulty without considering the current block number.",
+      ],
       value: 5,
     },
     {
@@ -4549,6 +6574,14 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1538",
       category: "ERC",
       discussions: "https://github.com/ethereum/EIPs/issues/1538",
+      summary: [
+        "This standard provides a contract architecture that makes upgradeable contracts flexible, unlimited in size, and transparent.",
+        "A transparent contract publicly documents the full history of all changes made to it.",
+        "All changes to a transparent contract are reported in a standard format.",
+      ],
+      abstract: [
+        "A transparent contract is a proxy contract design pattern that provides the following:",
+      ],
       value: 5,
     },
     {
@@ -4559,6 +6592,9 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1682",
       category: "Core",
       discussions: "https://ethereum-magicians.org/t/storage-rent-eip/2357",
+      abstract: [
+        "This EIP describes a scheme to charge for data in state, and \u2018archive\u2019 data which is no longer being paid for. It also describes how resurrection of \u2018archived\u2019 data happens.",
+      ],
       value: 5,
     },
     {
@@ -4569,6 +6605,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1706",
       category: "Core",
       discussions: "https://github.com/alex-forshtat-tbk/EIPs/issues/1",
+      summary: [
+        "The proposal that had been accepted changes security properties of a large portion of an existing contract code base that may be infeasible to update and validate. This proposal will make the old assumptions hold even after a network upgrade.",
+      ],
+      abstract: [
+        "EIP-1283 significantly lowers the gas costs of writing to contract\u2019s storage. This created a danger of a new kind of reentrancy attacks on existing contracts as Solidity by default grants a \u2018stipend\u2019 of 2300 gas to simple transfer calls. This danger is easily mitigated if SSTORE is not allowed in low gasleft state, without breaking the backward compatibility and the original intention of this EIP.",
+      ],
       value: 5,
     },
     {
@@ -4579,6 +6621,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-1890",
       category: "Core",
       discussions: "https://t.me/joinchat/DwEd_xahL5hHvzNYH2RnQA",
+      summary: [
+        "Ethereum currently provides a block reward to proof of work miners every block, but it does not capture any block rewards for ecosystem funding. This EIP adds a simple mechanism for capturing a portion of block rewards for ecosystem funding as a credible commitment to doing so in future, but it does not actually capture any such rewards.",
+      ],
+      abstract: [
+        "A mechanism that allows specification of two parameters, a beneficiary address and a per-block reward denominated in wei, that allows a portion of block rewards to be captured for the purpose of ecosystem funding. Both values are set to zero.",
+      ],
       value: 5,
     },
     {
@@ -4589,6 +6637,13 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2025",
       category: "Core",
       discussions: "https://github.com/MadeofTin/EIPs/issues",
+      summary: [
+        "Add 0.0055 ETH per block for 18 months (A total of 17050 ETH) as a developer block reward reserved for funding specific Ethereum1.X working groups. The working groups are State rent (750k), Better sync (360k), Finality gadget (360k), Fee market (360k), Testing infrastructure (360k). Governance of the funds will be through a multisig of trusted individuals from the ecosystem including client teams, the foundation, and the community.",
+        "EIP-1890 proposes a mechanism to capture a portion of block rewards for sustainably funding ongoing network development. That EIP sets values and addresses to zero and so does not actually collect any rewards. This proposal is to explicitly set those values and begin collecting a portion of block rewards for 18 months in order to fund Ethereum 1.X working groups and organization efforts. This funding will be used to repay an initial loan provided by investors in the community funding this work with a small amount of interest. After 18 months the block reward would again reduce to zero.",
+      ],
+      abstract: [
+        "This EIP extends the mechanism established in EIP-1890 to add 0.0055 ETH to the block reward for a specific distribution period of 3,100,000 BLOCKS(\u2248 18 months). The RECIPIENT_ADDRESS is set to a smart contract with hardcoded denominations that distributes incoming ETH to a set of addresses for the purpose of Eth1.X development. The emission schedule would start at the hard fork block number and continue for 3,100,000 BLOCKS (\u2248 18 months) at which point the address and amount would again return to 0. Any further distribution would require a future hard fork.",
+      ],
       value: 5,
     },
     {
@@ -4599,6 +6654,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2458",
       category: "None",
       discussions: "https://github.com/ethereum/EIPs/issues/2453",
+      summary: [
+        "Adds EIP header options updates and updated-by to frontmatter of active EIPs for use as needed.",
+      ],
+      abstract: [
+        "EIP headers updates and updated-by are used for updating active EIPs. This is to make the improvement process of EIPs more modular, and have updates to existing active EIPs receive similar exposures to EIPs which replace existing final EIPs.",
+      ],
       value: 5,
     },
     {
@@ -4610,6 +6671,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2711-separate-gas-payer-from-msg-sender/4353",
+      summary: [
+        "Creates a new transaction type that supports sponsored transactions (separate gas payer from sender), batch transactions (multiple transactions executed in sequence), and expiring transactions (transactions which are not valid after a certain timestamp).",
+      ],
+      abstract: [
+        "An EIP-2718 transaction with the type number 2 is a new type of transaction that includes support for:",
+      ],
       value: 5,
     },
     {
@@ -4621,6 +6688,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-transaction-package/4365",
+      summary: [
+        "Creates a new transaction type which executes a package of one or more transactions, while passing status information to subsequent transactions.",
+      ],
+      abstract: [
+        "Introduce a new transaction type which includes a list of transactions that must be executed serially by clients. Execution information (e.g. success, gas_used, etc.) will be propagated forward to the next transaction.",
+      ],
       value: 5,
     },
     {
@@ -4632,6 +6705,9 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2780-reduce-intrinsic-cost-of-transactions/4413",
+      abstract: [
+        "Reduce the intrinsic cost of a transaction from 21,000 to 7,000 gas.",
+      ],
       value: 5,
     },
     {
@@ -4642,6 +6718,12 @@ export const data = {
       url: "https://eips.ethereum.org/EIPS/eip-2786",
       category: "Interface",
       discussions: "https://github.com/ethereum/EIPs/issues/2787",
+      summary: [
+        "When an Ethereum Provider becomes connected or disconnected, it will emit a connect/disconnect event.",
+      ],
+      abstract: [
+        "The Provider is said to be \u201cconnected\u201d when it can service RPC requests to at least one chain. The Provider is said to be \u201cdisconnected\u201d when it cannot service RPC requests to any chain at all. When the Provider switches from a \u201cconnected\u201d state to a \u201cdisconnected\u201d state, it will emit a connect event. When the Provider switches from a \u201cdisconnected\u201d state to a \u201cconnected\u201d state, it will emit a disconnect event.",
+      ],
       value: 5,
     },
     {
@@ -4653,6 +6735,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2972-wrapped-legacy-transactions/4604",
+      summary: [
+        "Two new transaction types for wrapping legacy transactions with and without a chain ID.",
+      ],
+      abstract: [
+        "Introduces two new EIP-2718 transactions that are signature compatible with legacy transactions and can be automatically upgraded by any client.",
+      ],
       value: 5,
     },
     {
@@ -4664,6 +6752,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/medgasprice-opcode-eip/5480",
+      summary: [
+        "An opcode for getting the median gas price of the parent block.",
+      ],
+      abstract: [
+        "Adds MEDGASPRICE (0x46) opcode that returns the median gas price for the parent block.",
+      ],
       value: 5,
     },
     {
@@ -4675,6 +6769,7 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-2681-limit-account-nonce-to-2-64-1/4324",
+      abstract: ["Limit account nonce to be between 0 and 2^52."],
       value: 5,
     },
     {
@@ -4686,6 +6781,12 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3374-predictable-proof-of-work-sunsetting",
+      summary: [
+        "Sets block reward to 3 and reduces it to 1 linearly over the course of about 1 year.",
+      ],
+      abstract: [
+        "Sets the block reward to 3 ETH and then incrementally decreases it every block for 2,362,000 blocks (approximately 1 year) until it reaches 1 ETH.",
+      ],
       value: 5,
     },
     {
@@ -4697,6 +6798,10 @@ export const data = {
       category: "Core",
       discussions:
         "https://ethereum-magicians.org/t/eip-3382-hardcoded-gas-limit",
+      summary: ["Hardcode the block gas limit to 12,500,000 gas per block."],
+      abstract: [
+        "Updates the block validation rules such that a block is invalid if the gas_limit header field is not equal to 12,500,000.",
+      ],
       value: 5,
     },
   ],
