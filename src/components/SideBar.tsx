@@ -36,6 +36,7 @@ const SideBar = () => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
+      className={`${isOpen ? "open-sidebar" : ""}`}
     >
       <motion.div className="background" variants={sidebar} />
       {isOpen && <Menu />}

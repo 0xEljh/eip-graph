@@ -28,9 +28,12 @@ nav {
   bottom: 0;
   width: 500px;
   color: black;
-  z-index: 1;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.open-sidebar{
+  z-index: 1;
 }
 
 .background {
