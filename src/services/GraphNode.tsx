@@ -57,5 +57,17 @@ export function collectNodeDetails(node: NodeObj) {
       </>
     ),
   });
+  details.push({
+    title: "Classification",
+    content: (
+      <>
+        <h3>Category</h3>
+        <p>{node.category}</p>
+        <br />
+        <h3>Status</h3>
+        <p>{node.status}</p>
+      </>
+    ),
+  });
   return details;
 }
