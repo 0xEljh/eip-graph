@@ -18,25 +18,38 @@ const FilterBar = ({ setFilters }: FilterBarProps) => {
   const [activeFilters, setActiveFilters] = useState<NodePredicate[]>([]);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = event.target;
+    let newActiveFilters = [...activeFilters];
     if (checked) {
-      const newActiveFilters = [...activeFilters, filters[name]];
-      setActiveFilters(newActiveFilters);
-      setFilters(newActiveFilters);
+      newActiveFilters = [...activeFilters, filters[name]];
     } else {
-      const newActiveFilters = activeFilters.filter((f) => f !== filters[name]);
-      setActiveFilters(newActiveFilters);
-      setFilters(newActiveFilters);
+      newActiveFilters = activeFilters.filter((f) => f !== filters[name]);
     }
+    setActiveFilters(newActiveFilters);
+    setFilters(newActiveFilters);
   };
 
   return (
     <SwitchMenu title="Filter">
       <FormControlLabel
-        control={<Switch name="hideWithdrawn" onChange={handleChange} />}
+        control={
+          <Switch
+            key="withdrawn"
+            name="hideWithdrawn"
+            onChange={handleChange}
+            checked={activeFilters.includes(filters["hideWithdrawn"])}
+          />
+        }
         label="Hide Withdrawn"
       />
       <FormControlLabel
-        control={<Switch name="hideStagnant" onChange={handleChange} />}
+        control={
+          <Switch
+            key="stagnant"
+            name="hideStagnant"
+            onChange={handleChange}
+            checked={activeFilters.includes(filters["hideStagnant"])}
+          />
+        }
         label="Hide Stagnant"
       />
     </SwitchMenu>
