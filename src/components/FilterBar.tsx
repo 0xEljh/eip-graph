@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NodeObj, NodePredicate } from "../services/GraphNode";
 import SwitchMenu from "./SwitchMenu";
-import { FormGroup, FormControlLabel, Switch } from "@mui/material";
+import { FormControlLabel, Switch } from "@mui/material";
 
 interface FilterBarProps {
   setFilters: (filters: NodePredicate[]) => void;

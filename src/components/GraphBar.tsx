@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, ButtonGroup } from "@mui/material";
 import FilterBar from "./FilterBar";
 import HighlightBar from "./HighlightBar";
 import { NodePredicate } from "../services/GraphNode";
@@ -11,15 +11,14 @@ interface GraphBarProps {
 
 const GraphBar = ({ setFilters, setHighlights, setColors }: GraphBarProps) => {
   return (
-    <Grid container spacing={4}>
-      <Grid item xs={6}></Grid>
+    <Grid container spacing={2}>
+      <Grid item xs={10}></Grid>
       <Grid item xs={2}>
-        <FilterBar setFilters={setFilters} />
+        <ButtonGroup>
+          <FilterBar setFilters={setFilters} />
+          <HighlightBar setHighlights={setHighlights} />
+        </ButtonGroup>
       </Grid>
-      <Grid item xs={2}>
-        <HighlightBar setHighlights={setHighlights} />
-      </Grid>
-      <Grid item xs={2}></Grid>
     </Grid>
   );
 };
