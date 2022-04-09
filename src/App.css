@@ -12,7 +12,7 @@ h1 {
 body {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(180deg, #6a8bce 0%, rgb(0, 153, 255) 100%);
+  background: linear-gradient(180deg, #032748, #006969);
   overflow: hidden;
   padding: 0;
   margin: 0;
