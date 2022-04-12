@@ -1,5 +1,5 @@
 .App {
-  color: white;
+  color: #032748;
 }
 
 h1 {
@@ -12,7 +12,7 @@ h1 {
 body {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(180deg, #032748, #006969);
+  background: linear-gradient(180deg, #e6f1fa, #f4faff);
   overflow: hidden;
   padding: 0;
   margin: 0;
@@ -27,7 +27,7 @@ nav {
   left: 0;
   bottom: 0;
   width: 500px;
-  color: black;
+  color: #032748;
   overflow-y: auto;
   overflow-x: hidden;
 }
