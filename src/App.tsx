@@ -5,7 +5,8 @@ import ForceGraph, {
 import { data } from "./data";
 import "./App.css";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
+import { useCycle } from "framer-motion";
 
 import InfoContext, { Info } from "./services/InfoContext";
 import SideBar from "./components/SideBar";
@@ -17,10 +18,38 @@ import {
 import GraphBar from "./components/GraphBar";
 
 function App() {
-  // preprocess the data into the form that force graph expects
-  // animated sidebar:
+  // preprocess data:
+  data.links.forEach((link) => {
+    const srcNode: NodeObject | undefined = data.nodes.find(
+      (node) => node.id === link.source
+    );
+    const tgtNode: NodeObject | undefined = data.nodes.find(
+      (node) => node.id === link.target
+    );
+    const src = srcNode as NodeObj;
+    const tgt = tgtNode as NodeObj;
+    if (src && tgt) {
+      !src.neighbours && (src.neighbours = []);
+      !tgt.neighbours && (tgt.neighbours = []);
+
+      src.neighbours.push(tgt);
+      tgt.neighbours.push(src);
+
+      !src.links && (src.links = []);
+      !tgt.links && (tgt.links = []);
+      src.links.push(link);
+      tgt.links.push(link);
+    }
+  });
 
   const [details, setDetails] = useState<Info[]>([]);
+  const [menuOpen, toggleMenu] = useCycle(false, true);
+
+  const [searchNode, setSearchNode] = useState<string | null>(null);
+  const [highlightNodes, setHighlightNodes] = useState<Set<NodeObj>>(new Set());
+  const [highlightLinks, setHighlightLinks] = useState(new Set());
+  const [primaryNode, setPrimaryNode] = useState<NodeObject | null>(null);
+  const NODE_R = 5;
 
   const figRef = useRef<ForceGraphMethods>();
   const centerCamera = (x: number, y: number) => {
@@ -32,11 +61,28 @@ function App() {
     }
   };
 
-  const handleClick = (node: NodeObject) => {
+  const focusNode = (node: NodeObject) => {
     const nodeObj = node as NodeObj;
-    console.log(nodeObj.color);
     setDetails(collectNodeDetails(nodeObj));
     centerCamera(nodeObj.x, nodeObj.y);
+    if (!menuOpen) {
+      toggleMenu();
+    }
+    focusSubgraph(node);
+  };
+  const handleClick = (node: NodeObject) => {
+    focusNode(node);
+  };
+  const handleSearch = (nodeName: string | null) => {
+    setSearchNode(nodeName);
+    // find the node:
+    const node = data.nodes.find((node: NodeObject) => {
+      const nodeObj = node as NodeObj;
+      return nodeObj.name === nodeName;
+    });
+    if (node) {
+      focusNode(node);
+    }
   };
 
   const [visFunctions, setVisFunctions] = useState<NodePredicate[]>([]);
@@ -49,9 +95,43 @@ function App() {
   const handleColor = (node: NodeObject) => {
     const nodeObj = node as NodeObj;
     return highlights.reduce((acc, func) => func(nodeObj) || acc, false)
-      ? "#b2df8a"
-      : "#5f94b8";
+      ? "#1f78b4"
+      : "#bfd2e0";
   };
+
+  const updateHighlight = () => {
+    setHighlightNodes(highlightNodes);
+    setHighlightLinks(highlightLinks);
+  };
+
+  const focusSubgraph = (node: NodeObject | null) => {
+    const nodeObj = node as NodeObj;
+    highlightNodes.clear();
+    highlightLinks.clear();
+    if (nodeObj) {
+      highlightNodes.add(nodeObj);
+      if (nodeObj.neighbours && nodeObj.links) {
+        nodeObj.neighbours.forEach((neighbour: NodeObj) => {
+          highlightNodes.add(neighbour);
+        });
+        nodeObj.links.forEach((link) => highlightLinks.add(link));
+      }
+    }
+
+    setPrimaryNode(nodeObj || null);
+    updateHighlight();
+  };
+
+  const paintRing = useCallback(
+    (node, ctx) => {
+      // add ring just for highlighted nodes
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, NODE_R * 1.4, 0, 2 * Math.PI, false);
+      ctx.fillStyle = node === primaryNode ? "red" : "orange";
+      ctx.fill();
+    },
+    [primaryNode]
+  );
 
   return (
     <div className="App">
@@ -60,22 +140,34 @@ function App() {
       </header>
 
       <InfoContext.Provider value={details}>
-        <SideBar />
+        <SideBar isOpen={menuOpen} toggleOpen={toggleMenu} />
       </InfoContext.Provider>
       <GraphBar
         setFilters={setVisFunctions}
         setHighlights={setHighlights}
-        setColors={setVisFunctions}
+        searchNode={searchNode}
+        onSearchChange={handleSearch}
+        graphData={data}
       />
       <ForceGraph
         ref={figRef}
         graphData={data}
+        nodeRelSize={NODE_R}
         onNodeClick={handleClick}
         nodeAutoColorBy="category"
-        linkDirectionalParticles={1}
-        linkDirectionalParticleSpeed={(d) => Math.random() * 0.003}
+        linkDirectionalParticles={(link) => (highlightLinks.has(link) ? 3 : 1)}
+        linkDirectionalParticleSpeed={(d) => Math.random() * 0.01}
+        linkWidth={(link) => (highlightLinks.has(link) ? 5 : 1)}
+        linkDirectionalParticleWidth={(link) =>
+          highlightLinks.has(link) ? 5 : 3
+        }
         nodeVisibility={handleVisibility}
         nodeColor={highlights.length > 0 ? handleColor : undefined}
+        nodeCanvasObjectMode={(node) => {
+          const nodeObj = node as NodeObj;
+          return highlightNodes.has(nodeObj) ? "before" : undefined;
+        }}
+        nodeCanvasObject={paintRing}
       />
     </div>
   );

@@ -15,6 +15,8 @@ export type NodeObj = NodeObject & {
   discussions?: string;
   bckgDimensions?: [number, number];
   color: string;
+  neighbours: NodeObj[];
+  links: { source: string; target: string }[];
 };
 
 export type NodePredicate = (node: NodeObj) => boolean;

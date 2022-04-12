@@ -17,6 +17,9 @@ const Menu = () => {
 
   return (
     <motion.ul className="menu-ul" variants={variants}>
+      {!nodeInfo.length && (
+        <h3>Click any node to display more information...</h3>
+      )}
       {nodeInfo.map((info, i) => (
         <MenuItem title={info.title} content={info.content} i={i} key={i} />
       ))}

@@ -25,8 +25,13 @@ const sidebar = {
   },
 };
 
-const SideBar = () => {
-  const [isOpen, toggleOpen] = useCycle(false, true);
+const SideBar = ({
+  isOpen,
+  toggleOpen,
+}: {
+  isOpen: boolean;
+  toggleOpen: () => void;
+}) => {
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
 
